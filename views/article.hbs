@@ -1,0 +1,83 @@
+<h2>Article</h2>
+
+<div class="container">
+  <div class="row">
+
+    {{#each dbArticles}}
+
+    <div class="card" style="width: 18rem;">
+      <img src="{{this.img}}" class="card-img-top" alt="..." />
+
+      <div class="card-body">
+        <h5 class="card-title">
+          <a href="/article/{{ this.id }}">{{ this.title }}</a>
+        </h5>
+        <p class="card-text"> {{this.description}} </p>
+
+        <form action="/article/{{this.id}}?_method=DELETE" method="post">
+          <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+
+        <form action="/article/{{ this.id }}?_method=PUT" method="post">
+
+          <div class="mb-3">
+            <label for="exampleFormControlInput1" class="form-label">Title</label>
+            <input
+            name="title"
+            type="text"
+            class="form-control"
+            id="exampleFormControlInput1"
+            placeholder="name@example.com" />
+          </div>
+
+          <div class="mb-3">
+            <label for="formFileSm" class="form-label"></label>
+            <input
+            name="img"
+            class="form-control form-control-sm"
+            id="selectFile"
+            type="file">
+          </div>
+
+          <div class="mb-3">
+            <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+            <textarea
+            name="description"
+            class="form-control"
+            id="exampleFormControlTextarea1"
+            rows="3">
+            </textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">Envoyer</button>
+        </form>
+
+      </div>
+
+
+    </div>
+
+    {{/each}}
+
+    <form action="/article" method="post">
+      <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Title</label>
+        <input name="title" type="text" class="form-control" id="exampleFormControlInput1"
+          placeholder="name@example.com" />
+      </div>
+
+        <div class="mb-3">
+        <label for="exampleFormControlInput2" class="form-label">Picture URL</label>
+        <input name="img" type="url" class="form-control" id="exampleFormControlInput2"
+        placeholder="https://..." />
+      </div>
+
+      <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Description</label>
+        <textarea name="description" class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+      </div>
+      <button type="submit" class="btn btn-primary">Envoyer</button>
+    </form>
+
+  </div>
+</div>
