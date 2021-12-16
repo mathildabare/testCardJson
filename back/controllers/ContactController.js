@@ -12,8 +12,9 @@ exports.editMessage = (req, res) => {
   console.log("je suis le controller edit Message", req.params.id, req.body);
   res.render("contact");
 };
+exports.societypage = (req, res) => {
+  console.log("society-page");
 
-// exports.deleteMessage = (req, res) => {
-//   console.log("je suis le controller delete Message", req.params.id);
-//   res.render("contact");
-// };
+  res.render("society");
+};
+

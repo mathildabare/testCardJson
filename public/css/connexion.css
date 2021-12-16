@@ -1,0 +1,268 @@
+/* 
+ * GENERAL
+ * ******************* */
+
+h1,
+h2,
+h3,
+h4,
+h6,
+.navbar {
+    font-family: 'Lato', 'Arial', sans-serif;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: -1px;
+    word-spacing: 8px;
+}
+
+h2 {
+    color: black;
+    font-size: 250%;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 80px;
+}
+
+h2::after {
+    display: block;
+    height: 2px;
+    background-color: rgb(162, 29, 29);
+    width: 100px;
+    content: "  ";
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+h3 {
+    font-size: 140%;
+    text-align: center;
+}
+
+p,
+label,
+cite,
+blockquote {
+    font-size: 10pt;
+    font-weight: 300;
+    line-height: 24px;
+}
+
+.form-check label{
+    text-align: left;
+}
+
+h5 {
+    font-family: 'Dancing Script', 'Arial', sans-serif;
+    text-transform: uppercase;
+    font-weight: 500;
+    word-spacing: 8px;
+    text-align: end;
+}
+
+section {
+    padding: 30px 0 60px 0;
+}
+
+/* 
+   * NAVBAR
+   * ******************* */
+
+.navbar-nav {
+    font-family: 'Spartan', 'Arial', sans-serif;
+    font-weight: 400;
+}
+
+.btn-submit {
+    border: 1px solid black;
+    background-color: lightgrey;
+    font-size: 10pt;
+    color: black;
+}
+
+
+header {
+
+    background-image:
+        linear-gradient(to right, rgba(235, 235, 235, 0.4), rgba(133, 131, 131, 0.6)),
+        url(../imgs/head/snow-head.jpeg);
+    height: 40vh;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+
+/** titles **/
+
+.homeTitle {
+    position: absolute;
+    top: 20%;
+    width: auto;
+    color: white;
+}
+
+.homeTitle h1 {
+    font-size: 340%;
+
+}
+
+.homeTitle h1 span {
+
+    font-weight: 400;
+    letter-spacing: -6px;
+}
+
+.homeTitle p {
+
+    color: white;
+}
+
+
+
+
+
+
+
+
+/* 
+ * CONNEXION
+ * ******************* */
+
+.login {
+    background-color: lightgrey;
+}
+
+.btn-log {
+    background-color: lightgrey;
+    border: 1px solid grey;
+    border-radius: 3px;
+    font-size: 10pt;
+}
+
+.btn-log:hover {
+    background-color: rgb(228, 228, 228);
+}
+
+.btn-nav-log {
+    display: flex;
+    border: 1px solid black;
+    background-color: lightgrey;
+    font-size: 10pt;
+    color: black;
+    height: 25px;
+    border-radius: 0;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.register{
+    background-color: rgb(226, 226, 226);
+
+}
+
+.btn-terms{
+border: none;
+color: rgb(39, 134, 172);
+font-style: italic;
+background-color: rgb(226, 226, 226);
+}
+
+/* 
+ * FOOTER
+ * ******************* */
+
+footer {
+    padding-top: 20px;
+    background-color: rgb(41, 41, 41);
+    color: white;
+    height: auto;
+    font-size: 10pt;
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-weight: 400;
+}
+
+footer p {
+    font-size: 9pt;
+}
+
+.footer-us {
+    margin-right: 90px;
+}
+
+.footer-us ul li {
+    list-style: none;
+}
+
+.footer-us ul li a {
+    margin-right: 30px;
+}
+
+.footer-us img {
+    max-width: 35%;
+    max-height: auto;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+.newsletter,
+.footer-icons {
+    margin-top: 20px;
+    margin-left: 90px;
+}
+
+.footer-btn {
+    display: inline-block;
+    height: 25px;
+    width: 60px;
+    background-color: lightgray;
+    color: black;
+    border-radius: 5px;
+    padding: 4px;
+    margin-top: 10px;
+    font-size: small;
+}
+
+/** Icons **/
+
+.footer-icons a {
+    font-size: 20px;
+    margin: 0 10px;
+    color: white;
+}
+
+.footer-icons a:hover {
+    color: lightgray;
+}
+
+.copyright {
+    margin-top: 30px;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.copyright a {
+    color: white;
+}
+
+@media screen and (max-width: 640px) {
+
+    .footer-us,
+    .footer-icons,
+    .newsletter {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    .client-profil:hover {
+
+        transform: translateY(10px);
+        background-color: rgb(240, 239, 239);
+        transition: all 0.5s;
+    }
+
+    .login {
+        margin-left: 0;
+    }
+}

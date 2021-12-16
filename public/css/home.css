@@ -1,0 +1,544 @@
+/* 
+ * GLOBAL
+ * ******************* */
+
+html {
+    background-color: white;
+}
+
+/** typos **/
+
+h1,
+h2,
+h3,
+h4,
+.navbar {
+
+    font-family: 'Lato', 'Arial', sans-serif;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: -1px;
+    word-spacing: 8px;
+}
+
+h1 {
+    color: white;
+}
+
+h2 {
+    color: black;
+    font-size: 250%;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+h2::after {
+    display: block;
+    height: 2px;
+    background-color: rgb(162, 29, 29);
+    width: 100px;
+    content: "  ";
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+h3 {
+    font-size: 160%;
+}
+
+p,
+label {
+    font-size: 10pt;
+    font-weight: 300;
+    line-height: 24px;
+}
+
+h5 {
+    font-family: 'Dancing Script', 'Arial', sans-serif;
+    text-transform: uppercase;
+    font-weight: 500;
+    word-spacing: 8px;
+    text-align: end;
+}
+
+.fw-400 {
+    font-weight: 400;
+}
+
+/** Buttons **/
+
+.btn-submit {
+    border: 1px solid black;
+    background-color: lightgrey;
+    font-size: 10pt;
+    color: black;
+}
+
+.basic-btn {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-right: 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color 1s, color 1s, border 1s;
+    margin-bottom: 20px;
+}
+
+.btn-full {
+    background-color: white;
+    color: grey;
+}
+
+.btn-full:hover {
+    background-color: rgb(189, 189, 189);
+    color: white;
+}
+
+.btn-ghost {
+    color: white;
+    border: 1px solid white;
+}
+
+.btn-ghost:hover {
+    background-color: rgb(189, 189, 189);
+    border: 1px solid rgb(189, 189, 189);
+    color: white;
+}
+
+.btn-card {
+    display: inline-block;
+    color: rgb(44, 44, 44);
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color 1s, color 1s, border 1s;
+    margin-bottom: 20px;
+}
+
+.btn-card:hover {
+    color: rgb(44, 44, 44);
+}
+
+.btn-red {
+    background-color: rgb(187, 52, 52);
+    color: white;
+    margin-bottom: 20px;
+}
+
+.btn-red:hover {
+    background-color: rgb(214, 91, 91);
+    color: white;
+}
+
+.footer-btn {
+    display: inline-block;
+    height: 25px;
+    width: 60px;
+    background-color: lightgray;
+    color: black;
+    border-radius: 5px;
+    padding: 4px;
+    margin-top: 10px;
+    font-size: small;
+}
+
+.btn-nav-log {
+    display: flex;
+    border: 1px solid black;
+    background-color: lightgrey;
+    font-size: 10pt;
+    color: black;
+    height: 25px;
+    border-radius: 0;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+/** Padding & Margin **/
+
+section {
+    padding: 30px 0 60px 0;
+}
+
+/* 
+    * NAVBAR
+    * ******************* */
+
+.navbar-nav {
+    font-family: 'Spartan', 'Arial', sans-serif;
+    font-weight: 400;
+}
+
+.selectpicker {
+    border: none;
+    border-radius: 5px;
+}
+
+/* 
+ * HEADER
+ * ******************* */
+
+header {
+
+    background-image:
+        linear-gradient(to right, rgba(235, 235, 235, 0.4), rgba(133, 131, 131, 0.6)),
+        url(../images/head/snow-head.jpeg);
+    height: 90vh;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+/** titles **/
+
+.homeTitle {
+    position: absolute;
+    top: 20%;
+    width: auto;
+}
+
+.homeTitle a {
+    margin: 0 5px;
+}
+
+.homeTitle h1 {
+    font-size: 340%;
+
+}
+
+.homeTitle h1 span {
+
+    font-weight: 400;
+    letter-spacing: -6px;
+}
+
+.homeTitle p {
+
+    color: white;
+}
+
+
+
+
+/* 
+ * CARDS
+ * ******************* */
+
+.all-cards {
+    background-color: white
+}
+
+.card-details {
+    background-color: rgb(221, 221, 221);
+    padding: 30px 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.card-details:hover {
+    transform: translateY(20px);
+    background-color: rgb(240, 239, 239);
+    transition: all 0.5s;
+}
+
+.card-details img {
+    display: block;
+    margin: 0 auto;
+    width: 70%;
+}
+
+.card-details h4 {
+    font-size: 100%;
+}
+
+.card-details h5 {
+    font-size: 80%;
+    font-weight: 300;
+}
+
+.card-details img {
+    width: 80%;
+    height: auto;
+    margin-bottom: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+
+/* 
+ * BANNIERE
+ * ******************* */
+
+.carousel-item {
+    height: 25vh;
+    min-height: 400px;
+    background: no-repeat center center scroll;
+}
+
+
+.carousel-item h3,
+h4 {
+    font-weight: 400;
+}
+
+
+.pack {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    background-color: white;
+}
+
+.pack h3 {
+    font-weight: 400;
+    color: rgb(162, 29, 29)
+}
+
+.pack h4 {
+    font-weight: 100;
+    font-size: 250%;
+}
+
+.pack-title {
+    padding: 10px 10px 0 10px;
+    position: relative;
+}
+
+.pack span {
+    font-weight: 200;
+    font-size: 40%;
+    position: relative;
+    top: -15px;
+    left: 5px;
+}
+
+.pack-span {
+    font-weight: 400;
+    font-size: 50%;
+    position: relative;
+    top: -10px;
+    left: 5px;
+}
+
+.pack-signup {
+    text-align: center;
+}
+
+
+/* 
+ * CONTACT
+ * ******************* */
+
+.form h2,
+p {
+    margin-top: 0;
+}
+
+.contact-form {
+    margin-bottom: 20px;
+}
+
+.contact-message {
+    width: 100%;
+}
+
+.contact {
+    text-align: center;
+}
+
+.contact i {
+    color: rgb(187, 52, 52);
+    margin-right: 5px;
+}
+
+.map {
+    position: relative;
+    padding-bottom: 75%;
+    height: 0;
+    overflow: hidden;
+}
+
+.map iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+/* 
+ * FOOTER
+ * ******************* */
+
+footer {
+    padding-top: 20px;
+    background-color: rgb(41, 41, 41);
+    color: white;
+    height: auto;
+    font-size: 10pt;
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-weight: 400;
+}
+
+footer p {
+    font-size: 9pt;
+}
+
+.footer-us {
+    margin-right: 90px;
+}
+
+.footer-us ul li {
+    list-style: none;
+}
+
+.footer-us ul li a {
+    margin-right: 30px;
+}
+
+.footer-us img {
+    max-width: 35%;
+    max-height: auto;
+    margin: 20px 0;
+    border-radius: 10px;
+}
+
+.newsletter,
+.footer-icons {
+    margin-top: 20px;
+    margin-left: 90px;
+}
+
+.footer-btn {
+    display: inline-block;
+    height: 25px;
+    width: 60px;
+    background-color: lightgray;
+    color: black;
+    border-radius: 5px;
+    padding: 4px;
+    margin-top: 10px;
+    font-size: small;
+}
+
+/** Icons **/
+
+.footer-icons a {
+    font-size: 20px;
+    margin: 0 10px;
+    color: white;
+}
+
+.footer-icons a:hover {
+    color: lightgray;
+}
+
+.copyright {
+    margin-top: 30px;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    padding: 10px 0;
+    text-align: center;
+}
+
+.copyright a {
+    color: white;
+}
+
+@media screen and (max-width: 640px) {
+
+    .homeTitle {
+        display: flex;
+        flex-direction: column;
+        width: 60%;
+    }
+
+    .homeTitle a {
+        margin: 5px 0;
+    }
+
+    .footer-us,
+    .footer-icons,
+    .newsletter {
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+    /** Carousel **/
+
+
+    .carousel-item {
+        max-height: 35vh;
+    }
+
+    .carousel-item h3,
+    h4 {
+        font-weight: 400;
+    }
+
+    .carousel-item h2 {
+        font-size: 120%;
+    }
+
+    .pack {
+
+        margin-bottom: 10px;
+        background-color: white;
+    }
+
+    .pack h3 {
+        font-weight: 400;
+        color: rgb(162, 29, 29);
+        max-height: 5px;
+        font-size: 9pt;
+    }
+
+    .pack h4 {
+        font-weight: 100;
+        font-size: 150%;
+    }
+
+    .pack-title {
+        padding: 10px 10px 0 10px;
+        position: relative;
+    }
+
+    .pack-span {
+        font-weight: 400;
+        font-size: 40%;
+        position: relative;
+        top: -10px;
+        left: 5px;
+    }
+
+    .btn-red {
+        background-color: rgb(187, 52, 52);
+        color: white;
+        margin-bottom: 20px;
+        max-height: 25px;
+        max-width: auto;
+    font-size: 8pt;
+text-align: center;}
+    
+
+    .carousel-item h3,
+    h4 {
+        font-size: 110%;
+    }
+
+    .pack-title h4 {
+        margin-top: 20px;
+    }
+
+    .ban-conditions small {
+        font-size: 6pt;
+    }
+
+/** Icons **/
+
+    .login {
+        margin-left: 0;
+    }
+}

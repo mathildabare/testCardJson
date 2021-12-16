@@ -1,0 +1,26 @@
+{{!--
+Partial: Events
+--}}
+
+
+<section class="cards">
+    <div class="container">
+        <div class="row" id="listCard">
+
+            {{#each dbArticles}}
+
+            <div class=" card col-md-3 card-details" id="{{this.id}}">
+                <a href="/article/{{ this.id }}">
+                    <img class="card-img-top" src="{{this.img}}">
+                    <div class="card-body">
+                        <h4 class="card-title">{{ this.title }}</h4>
+                        <p>{{this.description}}</p>
+                    </div>
+                </a>
+            </div>
+
+            {{/each}}
+
+        </div>
+    </div>
+</section>

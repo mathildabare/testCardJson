@@ -1,0 +1,126 @@
+{{!-- Modal :
+Articles --}}
+
+
+
+{{!-- Article Pin --}}
+
+<div class="modal fade" id="thumb-content-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+            <div class="modal-content">
+                  <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                        Pin this item ?
+                  </div>
+                  <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary">Confirm</button>
+                  </div>
+            </div>
+      </div>
+</div>
+
+{{!-- Article Delete --}}
+
+<div class="modal fade" id="delete-content-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+            <div class="modal-content">
+                  <div class="modal-header">
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <div class="modal-body">
+                        Are you sure you want delete this item ?
+                  </div>
+                  <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-primary">Confirm</button>
+                  </div>
+            </div>
+      </div>
+</div>
+
+{{!-- Article Edition --}}
+
+<div class="modal fade" id="edit-article-modal" tabindex="-1" aria-labelledby="edituserlabel" aria-hidden="true">
+      <div class="modal-dialog">
+            <div class="modal-content">
+                  <div class="modal-header">
+                        <h4>Edit</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+
+                  <!-- Form -->
+                  <form action="/admin/articles?_method=PUT" method="post">
+                        <div class="modal-body">
+                              <div class="connection d-flex justify-content-center flex-column">
+
+                                    <div class="mb-3 element-form">
+                                          <label for="input-edit-title" class="form-label"></label>
+                                          <input
+                                          type="text"
+                                          class="form-control"
+                                          id="input-edit-title"
+                                          name="title"
+                                          placeholder="Title">
+                                    </div>
+
+                                    <div class="mb-3 element-form">
+                                          <label for="textarea-edit-article" class="form-label"></label>
+                                          <textarea
+                                          class="brd-txt-area"
+                                          name="editArticle"
+                                          id="textarea-edit-article"
+                                          cols="30"
+                                          rows="10"
+                                          placeholder=" Write an article"></textarea>
+                                    </div>
+                              </div>
+                        </div>
+                        <div class="modal-footer">
+                              <button type="button" class="btn btn-off" data-bs-dismiss="modal">Cancel</button>
+                              <button type="button" class="btn btn-on">Confirm</button>
+                        </div>
+                  </form>
+
+            </div>
+      </div>
+</div>
+
+{{!-- Article Creation --}}
+
+<div class="modal fade" id="create-article-modal" tabindex="-1" aria-labelledby="edituserlabel" aria-hidden="true">
+      <div class="modal-dialog">
+            <div class="modal-content">
+                  <div class="modal-header">
+                        <h4>Add an article</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+                  <form action="/blog" method="post">
+                        <div class="modal-body">
+                              <div class="connection d-flex justify-content-center flex-column">
+                                    <div class="mb-3 element-form">
+                                          <label for="input-title" class="form-label"></label>
+                                          <input name="title" type="text" class="form-control" id="input-title"
+                                                placeholder="Title">
+                                    </div>
+                                    <div class="mb-3">
+                                          <label for="formFileSm" class="form-label"></label>
+                                          <input class="form-control form-control-sm" id="selectFile" type="file">
+                                    </div>
+                                    <div class="mb-3 element-form">
+                                          <label for="input-email" class="form-label"></label>
+                                          <textarea class="brd-txt-area" name="articleContent" id="textareaArticle"
+                                                cols="30" rows="10" placeholder=" Write an article . . ."></textarea>
+                                    </div>
+                              </div>
+                        </div>
+                        <div class="modal-footer">
+                              <button type="button" class="btn btn-off" data-bs-dismiss="modal">Cancel</button>
+                              <button type="submit" class="btn btn-on">Confirm</button>
+                        </div>
+                  </form>
+            </div>
+      </div>
+</div>
