@@ -1,46 +1,46 @@
 /*
  * Controller: Authentication
- * **************** */
+ * ************************** */
 
+/** PAGES **/
 
 // Login
 exports.loginpage = (req, res) => {
-  console.log("login-page");
+  console.log("Je suis la page de connexion");
   res.render("login");
 };
-
+exports.loginData = (req, res) => {
+  console.log("Mes identitifiants :", req.body);
+  res.render("register");
+};
 
 // Register
 exports.registerpage = (req, res) => {
-  console.log("register-page");
+  console.log("Je suis la page d'inscription");
   res.render("register");
 };
 exports.createAccount = (req, res) => {
-  console.log("je suis le controller Create Account", req.body);
+  console.log("Formulaire d'inscription :", req.body);
   res.render("register");
 };
 
-
-
-// New Password
+// Page de réinitialisation de mot de passe
 exports.newpasswordpage = (req, res) => {
-  console.log("newPW-page");
+  console.log("Je suis la page de réinitialisation du mot de passe");
   res.render("newPW");
 };
 exports.resetPassword = (req, res) => {
-  console.log("je suis le controller reset password", req.body);
+  console.log("Nouveau mot de passe : ", req.body);
   res.render("login");
 };
-
 
 
 // Forgot Password
 exports.forgotpasswordpage = (req, res) => {
-  console.log("forgotPW-page");
+  console.log("Je suis la page de mot de passe oublié");
   res.render("forgotPW");
 };
-
 exports.forgotPassword = (req, res) => {
-  console.log("je suis le controller send Password", req.body);
+  console.log("Données du compte pour le nouveau mot de passe : ", req.body);
   res.render("newPW");
 };

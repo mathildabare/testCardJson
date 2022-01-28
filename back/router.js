@@ -20,54 +20,37 @@ const mdl = require("./middleware/coucou");
 
 // HOME
 router.route("/")
-  .get(mdl.coucou, HomeController.homepage);
-
+  .get(mdl.coucou, HomeController.homepage)
+  .post(HomeController.createMessage)
 
 /*  ********************  */
-
 
 // BLOG
 router.route("/article")
   .get(BlogController.articlepage)
-  .post(BlogController.createArticle)
 
 router.route("/article/:id")
   .get(BlogController.pageArticleID)
-  .put(BlogController.editArticle)
-  .delete(BlogController.deleteArticle);
-
 
 /*  ********************  */
-
 
 // CONTACT
 router.route("/contact")
   .get(ContactController.contactpage)
   .post(ContactController.createMessage);
 
-router
-  .route("/contact/:id")
-  .put(ContactController.editMessage)
-
-
 
 // SOCIETY
 router.route('/society')
   .get(ContactController.societypage);
 
-router.route('/contact')
-  .get(ContactController.contactpage)
-  .post(ContactController.createMessage);
-
-
+  
 /*  ********************  */
-
 
 
 // AUTHENTICATION
 router.route('/login')
   .get(LogController.loginpage);
-
 
 router.route('/register')
   .get(LogController.registerpage)
@@ -82,12 +65,16 @@ router.route('/forgotPW')
   .post(LogController.forgotPassword)
 
 
+
 /*  ********************  */
 
 
 // ADMIN
 router.route('/admin')
   .get(AdminController.get)
+  // .post(AdminController.createArticle);
 
 
+
+//Export du Router
 module.exports = router;

@@ -1,11 +1,13 @@
-{{!-- 
-    Page: Blog
- --}}
+{{!--
+Page: Blog
+--}}
 
-    <link rel="stylesheet" href="/assets/css/admin.css">
+<link rel="stylesheet" href="/assets/css/admin.css">
 </head>
 
 <body>
+
+    {{!-- Partials --}}
 
     {{> admin/profile }}
 
@@ -16,3 +18,15 @@
     {{> admin/articles }}
 
     {{> admin/comments }}
+
+
+
+    {{!-- Modals --}}
+
+    {{> modals/biography }}
+
+    {{> modals/users }}
+
+    {{> modals/articles }}
+
+    {{> modals/comments }}

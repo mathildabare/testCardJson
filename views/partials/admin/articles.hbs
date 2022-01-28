@@ -1,0 +1,115 @@
+{{!--
+Partial: Articles
+--}}
+
+<section class="admin-blog" id="blog">
+    <div class="container">
+        <div class="row">
+            <h3><i class="fas fa-book"></i> blog</h3>
+
+
+            {{!-- Card 1 --}}
+
+            <div class="col-md-3 mb-3">
+                <div class="card-details">
+                    <img src="assets/images/cards/hufflepuffdorm.jpeg">
+                    <h4>Hufflepuff Dorm Party</h4>
+                    <p>sunt omnis consectetur
+                        unde quas exercitationem dolores sed doloremque ab aliquid, repellat explicabo id quod
+                        magni</p>
+                    <div class="gst-icons">
+
+                        <button type="submit" class="btn-gestion" data-bs-toggle="modal"
+                            data-bs-target="#thumb-content-modal">
+                            <i class="fas fa-thumbtack"></i></button>
+
+                        <form action="/admin?_method=PUT" method="post">
+                            <button type="submit" class="btn-gestion" data-bs-toggle="modal"
+                                data-bs-target="#edit-article-modal">
+                                <i class="fas fa-pencil-alt"></i></button>
+                        </form>
+
+                        <button type="submit" class="btn-gestion" data-bs-toggle="modal"
+                            data-bs-target="#delete-content-modal">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+
+                    </div>
+                </div>
+            </div>
+
+            {{!-- Card 2 --}}
+
+            <div class="col-md-3 mb-3">
+                <div class="card-details">
+                    <img src="assets/images/cards/quidditch.png">
+                    <h4>Quidditch : Gryffindor/Hufflepuff</h4>
+                    <p>sunt omnis consectetur
+                        unde quas exercitationem dolores sed doloremque ab aliquid, repellat explicabo id quod
+                        magni</p>
+                    <div class="gst-icons">
+                        <button type="button" class="btn-gestion" data-bs-toggle="modal"
+                            data-bs-target="#thumb-content-modal">
+                            <i class="fas fa-thumbtack"></i> </button>
+
+                        <form action="/admin?_method=PUT" method="post">
+                            <button type="submit" class="btn-gestion" data-bs-toggle="modal"
+                                data-bs-target="#edit-article-modal">
+                                <i class="fas fa-pencil-alt"></i></button>
+                        </form>
+
+                        <button type="button" class="btn-gestion" data-bs-toggle="modal"
+                            data-bs-target="#delete-content-modal">
+                            <i class="fas fa-trash-alt"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            {{!-- Card 3 --}}
+
+            <div class="col-md-3 mb-3">
+                <div class="card-details">
+                    <img src="assets/images/cards/quidditch2.jpeg">
+                    <h4>Quidditch : Slytherin/Ravenclaw</h4>
+                    <p>sunt omnis consectetur
+                        unde quas exercitationem dolores sed doloremque ab aliquid, repellat explicabo id quod
+                        magni</p>
+                    <div class="gst-icons">
+                        <button type="button" class="btn-gestion" data-bs-toggle="modal"
+                            data-bs-target="#thumb-content-modal">
+                            <i class="fas fa-thumbtack"></i> </button>
+
+                        <form action="/admin?_method=PUT" method="post">
+                            <button type="submit" class="btn-gestion" data-bs-toggle="modal"
+                                data-bs-target="#edit-article-modal">
+                                <i class="fas fa-pencil-alt"></i></button>
+                        </form>
+
+                        <button type="button" class="btn-gestion" data-bs-toggle="modal"
+                            data-bs-target="#delete-content-modal">
+                            <i class="fas fa-trash-alt"></i> </button>
+                    </div>
+                </div>
+            </div>
+
+            {{!-- Card Creation --}}
+
+
+            <div class="col-md-3 mb-3">
+
+                <div class="card-details">
+                    <form action="/admin" method="post">
+                        <button type="submit" class="btn btn-add" data-bs-toggle="modal"
+                            data-bs-target="#create-article-modal"><i class="fas fa-plus"></i>
+                        </button>
+                    </form>
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+</section>
+

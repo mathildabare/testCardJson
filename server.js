@@ -25,13 +25,6 @@ app.use(bodyParser.urlencoded({
 
 app.use("/assets", express.static('public'));
 
-// app.get("/", function (req, res) {
-//   res.render("home");
-// });
-
-// app.get("/contact", function (req, res) {
-//   res.render("contact");
-// });
 
 const ROUTER = require('./back/router')
 app.use('/', ROUTER)

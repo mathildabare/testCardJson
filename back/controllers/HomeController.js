@@ -1,10 +1,18 @@
+/*
+ * Controller: HOME
+ * ***************** */
+
+
+/** PAGES **/
+
+// HOME
 exports.homepage = (req, res) => {
-    // console.log('je suis la page home')
-  res.render("home");
+console.log('je suis la page home')
+res.render("home");
 };
 
-exports.homepageID = (req, res) => {
-    // console.log('params url', req.params.id)
-    // console.log('je suis la page home')
+// Création d'un message
+exports.createMessage = (req, res) => {
+  console.log("Message du formulaire", req.body);
   res.render("home");
 };
