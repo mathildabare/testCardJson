@@ -22,13 +22,14 @@ Partial: Formulaire
 
                 {{!-- FORMULAIRE --}}
 
-            <form action="/" method="post">
+            <form action="/
+            " method="post">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="contact-form">
                             <label class="form-label" for="name">Name</label>
                             <input class="form-control"
-                            name="Name"
+                            name="name"
                             type="text"
                             id="input-name"
                             placeholder="Add name">
@@ -38,7 +39,7 @@ Partial: Formulaire
                         <div class="contact-form">
                             <label class="form-label" for="email">Mail</label>
                             <input
-                            name="Mail"
+                            name="mail"
                             class="form-control"
                             type="mail"
                             id="input-mail"
@@ -47,7 +48,7 @@ Partial: Formulaire
                     </div>
                     <div class="contact-form">
                         <label class="form-label">You are</label>
-                        <select class="form-select">
+                        <select name='status' class="form-select">
                             <option value="" disabled selected> . . . . .</option>
                             <option>Exhibitor</option>
                             <option>Visitor</option>
@@ -57,7 +58,7 @@ Partial: Formulaire
                     <div class="contact-form"s>
                         <label class="form-label">Message</label>
                         <textarea
-                        name="Message"
+                        name="content"
                         id="textarea-message"
                         rows="2"
                         class="contact-message"></textarea>

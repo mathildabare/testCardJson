@@ -14,6 +14,7 @@
 -- créer un user
 -- create table users ...
 
+
 CREATE TABLE users (
     `id` int NOT NULL AUTO_INCREMENT,
     `username` varchar(255),
@@ -23,6 +24,7 @@ CREATE TABLE users (
 
 Ensuite, jouer avec les commandes SQL (Select, Insert into, Update, SET, where, delete)
 
+------------------- COMMANDES --------------------------
 
 -- // INSERT INTO
 insert into nom_table (col1, col2, col3, ..)
@@ -53,12 +55,18 @@ SELECT * FROM nom_table
 WHERE nom_col BETWEEN 'first_number' AND 'second_number';
 
 
+--// ORDER BY
+ORDER BY no
+
+
 
 -- Ajouter new_col à une table --
 ALTER TABLE nom_table
 ADD nom_col datatype
 ;
 
+
+---------------------- JOIN --------------------------
 
 
 SELECT articles.title, articles.author_id, users.username, users.mail
@@ -87,17 +95,18 @@ SELECT users.username, articles.title
 FROM users
 INNER JOIN articles
 ON users.id = articles.author_id
---FILTRE ARTICLES PAR MATH
-WHERE users.id = 1
---FILTRE PAR USERNAME
-WHERE users.username = 'username'
-;
 
+--FILTRE ARTICLES PAR MATH
++ WHERE users.id = 1
+
+--FILTRE PAR USERNAME
++ WHERE users.username = 'username'
+;
 
 
 -- Comments => Lier 3 tables (username, article title, comment content)
 
-SELECT users.username, articles.title, comments.content, 
+SELECT users.username, articles.title, comments.content 
 FROM ((comments
 INNER JOIN users ON users.id = comments.author_id)
 INNER JOIN articles ON articles.id = comments.article_id);

@@ -2,12 +2,30 @@ console.log("Mon app node js");
 
 require("dotenv").config();
 
+
 const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override')
 const port = process.env.PORT || 3004;
 const { engine } = require("express-handlebars");
+
+const mysql = require('mysql');
+db = mysql.createConnection ({
+  host     : 'localhost',
+  user     : 'math',
+  password : 'math394',
+  database : 'dbtest'
+})
+
+const util = require("util");
+db.query = util.promisify(db.query).bind(db);
+
+db.connect((err) => {
+  if (err) console.error("error connecting: " + err.stack);
+  console.log("connected as id " + db.threadId);
+});
+
 
 app.set("view engine", "hbs");
 app.engine("hbs", engine({
