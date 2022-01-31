@@ -4,29 +4,74 @@
 
 
 // Page Admin
-module.exports = {
-  get: (req, res) => {
+exports.get = (req, res) => {
+  const users = [{
+    id: 1,
+    name: 'brunooooo',
+    mail: 'fzregf@fzeooooo.fr'
+  },{
+    id: 2,
+    name: 'bruno',
+    mail: 'fzregf@fze.fr'
+  }]
+  const articles = [{
+        id: 1,
+    title: 'wowowow', 
+    description:'wowowowowowoowwowowow'
+  },{
+    id: 2,
+  title: 'wowowow2', 
+  description:'wowowowowowoowwowowow2'
+}]
+const bio = [{
+  id: 1,
+  description: 'fzregf@wowowowowowoowwowowowwowowowowowoowwowowowfzeooooofr'
+}]
+const comments = [{
+id: 1,
+username:'Draco Malefoy',
+content: "kldjvmljnfqivgkr,noefsziregk"
+},{
+  id: 2,
+  username:'Math Shingyouji',
+  content: "kldjvmljnfqivgkr,noefsziregk"
+}]
+
     res.render('admin', {
-      layout: 'adminLayout'
+      layout: 'adminLayout',
+      users, articles, bio, comments
     })
-  }
 }
 
 
 /** CRUD **/
 
 
-// //Edition d'un article
+// //BIO MODAL
+exports.userBio = (req, res) => {
+  console.log("user biography", req.body, req.params, req.query);
+  res.redirect("/admin");
+};
 
-// exports.editArticle = (req, res) => {
-//   console.log("je suis le controller edit Articles", req.body);
-//   res.render('admin')
-// }
 
+exports.editUserID = (req, res) => {
+  console.log('edit User', req.body, req.params, req.query)
+  res.redirect('/admin#user')
+}
 
-// //Création d'un article
+exports.editArticleID = (req, res) => {
 
-// exports.createArticle = (req, res) => {
-//   console.log("je suis le controller create article", req.body);
-//   res.render("admin");
-// };
+  console.log('edit article', req.body, req.params, req.query)
+  res.redirect('/admin#blog');
+}
+
+exports.createArticle = (req, res) => {
+  console.log("article creation", req.body);
+  res.render("admin");
+};
+
+exports.deleteCommentID = (req, res) => {
+
+  console.log('delete comment', req.body, req.params, req.query)
+  res.redirect('/admin#messages');
+}

@@ -6,15 +6,32 @@
 
 
 // Page Contact
-exports.contactpage = (req, res) => {
-console.log("je suis la page contact");
-res.render("contact");
-};
-// Création d'un message
-exports.createMessage = (req, res) => {
-  console.log("je suis le controller create Message", req.body);
+exports.contactpage = async (req, res) => {
+  console.log('je suis la page contact')
+  const message = await db.query(`
+  SELECT * FROM message;
+`)
   res.render("contact");
 };
+
+
+
+// Création d'un message
+exports.createMessage = async (req, res) => {
+  console.log("Message du formulaire", req.body);
+  const {
+    name,
+    mail,
+    status,
+    content
+  } = req.body
+  await db.query(`
+    insert into message (name, mail, status, content)
+      VALUES ("${name}","${mail}","${status}","${content}");
+  `)
+  res.render("contact");
+}
+
 
 
 // Page Société

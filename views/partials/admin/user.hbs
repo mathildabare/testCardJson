@@ -1,93 +1,37 @@
-
 {{!--
 Partial: Users
 --}}
 
 
-    <section class="admin-user" id="user">
-        <div class="container">
-            <div class="row">
-                <h3><i class="fas fa-user"></i> user</h3>
+<section class="admin-user" id="user">
+    <div class="container">
+        <div class="row">
+            <h3><i class="fas fa-user"></i> user</h3>
 
-                {{!-- User 1 --}}
-
-                <div class="col-md-3 mb-3">
-                    <div class="user-details">
-                        <img src="/assets/images/comments/rogue.jpg" alt="">
-                        <h4>Severus Snape</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, sint atque!</p>
-                        <div class="gst-icons">
-                            <button type="button" class="btn-gestion" data-bs-toggle="modal"
-                                data-bs-target="#ban-user-modal">
-                                <i class="fas fa-ban"></i>
-                            </button>
-                            <button type="button" class="btn-gestion" data-bs-toggle="modal"
-                                data-bs-target="#edit-user-modal">
-                                <i class="fas fa-pencil-alt"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                {{!-- User 2 --}}
-
-                <div class="col-md-3 mb-3">
-                    <div class="user-details">
-                        <img src="/assets/images/comments/drago.jpg" alt="">
-                        <h4>Draco Malefoy</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, sint atque!</p>
-                        <div class="gst-icons">
-                            <button type="button" class="btn-gestion" data-bs-toggle="modal"
-                                data-bs-target="#ban-user-modal">
-                                <i class="fas fa-ban"></i>
-                            </button>
-                            <button type="button" class="btn-gestion" data-bs-toggle="modal"
-                                data-bs-target="#edit-user-modal">
-                                <i class="fas fa-pencil-alt"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                {{!-- User 3 --}}
-
-                <div class="col-md-3 mb-3">
-                    <div class="user-details">
-                        <img src="/assets/images/comments/neville.jpg" alt="">
-                        <h4>Nevil Longbottom</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, sint atque!</p>
-                        <div class="gst-icons">
-                            <button type="button" class="btn-gestion" data-bs-toggle="modal"
-                                data-bs-target="#ban-user-modal">
-                                <i class="fas fa-ban"></i>
-                            </button>
-                            <button type="button" class="btn-gestion" data-bs-toggle="modal"
-                                data-bs-target="#edit-user-modal">
-                                <i class="fas fa-pencil-alt"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-
-                {{!-- User 4 --}}
-
-                <div class="col-md-3 mb-3">
-                    <div class="user-details">
-                        <img src="/assets/images/comments/luna.jpg" alt="">
-                        <h4>Luna Lovegood</h4>
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, sint atque!</p>
-                        <div class="gst-icons">
-                            <button type="button" class="btn-gestion" data-bs-toggle="modal"
-                                data-bs-target="#ban-user-modal">
-                                <i class="fas fa-ban"></i>
-                            </button>
-                            <button type="button" class="btn-gestion" data-bs-toggle="modal"
-                                data-bs-target="#edit-user-modal">
-                                <i class="fas fa-pencil-alt"></i>
-                            </button>
-                        </div>
+            {{#each users }}
+            
+            <div class="col-md-3 mb-3">
+                <div class="user-details">
+                    <img src="/assets/images/comments/rogue.jpg" alt="">
+                    <h4> {{ name }} </h4>
+                    <p> {{ mail }} </p>
+                    <div class="gst-icons">
+                        <button type="button" class="btn-gestion" data-bs-toggle="modal"
+                            data-bs-target="#ban-user-modal">
+                            <i class="fas fa-ban"></i>
+                        </button>
+                        <button type="button" class="btn-gestion" data-bs-toggle="modal"
+                            data-bs-target="#edit-user-modal-{{ id }}">
+                            <i class="fas fa-pencil-alt"></i>
+                        </button>
                     </div>
                 </div>
             </div>
+
+            {{> modals/users }}
+
+            {{/each }}
+
         </div>
-    </section>
+    </div>
+</section>

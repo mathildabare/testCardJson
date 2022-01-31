@@ -9,28 +9,24 @@ Partial: Profile
             <div class="col-md-5">
                 <img src="/assets/images/comments/slytherin.jpg" alt="">
             </div>
+
+                {{#each bio}}
+
             <div class="admin-bio mt-5 col-md-5">
                 <h3>Welcome, <span>Arata Shingyôji</span></h3>
                 <h4>Status: <span>Online</span></h4>
-                <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo rerum porro rem assumenda.
-                    Exercitationem dolor fugit expedita id cum. Itaque perferendis, tempora
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Atque repudiandae ea eaque vel et
-                    blanditiis id architecto quidem expedita neque, ad iure laborum ab ullam fugit sint.
-                    Nostrum,
-                    assumenda culpa! Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quia,
-                    accusantium?
-                    Nobis nesciunt voluptatibus distinctio incidunt ipsum impedit dicta, est, natus, maxime
-                    earum
-                    excepturi amet beatae dolore laboriosam quam tempora quibusdam!
-                    laborum beatae
-                    eligendi
-                    cum fugiat voluptatem autem possimus?
+                <p> {{description}}
                 </p>
-                <button type="button" class="btn float-end" data-bs-toggle="modal" data-bs-target="#modify-bio-modal"><i
-                        class="fas fa-pencil-alt"></i>
+                <button type="button" class="btn float-end" data-bs-toggle="modal"
+                    data-bs-target="#modify-bio-modal-{{id}}"><i class="fas fa-pencil-alt"></i>
                 </button>
+
             </div>
+
+                {{> modals/biography }}
+
+                {{/each}}
+                
         </div>
     </div>
 </section>
-

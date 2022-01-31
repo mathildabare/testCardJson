@@ -23,6 +23,7 @@ router.route("/")
   .get(mdl.coucou, HomeController.homepage)
   .post(HomeController.createMessage)
 
+
 /*  ********************  */
 
 // BLOG
@@ -44,17 +45,18 @@ router.route("/contact")
 router.route('/society')
   .get(ContactController.societypage);
 
-  
+
 /*  ********************  */
 
 
 // AUTHENTICATION
 router.route('/login')
-  .get(LogController.loginpage);
+  .get(LogController.loginpage)
+  .post(LogController.loginData)
 
 router.route('/register')
   .get(LogController.registerpage)
-  .post(LogController.createAccount)
+  .post(LogController.createUser)
 
 router.route('/newPW')
   .get(LogController.newpasswordpage)
@@ -65,14 +67,27 @@ router.route('/forgotPW')
   .post(LogController.forgotPassword)
 
 
-
 /*  ********************  */
 
 
 // ADMIN
 router.route('/admin')
   .get(AdminController.get)
-  // .post(AdminController.createArticle);
+  
+  router.route('/admin/bio/:id')
+  .put(AdminController.userBio)
+  
+  
+  router.route('/admin/users/:id')
+  .put(AdminController.editUserID)
+  
+  
+  router.route('/admin/articles/:id')
+  .post(AdminController.createArticle)
+  .put(AdminController.editArticleID)
+
+  router.route('/admin/comments/:id')
+  .delete(AdminController.deleteCommentID)
 
 
 

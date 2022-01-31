@@ -11,7 +11,7 @@ exports.homepage = async (req, res) => {
   const message = await db.query(`
   SELECT * FROM message;
 `)
-  console.log('mesage', message)
+  console.log('message', message)
   res.render("home");
 };
 
@@ -30,3 +30,4 @@ exports.createMessage = async (req, res) => {
   `)
   res.render("home");
 };
+

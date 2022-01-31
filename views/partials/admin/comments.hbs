@@ -3,85 +3,40 @@ Partial: Comments (Admin)
 --}}
 
 
-    <section class="admin-messages" id="messages">
-        <div class="container">
+<section class="admin-messages" id="messages">
+    <div class="container">
+        <div class="row">
+            <h3><i class="fas fa-comment-dots"></i> messages</h3>
+        </div>
+
+        {{!-- message 1 --}}
+
+        {{#each comments}}
+
+<form action="/admin/comments/{{id}}?_method=DELETE" method="post">
+
+        <div class="messages">
             <div class="row">
-                <h3><i class="fas fa-comment-dots"></i> messages</h3>
-            </div>
-
-            {{!-- message 1 --}}
-
-            <div class="messages">
-                <div class="row">
-                    <div class="col-md-10">
-                        <blockquote>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, sint atque!
-                            Consequuntur reprehenderit ullam amet quidem
-                            <cite><img src="/assets/images/comments/drago.jpg" alt="">Draco Malefoy</cite>
-                        </blockquote>
-                    </div>
-                    <div class="col-md-2 text-center">
-                        <div class="gst-icons mt-5">
-                            <button type="button" class="btn-gestion" data-bs-toggle="modal"
-                                data-bs-target="#add-comment-modal">
-                                <i class="fas fa-check"></i> </button>
-                            <button type="button" class="btn-gestion" data-bs-toggle="modal"
-                                data-bs-target="#delete-comment-modal">
-                                <i class="fas fa-trash-alt"></i> </button>
-                        </div>
-                    </div>
+                <div class="col-md-10">
+                    <blockquote>
+                        <cite class="me-5"><img src="/assets/images/comments/drago.jpg" alt="">{{username}}</cite>
+                     {{content}}
+                    </blockquote>
                 </div>
-            </div>
-
-            {{!-- message 2 --}}
-
-            <div class="messages">
-                <div class="row">
-                    <div class="col-md-10">
-                        <blockquote>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, sint atque!
-                            Consequuntur reprehenderit ullam amet quidem
-                            <cite><img src="/assets/images/comments/rogue.jpg" alt="">Severus Snape</cite>
-                        </blockquote>
-                    </div>
-                    <div class="col-md-2 text-center">
-                        <div class="gst-icons mt-5">
-
-                            <button type="button" class="btn-gestion" data-bs-toggle="modal"
-                                data-bs-target="#add-comment-modal">
-                                <i class="fas fa-check"></i> </button>
-                            <button type="button" class="btn-gestion" data-bs-toggle="modal"
-                                data-bs-target="#delete-comment-modal">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            {{!-- message 3 --}}
-
-            <div class="messages">
-                <div class="row">
-                    <div class="col-md-10">
-                        <blockquote>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, sint atque!
-                            Consequuntur reprehenderit ullam amet quidem
-                            <cite><img src="/assets/images/comments/neville.jpg" alt="">Nevil Longbottom</cite>
-                        </blockquote>
-                    </div>
-                    <div class="col-md-2 text-center">
-                        <div class="gst-icons mt-5">
-                            <button type="button" class="btn-gestion" data-bs-toggle="modal"
-                                data-bs-target="#add-comment-modal">
-                                <i class="fas fa-check"></i> </button>
-                            <button type="button" class="btn-gestion" data-bs-toggle="modal"
-                                data-bs-target="#delete-comment-modal">
-                                <i class="fas fa-trash-alt"></i>
-                            </button>
-                        </div>
+                <div class="col-md-2 text-center">
+                    <div class="gst-icons mt-5">
+                        <button type="button" class="btn-gestion" data-bs-toggle="modal"
+                            data-bs-target="#delete-comment-modal-{{ id }}">
+                            <i class="fas fa-trash-alt"></i> </button>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+
+            {{> modals/comments }}
+            
+            {{/each}}
+        
+        </form>
+    </div>
+</section>

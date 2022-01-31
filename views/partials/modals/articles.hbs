@@ -43,7 +43,7 @@ Articles --}}
 
 {{!-- Article Edition --}}
 
-<div class="modal fade" id="edit-article-modal" tabindex="-1" aria-labelledby="edituserlabel" aria-hidden="true">
+<div class="modal fade" id="edit-article-modal-{{ id }}" tabindex="-1" aria-labelledby="edituserlabel" aria-hidden="true">
       <div class="modal-dialog">
             <div class="modal-content">
                   <div class="modal-header">
@@ -52,17 +52,17 @@ Articles --}}
                   </div>
 
                   <!-- Form -->
-                  <form action="/admin/articles?_method=PUT" method="post">
+                  <form action="/admin/articles/{{ id }}?_method=PUT" method="post">
                         <div class="modal-body">
                               <div class="connection d-flex justify-content-center flex-column">
-
                                     <div class="mb-3 element-form">
                                           <label for="input-edit-title" class="form-label"></label>
-                                          <input
-                                          type="text"
-                                          class="form-control"
-                                          id="input-edit-title"
-                                          name="title"
+                                          <input 
+                                          type="text" 
+                                          class="form-control" 
+                                          id="input-edit-title-{{ id }}" 
+                                          name="title" 
+                                          value="{{ title }}"
                                           placeholder="Title">
                                     </div>
 
@@ -70,8 +70,8 @@ Articles --}}
                                           <label for="textarea-edit-article" class="form-label"></label>
                                           <textarea
                                           class="brd-txt-area"
-                                          name="editArticle"
-                                          id="textarea-edit-article"
+                                          name="content"
+                                          value='{{ description }}' id="textarea-edit-article-{{ id }}"
                                           cols="30"
                                           rows="10"
                                           placeholder=" Write an article"></textarea>
@@ -79,11 +79,10 @@ Articles --}}
                               </div>
                         </div>
                         <div class="modal-footer">
-                              <button type="button" class="btn btn-off" data-bs-dismiss="modal">Cancel</button>
-                              <button type="button" class="btn btn-on">Confirm</button>
+                              <button type="cancel" class="btn btn-off" data-bs-dismiss="modal">Cancel</button>
+                              <button type="submit" class="btn btn-on">Confirm</button>
                         </div>
                   </form>
-
             </div>
       </div>
 </div>
@@ -97,6 +96,7 @@ Articles --}}
                         <h4>Add an article</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
+                  <form action="/admin/articles/:id" method="post">
                         <div class="modal-body">
                               <div class="connection d-flex justify-content-center flex-column">
                                     <div class="mb-3 element-form">
@@ -106,7 +106,7 @@ Articles --}}
                                     </div>
                                     <div class="mb-3">
                                           <label for="formFileSm" class="form-label"></label>
-                                          <input class="form-control form-control-sm" id="selectFile" type="file">
+                                          <input class="form-control form-control-sm" name= "articleIMG" id="selectFile" type="file">
                                     </div>
                                     <div class="mb-3 element-form">
                                           <label for="input-email" class="form-label"></label>
@@ -119,6 +119,7 @@ Articles --}}
                               <button type="button" class="btn btn-off" data-bs-dismiss="modal">Cancel</button>
                               <button type="submit" class="btn btn-on">Confirm</button>
                         </div>
+                  </form>
             </div>
       </div>
 </div>

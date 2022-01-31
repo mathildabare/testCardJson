@@ -2,7 +2,6 @@ console.log("Mon app node js");
 
 require("dotenv").config();
 
-
 const express = require("express");
 const app = express();
 const bodyParser = require('body-parser');
@@ -12,10 +11,10 @@ const { engine } = require("express-handlebars");
 
 const mysql = require('mysql');
 db = mysql.createConnection ({
-  host     : 'localhost',
-  user     : 'math',
-  password : 'math394',
-  database : 'dbtest'
+  host     : process.env.DB_HOST,
+  user     : process.env.DB_USER,
+  password : process.env.DB_PASSWORD,
+  database : process.env.DB_NAME
 })
 
 const util = require("util");
