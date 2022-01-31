@@ -21,6 +21,17 @@ Partial: Events
 
             {{/each}}
 
+            <div class="col-md-3 mb-3">
+                <div class="card-details">
+                    <button type="submit" class="btn btn-add" data-bs-toggle="modal"
+                        data-bs-target="#create-article-modal"><i class="fas fa-plus"></i>
+                    </button>
+                </div>
+            </div>
+
         </div>
     </div>
+
+    {{> modals/articles }}
+
 </section>

@@ -17,7 +17,6 @@ const mdl = require("./middleware/coucou");
 /** ROUTES **/
 
 
-
 // HOME
 router.route("/")
   .get(mdl.coucou, HomeController.homepage)
@@ -88,7 +87,6 @@ router.route('/admin')
 
   router.route('/admin/comments/:id')
   .delete(AdminController.deleteCommentID)
-
 
 
 //Export du Router

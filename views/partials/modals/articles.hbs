@@ -96,22 +96,52 @@ Articles --}}
                         <h4>Add an article</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
+
+
                   <form action="/admin/articles/:id" method="post">
                         <div class="modal-body">
                               <div class="connection d-flex justify-content-center flex-column">
                                     <div class="mb-3 element-form">
                                           <label for="input-title" class="form-label"></label>
-                                          <input name="title" type="text" class="form-control" id="input-title"
-                                                placeholder="Title">
+                                          <input 
+                                          name="title" 
+                                          type="text" 
+                                          class="form-control" 
+                                          id="input-title"
+                                          placeholder="Title">
                                     </div>
+
                                     <div class="mb-3">
                                           <label for="formFileSm" class="form-label"></label>
-                                          <input class="form-control form-control-sm" name= "articleIMG" id="selectFile" type="file">
+                                          <input
+                                          class="form-control form-control-sm"
+                                          name= "img"
+                                          id="articleImg"
+                                          type="file">
                                     </div>
+                                          <label class="form-label">Genre 1</label>
+                                                <select name='genre1' class="form-select">
+                                                      <option value="" disabled selected> . . . . .</option>
+                                                      <option>Shonen</option>
+                                                      <option>Seinen</option>
+                                                      <option>Fantastic</option>
+                                                </select> 
+                                          <label class="form-label">Genre 2</label>
+                                                <select name='genre2' class="form-select">
+                                                     <option value="" disabled selected> . . . . .</option>
+                                                    <option>Shonen</option>
+                                                      <option>Seinen</option>
+                                                      <option>Fantastic</option>
+                                                </select>
                                     <div class="mb-3 element-form">
                                           <label for="input-email" class="form-label"></label>
-                                          <textarea class="brd-txt-area" name="articleContent" id="textareaArticle"
-                                                cols="30" rows="10" placeholder=" Write an article . . ."></textarea>
+                                          <textarea
+                                          class="brd-txt-area"
+                                          name="synopsis"
+                                          id="textareaArticle"
+                                          cols="30"
+                                          rows="10"
+                                          placeholder=" Write an article . . ."></textarea>
                                     </div>
                               </div>
                         </div>
@@ -120,6 +150,8 @@ Articles --}}
                               <button type="submit" class="btn btn-on">Confirm</button>
                         </div>
                   </form>
+
+
             </div>
       </div>
 </div>
