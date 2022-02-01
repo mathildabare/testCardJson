@@ -12,33 +12,33 @@ const fs = require("fs");
 // Page Article
 exports.articlepage = async (req, res) => {
   console.log("je suis la page article");
-  res.render("article", {    
-  users: await db.query('select * from users'),
-  articles: await db.query('select * from articles')
+  res.render("article", {
+    users: await db.query('select * from users'),
+    articles: await db.query('select * from articles')
   });
-};  
+};
 
 // Page Article:ID
 exports.pageArticleID = async (req, res) => {
-    console.log("je suis la page article/:id");
-    res.render("articleID", {    
-    users: await db.query('select * from users'),
-    articles: await db.query('select * from articles'),
-    comments: await db.query('select * from comments')
-    })
-  
-  }
-  
+  const { id } = req.params
+  console.log("je suis la page article/:id", req.params);
+  const article = await db.query(`select * from articles where id = ${ id };`)
+  const comments = await db.query(`select * from comments where article_id = ${ id };`)
+
+  console.log('article array', article)
+  console.log('article obj', article[0])
+
+  res.render("articleID", {
+    article: article[0],
+    comments
+  })
+}
+
 // //Création d'un article
 
 exports.createArticleUser = async (req, res) => {
   console.log("new article", req.body, req.params, req.query);
-  const {
-    title,
-    genre_1,
-    genre_2,
-    synopsis
-  } = req.body
+  const {title, genre_1, genre_2, synopsis} = req.body
   await db.query(`
     insert into articles (title, genre_1, genre_2, synopsis)
       VALUES ("${title}","${genre_1}","${genre_2}","${synopsis}");
@@ -50,36 +50,19 @@ exports.createArticleUser = async (req, res) => {
 
 exports.createComment = async (req, res) => {
   console.log("Commentaire user", req.body);
-  const {
-    name,
-    mail,
-    status,
-    content
-  } = req.body
+  const { author_id, content } = req.body
+  const { id } = req.params
+
   await db.query(`
-    insert into messages (name, mail, status, content)
-      VALUES ("${name}","${mail}","${status}","${content}");
+    insert into comments (author_id, content, article_id)
+      VALUES ("${author_id}","${content}", "${id}" );
   `)
-  res.render("contact");
+
+  res.redirect(`article/${ id }`);
 }
 
 
 //Associer commentaire avec utilisateur
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

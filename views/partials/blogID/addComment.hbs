@@ -6,12 +6,15 @@ Partial : Messages
     <div class="container">
         <hr>
         <div class="row">
-            <form action="/articleID/comments" method="post">
+
+{{!-- CREATE COMMENT --}}
+            <form action="/article/{{ article.id }}" method="post">
                 <div class="contact-form">
                     <label class="form-label" for="message">Username</label>
                     <input
-                    name="username"
+                    name="author_id"
                     class="form-control"
+                    placeholder="author_id"
                     id="input-username"
                     type="text">
                 </div>
@@ -25,11 +28,12 @@ Partial : Messages
                 </div>
                 <div class="row">
                     <div class="contact-form">
-                        <button class="btn-contact">Send</button>
+                        <button type="submit" class="btn-contact">Send</button>
                     </div>
                 </div>
             </form>
+
+            
         </div>
     </div>
 </section>
-s

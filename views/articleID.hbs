@@ -1,66 +1,65 @@
-{{!-- 
-    Page: Blog-ID
- --}}
+{{!--
+Page: Blog-ID
+--}}
 
 
-    <link rel="stylesheet" href="/assets/css/article-id.css">
+<link rel="stylesheet" href="/assets/css/article-id.css">
 </head>
 
 <body>
 
 
-<style>
-    header {
+    <style>
+        header {
 
-        background-image:
-            linear-gradient(to right, rgba(235, 235, 235, 0.4), rgba(133, 131, 131, 0.6)),
-            url(/assets/images/head/snow-head.jpeg);
-        height: 60vh;
-        background-position: center;
-        background-size: cover;
-        position: relative;
-    }
+            background-image:
+                linear-gradient(to right, rgba(235, 235, 235, 0.4), rgba(133, 131, 131, 0.6)),
+                url(/assets/images/head/snow-head.jpeg);
+            height: 60vh;
+            background-position: center;
+            background-size: cover;
+            position: relative;
+        }
 
-    /** titles **/
+        /** titles **/
 
-    .homeTitle {
-        position: absolute;
-        top: 20%;
-        width: auto;
-        color: white;
-    }
+        .homeTitle {
+            position: absolute;
+            top: 20%;
+            width: auto;
+            color: white;
+        }
 
-    .homeTitle h1 {
-        font-size: 340%;
+        .homeTitle h1 {
+            font-size: 340%;
 
-    }
+        }
 
-    .homeTitle h1 span {
+        .homeTitle h1 span {
 
-        font-weight: 400;
-        letter-spacing: -6px;
-    }
+            font-weight: 400;
+            letter-spacing: -6px;
+        }
 
-    .homeTitle p {
+        .homeTitle p {
 
-        color: white;
-    }
-</style>
+            color: white;
+        }
+    </style>
 
-<header>
-    <div class="container">
-        <div class="row">
-            <div class="homeTitle pt-4">
-                <h1>Christmas <span>Events</span></h1>
-                <p>voluptatem ullam nihil amae anindae dolores ombrage</p>
+    <header>
+        <div class="container">
+            <div class="row">
+                <div class="homeTitle pt-4">
+                    <h1>Christmas <span>Events</span></h1>
+                    <p>voluptatem ullam nihil amae anindae dolores ombrage</p>
+                </div>
             </div>
         </div>
-    </div>
-</header>
+    </header>
 
-
-    {{> blogID/event}}
+    {{> blogID/event }}
 
     {{> blogID/comments }}
 
-    {{> blogID/message }}
+    {{> blogID/addComment }}

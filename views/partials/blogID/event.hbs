@@ -5,9 +5,10 @@ Partial : Event ID
 <section class="event">
     <div class="container">
         <div class="row event-details">
-            <h2> {{ title }} </h2>
+            <h2> {{ article.title }} </h2>
             <img src="{{article.img}}" alt="">
-            <p>{{ genre_1}}, {{ genre_2 }}</p>
-            <p>{{ synopsis }} </p>
+            <p>{{ article.genre_1}}, {{ article.genre_2 }}</p>
+            <p>{{ article.synopsis }} </p>
         </div>
+    </div>
 </section>

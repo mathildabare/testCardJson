@@ -31,6 +31,7 @@ router.route("/article")
 
 router.route("/article/:id")
   .get(BlogController.pageArticleID)
+  .post(BlogController.createComment)
 
 /*  ********************  */
 
@@ -38,11 +39,6 @@ router.route("/article/:id")
 router.route("/contact")
   .get(ContactController.contactpage)
   .post(ContactController.createMessage);
-
-
-// SOCIETY
-router.route('/society')
-  .get(ContactController.societypage);
 
 
 /*  ********************  */

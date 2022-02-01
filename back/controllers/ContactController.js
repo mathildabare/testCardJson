@@ -31,12 +31,3 @@ exports.createMessage = async (req, res) => {
   `)
   res.render("contact");
 }
-
-
-
-// Page Société
-exports.societypage = (req, res) => {
-console.log("society-page");
-res.render("society");
-};
-
