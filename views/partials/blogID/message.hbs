@@ -1,16 +1,16 @@
 {{!--
-Partial : Message
+Partial : Messages
 --}}
 
 <section class="form-comment">
     <div class="container">
         <hr>
         <div class="row">
-            <form action="/blogID" method="post">
+            <form action="/articleID/comments" method="post">
                 <div class="contact-form">
                     <label class="form-label" for="message">Username</label>
                     <input
-                    name="name"
+                    name="username"
                     class="form-control"
                     id="input-username"
                     type="text">
@@ -18,7 +18,7 @@ Partial : Message
                 <div class="contact-form">
                     <label class="form-label" for="message">Message</label>
                     <textarea
-                    name="message"
+                    name="content"
                     id="textarea-message"
                     rows="4"
                     class="contact-message form-control"></textarea>
@@ -32,3 +32,4 @@ Partial : Message
         </div>
     </div>
 </section>
+s

@@ -6,35 +6,19 @@
         <div class="row">
             <h2>Comments</h2>
 
-            <!---Client 1-->
+            <!---Commentaires-->
+
+{{#each comments}}
 
             <div class="client-profil">
                 <blockquote>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, sint atque!
-                    Consequuntur reprehenderit ullam amet quidem
-                    <cite><img src="/assets/images/comments/luna.jpg" alt="">Luna Lovegood</cite>
+                    <cite> {{author_id}} <img src="/assets/images/comments/rogue.jpg" alt=""></cite>
+                   {{ content }}
                 </blockquote>
             </div>
 
-            <!---Client 2-->
+{{/each}}
 
-            <div class="client-profil">
-                <blockquote>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, sint atque!
-                    Consequuntur reprehenderit ullam amet quidem
-                    <cite><img src="/assets/images/comments/drago.jpg" alt="">Draco Malefoy</cite>
-                </blockquote>
-            </div>
-
-            <!---Client 3-->
-
-            <div class="client-profil">
-                <blockquote>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi, sint atque!
-                    Consequuntur reprehenderit ullam amet quidem
-                    <cite><img src="/assets/images/comments/rogue.jpg" alt="">Severus Snape</cite>
-                </blockquote>
-            </div>
         </div>
     </div>
 </section>

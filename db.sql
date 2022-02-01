@@ -28,7 +28,7 @@ create table comments (
 );
 
 
-CREATE TABLE message (
+CREATE TABLE messages (
     `id` int NOT NULL AUTO_INCREMENT,
     `name` varchar(255),
     `mail` varchar(255),

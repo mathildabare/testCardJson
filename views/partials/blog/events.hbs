@@ -7,14 +7,15 @@ Partial: Events
     <div class="container">
         <div class="row" id="listCard">
 
-            {{#each dbArticles}}
+            {{#each articles}}
 
-            <div class=" card col-md-3 card-details" id="{{this.id}}">
-                <a href="/article/{{ this.id }}">
-                    <img class="card-img-top" src="{{this.img}}">
+            <div class=" card col-md-3 card-details">
+                <a href="/article/{{ id }}">
+                    <img class="card-img-top" src="{{img}}">
                     <div class="card-body">
-                        <h4 class="card-title">{{ this.title }}</h4>
-                        <p>{{this.description}}</p>
+                        <h4 class="card-title">{{ title }}</h4>
+                        <p>{{ genre_1}}, {{ genre_2 }}</p>
+                        <p>{{ synopsis }}</p>
                     </div>
                 </a>
             </div>
@@ -23,15 +24,71 @@ Partial: Events
 
             <div class="col-md-3 mb-3">
                 <div class="card-details">
+
                     <button type="submit" class="btn btn-add" data-bs-toggle="modal"
-                        data-bs-target="#create-article-modal"><i class="fas fa-plus"></i>
+                        data-bs-target="#create-article-modal-user"><i class="fas fa-plus"></i>
                     </button>
                 </div>
             </div>
 
         </div>
     </div>
+ 
+{{!-- Modal --}}
 
-    {{> modals/articles }}
+<div class="modal fade" id="create-article-modal-user" tabindex="-1" aria-labelledby="edituserlabel" aria-hidden="true">
+      <div class="modal-dialog">
+            <div class="modal-content">
+                  <div class="modal-header">
+                        <h4>Add an article</h4>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                  </div>
+
+
+                  <form action="/article" method="post">
+                        <div class="modal-body">
+                              <div class="connection d-flex justify-content-center flex-column">
+                                    <div class="mb-3 element-form">
+                                          <label for="input-title" class="form-label"></label>
+                                          <input name="title" type="text" class="form-control" id="input-title"
+                                                placeholder="Title">
+                                    </div>
+
+                                    <div class="mb-3">
+                                          <label for="formFileSm" class="form-label"></label>
+                                          <input class="form-control form-control-sm" name="img" id="articleImg"
+                                                type="file">
+                                    </div>
+                                    <label class="form-label">Genre 1</label>
+                                    <select name='genre_1' class="form-select">
+                                          <option value="" disabled selected> . . . . .</option>
+                                          <option>Shonen</option>
+                                          <option>Seinen</option>
+                                          <option>Fantastic</option>
+                                    </select>
+                                    <label class="form-label">Genre 2</label>
+                                    <select name='genre_2' class="form-select">
+                                          <option value="" disabled selected> . . . . .</option>
+                                          <option>Shonen</option>
+                                          <option>Seinen</option>
+                                          <option>Fantastic</option>
+                                    </select>
+                                    <div class="mb-3 element-form">
+                                          <label for="input-email" class="form-label"></label>
+                                          <textarea class="brd-txt-area" name="synopsis" id="textareaArticle" cols="30"
+                                                rows="10" placeholder=" Write an article . . ."></textarea>
+                                    </div>
+                              </div>
+                        </div>
+                        <div class="modal-footer">
+                              <button type="button" class="btn btn-off" data-bs-dismiss="modal">Cancel</button>
+                              <button type="submit" class="btn btn-on">Confirm</button>
+                        </div>
+                  </form>
+
+
+            </div>
+      </div>
+</div>
 
 </section>

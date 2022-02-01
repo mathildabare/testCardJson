@@ -9,7 +9,7 @@
 exports.contactpage = async (req, res) => {
   console.log('je suis la page contact')
   const message = await db.query(`
-  SELECT * FROM message;
+  SELECT * FROM messages;
 `)
   res.render("contact");
 };
@@ -26,7 +26,7 @@ exports.createMessage = async (req, res) => {
     content
   } = req.body
   await db.query(`
-    insert into message (name, mail, status, content)
+    insert into messages (name, mail, status, content)
       VALUES ("${name}","${mail}","${status}","${content}");
   `)
   res.render("contact");

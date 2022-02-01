@@ -13,7 +13,6 @@ const AdminController = require('./controllers/AdminController')
 const mdl = require("./middleware/coucou");
 
 
-
 /** ROUTES **/
 
 
@@ -28,6 +27,7 @@ router.route("/")
 // BLOG
 router.route("/article")
   .get(BlogController.articlepage)
+  .post(BlogController.createArticleUser)
 
 router.route("/article/:id")
   .get(BlogController.pageArticleID)
@@ -72,22 +72,26 @@ router.route('/forgotPW')
 // ADMIN
 router.route('/admin')
   .get(AdminController.get)
-  
-  router.route('/admin/bio/:id')
-  .put(AdminController.userBio)
-  
-  
-  router.route('/admin/users/:id')
-  .put(AdminController.editUserID)
-  
-  
-  router.route('/admin/articles/:id')
-  .post(AdminController.createArticle)
-  .put(AdminController.editArticleID)
 
-  router.route('/admin/comments/:id')
-  .delete(AdminController.deleteCommentID)
+router.route('/admin/bio/:id')
+  .put(AdminController.userBio)
+
+
+router.route('/admin/users/:id')
+  .put(AdminController.editUserID)
+
+
+router.route('/admin/articles/:id')
+  .post(AdminController.createArticleID)
+  .put(AdminController.editArticleID)
+  .delete(AdminController.deleteArticleID)
+
+
+router.route('/admin/messages/:id')
+  .delete(AdminController.deleteMessageID)
 
 
 //Export du Router
 module.exports = router;
+
+// 

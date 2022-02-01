@@ -9,7 +9,7 @@
 exports.homepage = async (req, res) => {
   console.log('je suis la page home')
   const message = await db.query(`
-  SELECT * FROM message;
+  SELECT * FROM messages;
 `)
   console.log('message', message)
   res.render("home");
@@ -25,7 +25,7 @@ exports.createMessage = async (req, res) => {
     content
   } = req.body
   await db.query(`
-    insert into message (name, mail, status, content)
+    insert into messages (name, mail, status, content)
       VALUES ("${name}","${mail}","${status}","${content}");
   `)
   res.render("home");

@@ -111,3 +111,9 @@ FROM ((comments
 INNER JOIN users ON users.id = comments.author_id)
 INNER JOIN articles ON articles.id = comments.article_id);
 
+
+
+
+-- Valeur par défaut de l'author_id
+ALTER TABLE articles
+ALTER author_id SET DEFAULT 1;
