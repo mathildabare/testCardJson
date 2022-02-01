@@ -1,0 +1,41 @@
+{{!--
+Partial : Comments
+--}}
+
+<section class="admin-messages" id="comments">
+    <div class="container">
+        <div class="row">
+            <h3><i class="fas fa-comment-dots"></i> Comments</h3>
+        </div>
+
+        {{!-- Comments --}}
+
+        {{#each comments}}
+
+        <form action="/admin/comments/{{ id }}">
+
+            <div class="messages">
+                <div class="row">
+                    <div class="col-md-10">
+                        <blockquote>
+                            <cite class="me-5">{{author_id}}<img src="/assets/images/comments/drago.jpg"
+                                    alt="">{{article_id}}</cite>
+                            {{content}}
+                        </blockquote>
+                    </div>
+                    <div class="col-md-2 text-center">
+                        <div class="gst-icons mt-5">
+                            <button type="button" class="btn-gestion" data-bs-toggle="modal"
+                                data-bs-target="#delete-comment-modal-{{ id }}">
+                                <i class="fas fa-trash-alt"></i> </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            {{> modals/comments }}
+
+            {{/each}}
+        </form>
+    </div>
+</section>

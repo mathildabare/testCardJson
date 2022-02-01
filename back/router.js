@@ -29,7 +29,7 @@ router.route("/article")
   .get(BlogController.articlepage)
   .post(BlogController.createArticleUser)
 
-router.route("/article/:id")
+router.route("/article/:id")  // --> '/' = params, + ':id' = params.id
   .get(BlogController.pageArticleID)
   .post(BlogController.createComment)
 
@@ -81,6 +81,9 @@ router.route('/admin/articles/:id')
   .post(AdminController.createArticleID)
   .put(AdminController.editArticleID)
   .delete(AdminController.deleteArticleID)
+
+router.route('/admin/comments/:id')
+.delete(AdminController.deleteCommentID)
 
 
 router.route('/admin/messages/:id')

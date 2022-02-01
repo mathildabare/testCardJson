@@ -2,7 +2,6 @@
  * Controller: HOME
  * ***************** */
 
-
 /** PAGES **/
 
 // HOME
@@ -18,16 +17,11 @@ exports.homepage = async (req, res) => {
 // Création d'un message
 exports.createMessage = async (req, res) => {
   console.log("Message du formulaire", req.body);
-  const {
-    name,
-    mail,
-    status,
-    content
-  } = req.body
+  const {name, mail, status, content} = req.body
+
   await db.query(`
     insert into messages (name, mail, status, content)
       VALUES ("${name}","${mail}","${status}","${content}");
   `)
   res.render("home");
 };
-

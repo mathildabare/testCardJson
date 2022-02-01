@@ -9,40 +9,7 @@ const {
 
 // Page Admin
 exports.get = async (req, res) => {
-  //   const users = [{
-  //     id: 1,
-  //     name: 'brunooooo',
-  //     mail: 'fzregf@fzeooooo.fr'
-  //   },{
-  //     id: 2,
-  //     name: 'bruno',
-  //     mail: 'fzregf@fze.fr'
-  //   }]
-  //   const articles = [{
-  //         id: 1,
-  //     title: 'wowowow', 
-  //     description:'wowowowowowoowwowowow'
-  //   },{
-  //     id: 2,
-  //   title: 'wowowow2', 
-  //   description:'wowowowowowoowwowowow2'
-  // }]
-  // const bio = [{
-  //   id: 1,
-  //   description: 'fzregf@wowowowowowoowwowowowwowowowowowoowwowowowfzeooooofr'
-  // }]
-  // const comments = [{
-  // id: 1,
-  // username:'Draco Malefoy',
-  // content: "kldjvmljnfqivgkr,noefsziregk"
-  // },{
-  //   id: 2,
-  //   username:'Math Shingyouji',
-  //   content: "kldjvmljnfqivgkr,noefsziregk"
-  // }]
-
-
-  res.render('admin', {
+   res.render('admin', {
     layout: 'adminLayout',
     users: await db.query('select * from users'),
     articles: await db.query('select * from articles'),
@@ -66,8 +33,7 @@ exports.editUserID = async (req, res) => {
 
   await db.query(`
   UPDATE users
-  SET username = '${req.body.username}',
-      mail = '${req.body.mail}'
+  SET username = '${req.body.username}', mail = '${req.body.mail}'
   WHERE id ='${req.params.id}';`);
   res.redirect('/admin#user');
 }
@@ -75,12 +41,8 @@ exports.editUserID = async (req, res) => {
 // ARTICLES
 exports.createArticleID = async (req, res) => {
   console.log("new article", req.body, req.params, req.query);
-  const {
-    title,
-    genre_1,
-    genre_2,
-    synopsis
-  } = req.body
+  const {title, genre_1, genre_2, synopsis} = req.body
+  
   await db.query(`
     insert into articles (title, genre_1, genre_2, synopsis)
       VALUES ("${title}","${genre_1}","${genre_2}","${synopsis}");
@@ -106,6 +68,13 @@ exports.deleteArticleID = async (req, res) => {
   await db.query(`delete from articles where id = ${ req.params.id } `)
   console.log('delete article', req.body, req.params, req.query)
   res.redirect('/admin#blog');
+}
+
+// COMMENTS
+exports.deleteCommentID = async (req, res) => {
+  await db.query(`delete from comments where id = ${ req.params.id } `)
+  console.log('delete comment', req.body, req.params, req.query)
+  res.redirect('/admin#comments');
 }
 
 // MESSAGES
