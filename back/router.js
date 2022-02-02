@@ -10,16 +10,16 @@ const LogController = require('./controllers/LogController')
 const AdminController = require('./controllers/AdminController')
 
 // Middleware
-const mdl = require("./middleware/coucou");
-
+const upload = require("./config/multer");
 
 /** ROUTES **/
 
 
 // HOME
 router.route("/")
-  .get(mdl.coucou, HomeController.homepage)
+  .get(HomeController.homepage)
   .post(HomeController.createMessage)
+
 
 
 /*  ********************  */
@@ -29,7 +29,7 @@ router.route("/article")
   .get(BlogController.articlepage)
   .post(BlogController.createArticleUser)
 
-router.route("/article/:id")  // --> '/' = params, + ':id' = params.id
+router.route("/article/:id") // --> '/' = params, + ':id' = params.id
   .get(BlogController.pageArticleID)
   .post(BlogController.createComment)
 
@@ -77,13 +77,16 @@ router.route('/admin/users/:id')
   .put(AdminController.editUserID)
 
 
+router.route('/admin/articles')
+  .post(upload.single('img'), AdminController.createArticleAdmin)
+
+
 router.route('/admin/articles/:id')
-  .post(AdminController.createArticleID)
-  .put(AdminController.editArticleID)
+  .put(upload.single('img'), AdminController.editArticleID)
   .delete(AdminController.deleteArticleID)
 
 router.route('/admin/comments/:id')
-.delete(AdminController.deleteCommentID)
+  .delete(AdminController.deleteCommentID)
 
 
 router.route('/admin/messages/:id')

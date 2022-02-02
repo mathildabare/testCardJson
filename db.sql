@@ -39,7 +39,7 @@ CREATE TABLE messages (
     PRIMARY KEY (`id`)
 );
 
-INSERT INTO users (username, mail, password, biography
+INSERT INTO users (username, mail, password, biography)
 VALUES
      ('math', 'math@gmal.com', '1234', '...'),
      ('axel', 'axel@gmal.com', '1234','...'),
@@ -50,7 +50,7 @@ VALUES
 
 ;
 
-INSERT INTO message (name, mail, status,content )
+INSERT INTO messages (name, mail, status,content )
 VALUES
      ('math', 'math@gmal.com', 'exhibitor', '...' ),
      ('silwana', 'wow335@gmal.com', 'visitor', '...');

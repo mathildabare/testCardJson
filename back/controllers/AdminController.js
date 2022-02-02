@@ -6,6 +6,7 @@ const {
   DEC8_BIN
 } = require("mysql/lib/protocol/constants/charsets");
 
+const fs = require("fs");
 
 // Page Admin
 exports.get = async (req, res) => {
@@ -27,7 +28,6 @@ exports.userBio = (req, res) => {
 };
 
 // USERS
-
 exports.editUserID = async (req, res) => {
   console.log('edit User', req.body, req.params, req.query);
 
@@ -39,19 +39,19 @@ exports.editUserID = async (req, res) => {
 }
 
 // ARTICLES
-exports.createArticleID = async (req, res) => {
-  console.log("new article", req.body, req.params, req.query);
+exports.createArticleAdmin = async (req, res) => {
+  console.log("new article", req.body, req.params,  req.file);
   const {title, genre_1, genre_2, synopsis} = req.body
   
   await db.query(`
-    insert into articles (title, genre_1, genre_2, synopsis)
-      VALUES ("${title}","${genre_1}","${genre_2}","${synopsis}");
+    insert into articles (title, img, genre_1, genre_2, synopsis)
+      VALUES ("${title}", "${req.file.filename}", "${genre_1}","${genre_2}","${synopsis}");
   `)
   res.redirect("/admin#blog");
 }
 
 exports.editArticleID = async (req, res) => {
-  console.log("new article", req.body, req.params, req.query);
+  console.log("new article", req.body, req.params, req.query, req.file);
 
   await db.query(`
   UPDATE articles
@@ -66,9 +66,12 @@ exports.editArticleID = async (req, res) => {
 
 exports.deleteArticleID = async (req, res) => {
   await db.query(`delete from articles where id = ${ req.params.id } `)
-  console.log('delete article', req.body, req.params, req.query)
+  console.log('delete article', req.body, req.params, req.query, req.file)
   res.redirect('/admin#blog');
 }
+
+
+
 
 // COMMENTS
 exports.deleteCommentID = async (req, res) => {
@@ -76,6 +79,8 @@ exports.deleteCommentID = async (req, res) => {
   console.log('delete comment', req.body, req.params, req.query)
   res.redirect('/admin#comments');
 }
+
+
 
 // MESSAGES
 exports.deleteMessageID = async (req, res) => {

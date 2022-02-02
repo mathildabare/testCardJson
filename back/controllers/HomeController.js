@@ -25,3 +25,4 @@ exports.createMessage = async (req, res) => {
   `)
   res.render("home");
 };
+

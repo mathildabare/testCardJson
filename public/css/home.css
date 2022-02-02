@@ -182,7 +182,7 @@ header {
 
     background-image:
         linear-gradient(to right, rgba(235, 235, 235, 0.4), rgba(133, 131, 131, 0.6)),
-        url(../images/head/snow-head.jpeg);
+        url(../images/All/header.jpeg);
     height: 90vh;
     background-position: center;
     background-size: cover;

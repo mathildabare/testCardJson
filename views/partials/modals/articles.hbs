@@ -15,7 +15,7 @@ Articles --}}
                   </div>
 
 
-                  <form action="/admin/articles/:id" method="post">
+                  <form action="/admin/articles" method="post" enctype="multipart/form-data">
                         <div class="modal-body">
                               <div class="connection d-flex justify-content-center flex-column">
                                     <div class="mb-3 element-form">
@@ -26,8 +26,7 @@ Articles --}}
 
                                     <div class="mb-3">
                                           <label for="formFileSm" class="form-label"></label>
-                                          <input class="form-control form-control-sm" name="img" id="articleImg"
-                                                type="file">
+                                          <input class="form-control form-control-sm" name="img" type="file">
                                     </div>
                                     <label class="form-label">Genre 1</label>
                                     <select name='genre_1' class="form-select">
