@@ -6,6 +6,8 @@ CREATE TABLE users (
     `username` varchar(255),
     `mail` varchar(255),
     `password` varchar(255),
+    `biography` varchar(255),
+
     PRIMARY KEY (`id`)
 );
 
@@ -37,30 +39,35 @@ CREATE TABLE messages (
     PRIMARY KEY (`id`)
 );
 
+INSERT INTO users (username, mail, password, biography
+VALUES
+     ('math', 'math@gmal.com', '1234', '...'),
+     ('axel', 'axel@gmal.com', '1234','...'),
+     ('nakad', 'nakad@gmal.com', '1234','...'),
+     ('stiles', 'sourwolf@gmal.com', 'roscoe','...'),
+     ('Silwana', 'wow335@gmal.com', 'wow','...')
+
+
+;
+
 INSERT INTO message (name, mail, status,content )
 VALUES
-     ('math', 'math@gmal.com', 'visitor', '...' );
+     ('math', 'math@gmal.com', 'exhibitor', '...' ),
+     ('silwana', 'wow335@gmal.com', 'visitor', '...');
 
-INSERT INTO users (username, mail, password)
-VALUES
-     ('math', 'math@gmal.com', '1234'),
-     ('leo', 'leo@gmal.com', '1234'),
-     ('nakad', 'nakad@gmal.com', '1234')
-;
 
 INSERT INTO articles (title, genre_1, genre_2, synopsis, author_id)
 VALUES
-    ('title 1', 'genre 1', 'genre 2', 'Mon super synopsuissfref', '1'),
     ('One Punch Man', 'Shounen', 'Super-Heroes', '...', '3'),
-    ('title 3', 'genre 1', 'genre 2', 'Mon super 3 synopsuissfref', '2'),
-    ('Soul Eater', 'Fantasy', 'Supernatural', '...', '1')
+    ('Soul Eater', 'Fantasy', 'Supernatural', '...', '1'),
+    ('Demon Slayer', 'Shounen', 'Fantasy', '...', '2')
 ;
 
 INSERT INTO comments (author_id, article_id, content)
 VALUES
-    (1, '2', 'Mon premie com'),
-    (1, '1', 'Mon SEOND com'),
-    (1, '2', 'Mon TROISIE com'),
+    (1, '2', 'Mon premier com'),
+    (1, '1', 'Mon SECOND com'),
+    (1, '2', 'Mon TROISIEME com'),
     (3, '4', 'oups');
 ;
 

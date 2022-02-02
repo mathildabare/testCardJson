@@ -70,4 +70,4 @@ exports.createComment = async (req, res) => {
 //   FROM comments
 //   INNER JOIN users 
 //   ON users.id = author_id;`
-// );
+// ); 
