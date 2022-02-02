@@ -7,6 +7,9 @@ const {
 } = require("mysql/lib/protocol/constants/charsets");
 
 const fs = require("fs");
+const path = require('path')
+const directory = path.resolve("./public/images/Articles")
+
 
 // Page Admin
 exports.get = async (req, res) => {
