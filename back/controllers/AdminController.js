@@ -10,10 +10,16 @@ const fs = require("fs");
 const path = require('path')
 const directory = path.resolve("./public/images/Articles")
 
+const {
+  deleteOneFile
+} = require('../utils/deleteOneFile')
+
+
+
 
 // Page Admin
 exports.get = async (req, res) => {
-   res.render('admin', {
+  res.render('admin', {
     layout: 'adminLayout',
     users: await db.query('select * from users'),
     articles: await db.query('select * from articles'),
@@ -43,15 +49,36 @@ exports.editUserID = async (req, res) => {
 
 // ARTICLES
 exports.createArticleAdmin = async (req, res) => {
-  console.log("new article", req.body, req.params,  req.file);
-  const {title, genre_1, genre_2, synopsis} = req.body
-  
+  console.log("new article", req.body, req.params, req.file);
+  const {
+    title,
+    genre_1,
+    genre_2,
+    synopsis
+  } = req.body
+
   await db.query(`
     insert into articles (title, img, genre_1, genre_2, synopsis)
       VALUES ("${title}", "${req.file.filename}", "${genre_1}","${genre_2}","${synopsis}");
   `)
   res.redirect("/admin#blog");
 }
+
+exports.deleteArticleID = async (req, res) => {
+
+  // On sélectionne l'article dans la DB pour le supprimer
+  const article = await db.query(`select * from articles WHERE  id = ${ req.params.id };`)
+  await db.query(`delete from articles where id = ${ req.params.id }`)
+
+
+  // On cherche l'Img de l'article dans le Directory pour la supprimer
+  const dir = path.join('./public/images/Articles')
+  deleteOneFile(dir, article[0].img)
+
+  console.log('delete article', req.body, req.params, req.query, req.file)
+  res.redirect('/admin#blog');
+}
+
 
 exports.editArticleID = async (req, res) => {
   console.log("new article", req.body, req.params, req.query, req.file);
@@ -61,19 +88,21 @@ exports.editArticleID = async (req, res) => {
   SET title = '${req.body.title}',
       genre_1 = '${req.body.genre_1}',
       genre_2  = '${req.body.genre_2}',
-      genre_1 = '${req.body.genre_1}',
-      synopsis = '${req.body.synopsis}'
+      synopsis = '${req.body.synopsis}',
   WHERE id ='${req.params.id}';`);
-  res.redirect('/admin#blog');
+
+//Supprimer ancienne img de la library && Ajouter new image à la library
+//Import du module ./utils/updateArticle
+
+
+// //  const updateArticle = require('../utils/updateArticle')
+// //  updateArticle(dir, article[0].img)
+
+
+
+console.log('update article', req.body, req.params, req.query, req.file)
+res.redirect('/admin#blog');
 }
-
-exports.deleteArticleID = async (req, res) => {
-  await db.query(`delete from articles where id = ${ req.params.id } `)
-  console.log('delete article', req.body, req.params, req.query, req.file)
-  res.redirect('/admin#blog');
-}
-
-
 
 
 // COMMENTS
@@ -82,7 +111,6 @@ exports.deleteCommentID = async (req, res) => {
   console.log('delete comment', req.body, req.params, req.query)
   res.redirect('/admin#comments');
 }
-
 
 
 // MESSAGES

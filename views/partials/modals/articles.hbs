@@ -74,7 +74,7 @@ Articles --}}
 
                   <!-- Form -->
                   <form action="/admin/articles/{{ id }}?_method=PUT" method="post">
-                       <div class="modal-body">
+                        <div class="modal-body">
                               <div class="connection d-flex justify-content-center flex-column">
                                     <div class="mb-3 element-form">
                                           <label for="input-title" class="form-label"></label>
@@ -85,8 +85,9 @@ Articles --}}
                                     <div class="mb-3">
                                           <label for="formFileSm" class="form-label"></label>
                                           <input class="form-control form-control-sm" name="img" id="articleImg"
-                                                type="file">
+                                                type="file" value="{{ img }}">
                                     </div>
+
                                     <label class="form-label">Genre 1</label>
                                     <select name='genre_1' class="form-select">
                                           <option value="" disabled selected> {{ genre_1 }}</option>
@@ -96,7 +97,7 @@ Articles --}}
                                     </select>
                                     <label class="form-label">Genre 2</label>
                                     <select name='genre_2' class="form-select">
-                                          <option =value="" disabled selected> {{ genre_2 }}</option>
+                                          <option=value="" disabled selected> {{ genre_2 }}</option=value=>
                                           <option>Shonen</option>
                                           <option>Seinen</option>
                                           <option>Fantastic</option>
@@ -119,7 +120,8 @@ Articles --}}
 
 {{!-- Article Delete --}}
 
-<div class="modal fade" id="delete-content-modal-{{ id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="delete-content-modal-{{ id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
       <div class="modal-dialog">
             <div class="modal-content">
 
@@ -130,7 +132,7 @@ Articles --}}
                         Delete this item ?
                   </div>
                   <div class="modal-footer">
-                        
+
                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
 
                         <form action="/admin/articles/{{ id }}?_method=DELETE" method="post">
