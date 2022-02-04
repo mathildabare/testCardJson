@@ -2,19 +2,19 @@
  * Controller: ADMIN
  * **************** */
 
-const {
-  DEC8_BIN
-} = require("mysql/lib/protocol/constants/charsets");
+const {DEC8_BIN} = require("mysql/lib/protocol/constants/charsets");
 
+
+// Params Files
 const fs = require("fs");
 const path = require('path')
 const directory = path.resolve("./public/images/Articles")
 
-const {
-  deleteOneFile
-} = require('../utils/deleteOneFile')
 
+// Utils Files
+const {deleteOneFile} = require('../utils/deleteOneFile')
 
+const {updateFile} = require('../utils/updateFile')
 
 
 // Page Admin
@@ -61,6 +61,8 @@ exports.createArticleAdmin = async (req, res) => {
     insert into articles (title, img, genre_1, genre_2, synopsis)
       VALUES ("${title}", "${req.file.filename}", "${genre_1}","${genre_2}","${synopsis}");
   `)
+
+
   res.redirect("/admin#blog");
 }
 
@@ -89,14 +91,11 @@ exports.editArticleID = async (req, res) => {
       genre_1 = '${req.body.genre_1}',
       genre_2  = '${req.body.genre_2}',
       synopsis = '${req.body.synopsis}',
+      img= '${req.file.filename}'
   WHERE id ='${req.params.id}';`);
-
-//Supprimer ancienne img de la library && Ajouter new image à la library
-//Import du module ./utils/updateArticle
 
 
 // //  const updateArticle = require('../utils/updateArticle')
-// //  updateArticle(dir, article[0].img)
 
 
 

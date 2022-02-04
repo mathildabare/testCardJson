@@ -73,7 +73,7 @@ Articles --}}
                   </div>
 
                   <!-- Form -->
-                  <form action="/admin/articles/{{ id }}?_method=PUT" method="post">
+                  <form action="/admin/articles/{{ id }}?_method=PUT" method="post" enctype="multipart/form-data">
                         <div class="modal-body">
                               <div class="connection d-flex justify-content-center flex-column">
                                     <div class="mb-3 element-form">
@@ -84,8 +84,7 @@ Articles --}}
 
                                     <div class="mb-3">
                                           <label for="formFileSm" class="form-label"></label>
-                                          <input class="form-control form-control-sm" name="img" id="articleImg"
-                                                type="file" value="{{ img }}">
+                                          <input class="form-control form-control-sm" name="img" id="articleImg"                                         type="file" value="{{ img }}">
                                     </div>
 
                                     <label class="form-label">Genre 1</label>
