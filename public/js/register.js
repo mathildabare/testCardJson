@@ -25,10 +25,10 @@ warnMessage.style.fontSize = '8pt'
 const submitBtn = document.getElementById('submit-btn')
 
 // Mot de Passe
-const pw = document.getElementById('pw')
+const password = document.getElementById('password')
 
 // Confirmation du Mot de Passe
-const pwConfirm = document.getElementById('pw-confirm')
+const pwConfirm = document.getElementById('pwConfirm')
 
 
 /******  Conditions  ********/
@@ -36,8 +36,8 @@ const pwConfirm = document.getElementById('pw-confirm')
 
 
 submitBtn.addEventListener('click', function (e) {
-    if (pw.value !== pwConfirm.value) {
-        e.preventDefault(), warnMessage.innerText = 'Passwords are different', console.log('different password'), pw.style.border = "1px solid red"
+    if (password.value !== pwConfirm.value) {
+        e.preventDefault(), warnMessage.innerText = 'Passwords are different', console.log('different password'), password.style.border = "1px solid red"
         pwConfirm.style.border = "1px solid red";
     } else if (username.value === '') {
         e.preventDefault(), warnMessage.innerText = 'Username is empty', 
@@ -46,10 +46,10 @@ submitBtn.addEventListener('click', function (e) {
         pwConfirm.style.border = "";
     } else if (mail.value === '') {
         e.preventDefault(), warnMessage.innerText = 'Mail is empty', console.log('empty mail'), mail.style.border = "1px solid red", pwConfirm.style.border = "";
-    } else if (pw.value === "") {
-        e.preventDefault(), warnMessage.innerText = 'Password is empty', console.log('empty password'), pw.style.border = "1px solid red", pwConfirm.style.border = "";
+    } else if (password.value === "") {
+        e.preventDefault(), warnMessage.innerText = 'Password is empty', console.log('empty password'), password.style.border = "1px solid red", pwConfirm.style.border = "";
     } else if (!cg.checked) {
-        e.preventDefault(), warnMessage.innerText = 'You have to accept the terms of use to continue.', pw.style.border = "", pwConfirm.style.border = "";
+        e.preventDefault(), warnMessage.innerText = 'You have to accept the terms of use to continue.', password.style.border = "", pwConfirm.style.border = "";
     }
 
 

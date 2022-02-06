@@ -28,11 +28,6 @@ db.connect((err) => {
 
 
 
-
-
-
-
-
 //Config Handlebars
 app.set("view engine", "hbs");
 app.engine("hbs", engine({

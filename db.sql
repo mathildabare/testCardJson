@@ -1,5 +1,15 @@
+
+
+-- Création DB
 CREATE DATABASE `dbtest`;
 USE `dbtest`;
+
+
+--************* TABLES *******************--
+
+
+
+-- Création Table USERS
 
 CREATE TABLE users (
     `id` int NOT NULL AUTO_INCREMENT,
@@ -8,10 +18,11 @@ CREATE TABLE users (
     `password` varchar(255),
     `biography` varchar(255),
     `img` varchar(255),
-
-
     PRIMARY KEY (`id`)
 );
+
+
+--  Création Table ARTICLES
 
 CREATE TABLE articles (
     `id` int NOT NULL AUTO_INCREMENT,
@@ -20,10 +31,14 @@ CREATE TABLE articles (
     `genre_1` varchar(255),
     `genre_2` varchar(255),
     `synopsis` varchar(255),
+    `img` varchar(255),
     PRIMARY KEY (id)
 );
 
-create table comments (
+
+-- Création Table COMMENTS
+
+CREATE TABLE comments (
     `id` int NOT NULL AUTO_INCREMENT,
     `author_id` INT NOT NULL,
     `article_id` INT NOT NULL,
@@ -31,6 +46,8 @@ create table comments (
     PRIMARY KEY (`id`)
 );
 
+
+-- Création Table MESSAGES
 
 CREATE TABLE messages (
     `id` int NOT NULL AUTO_INCREMENT,
@@ -41,35 +58,42 @@ CREATE TABLE messages (
     PRIMARY KEY (`id`)
 );
 
-INSERT INTO users (username, mail, password, biography)
-VALUES
-     ('math', 'math@gmal.com', '1234', '...'),
-     ('axel', 'axel@gmal.com', '1234','...'),
-     ('nakad', 'nakad@gmal.com', '1234','...'),
-     ('stiles', 'sourwolf@gmal.com', 'roscoe','...'),
-     ('Silwana', 'wow335@gmal.com', 'wow','...')
+--***************** INSERT INTO *******************--
+
+-- Contenu USERS
+
+INSERT INTO users (username, mail, password, biography, img)
+VALUES ('math', 'math@gmal.com', '1234', '...', NULL),
+    ('axel', 'axel@gmal.com', '1234', '...', NULL),
+    ('nakad', 'nakad@gmal.com', '1234', '...',  NULL),
+    ('stiles', 'sourwolf@gmal.com', 'roscoe', '...',  NULL),
+    ('Silwana', 'wow335@gmal.com', 'wow', '...',  NULL);
 
 
-;
+-- Contenu ARTICLES
 
-INSERT INTO messages (name, mail, status,content )
-VALUES
-     ('math', 'math@gmal.com', 'exhibitor', '...' ),
-     ('silwana', 'wow335@gmal.com', 'visitor', '...');
+INSERT INTO articles (title, genre_1, genre_2, synopsis, author_id, img)
+VALUES  ('One Punch Man','Shounen','Super-Heroes','...', '3', NULL),
+        ('Soul Eater','Fantasy','Supernatural','...','1', NULL),
+        ('Demon Slayer', 'Shounen', 'Fantasy', '...', '2', NULL);
 
 
-INSERT INTO articles (title, genre_1, genre_2, synopsis, author_id)
-VALUES
-    ('One Punch Man', 'Shounen', 'Super-Heroes', '...', '3'),
-    ('Soul Eater', 'Fantasy', 'Supernatural', '...', '1'),
-    ('Demon Slayer', 'Shounen', 'Fantasy', '...', '2')
-;
+-- Contenu COMMENTS
 
 INSERT INTO comments (author_id, article_id, content)
-VALUES
-    (1, '2', 'Mon premier com'),
-    (1, '1', 'Mon SECOND com'),
-    (1, '2', 'Mon TROISIEME com'),
-    (3, '4', 'oups');
-;
+VALUES  (1, '2', 'Mon premier com'),
+        (1, '1', 'Mon SECOND com'),
+        (1, '2', 'Mon TROISIEME com'),
+        (3, '4', 'oups');
 
+
+-- Contenu MESSAGES
+
+INSERT INTO messages (name, mail, status, content)
+VALUES ('math', 'math@gmal.com', 'exhibitor', '...'),
+    ('silwana', 'wow335@gmal.com', 'visitor', '...');
+
+
+
+ALTER TABLE articles
+ALTER author_id SET DEFAULT 1;
