@@ -13,10 +13,22 @@ Main : Navbar
             <div class="navbar-nav ms-auto">
                 <a class="nav-item nav-link" href="/article">Library</a>
                 <a class="nav-item nav-link" href="/contact">Contact</a>
+
+                {{!-- Admin --}}
+                {{#if isAdmin }}
+                <a class="nav-item nav-link" href="/admin">Admin</a>
+                {{/if }}
+                {{!-- Login --}}
+                {{#if user }}
+                <a class="btn mx-auto d-block" data-bs-toggle="modal" data-bs-target="#deconnexion-modal">
+                    Log Out
+                </a>
+                {{else }}
                 <a class="btn mx-auto d-block" data-bs-toggle="modal" data-bs-target="#modalForm">
                     Log in
                 </a>
-                
+                {{/if }}
+
             </div>
         </div>
     </div>

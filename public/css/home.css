@@ -87,11 +87,12 @@ h5 {
 
 .btn-full {
     background-color: white;
-    color: grey;
+    color: rgb(117, 21, 21);
 }
 
 .btn-full:hover {
-    background-color: rgb(189, 189, 189);
+    background-color: rgb(117, 21, 21);
+    transition: background-color 1s, color 1s, border 1s;
     color: white;
 }
 
@@ -101,8 +102,9 @@ h5 {
 }
 
 .btn-ghost:hover {
-    background-color: rgb(189, 189, 189);
-    border: 1px solid rgb(189, 189, 189);
+    background-color:rgb(117, 21, 21);
+    border: 1px solid rgb(117, 21, 21);
+    transition: background-color 1s, color 1s, border 1s;
     color: white;
 }
 
@@ -231,7 +233,6 @@ header {
 .card-details {
     background-color: rgb(221, 221, 221);
     padding: 30px 30px;
-    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
     margin-bottom: 20px;
     text-align: center;
@@ -262,7 +263,6 @@ header {
     width: 80%;
     height: auto;
     margin-bottom: 20px;
-    border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 

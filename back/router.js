@@ -6,11 +6,12 @@ const router = express.Router();
 const HomeController = require("./controllers/HomeController");
 const ContactController = require("./controllers/ContactController");
 const BlogController = require("./controllers/BlogController");
-const LogController = require('./controllers/LogController')
+const AuthController = require('./controllers/AuthController')
 const AdminController = require('./controllers/AdminController')
 
 // Middleware
 const upload = require("./config/multer");
+const mdl = require('./middlewares/userStatus')
 
 /** ROUTES **/
 
@@ -46,20 +47,24 @@ router.route("/contact")
 
 // AUTHENTICATION
 router.route('/login')
-  .get(LogController.loginpage)
-  .post(LogController.loginData)
+  .get(AuthController.loginpage)
+  .post(AuthController.loginData)
 
 router.route('/register')
-  .get(LogController.registerpage)
-  .post(LogController.createUser)
+  .get(AuthController.registerpage)
+  .post(AuthController.createUser)
 
 router.route('/newPW')
-  .get(LogController.newpasswordpage)
-  .post(LogController.resetPassword)
+  .get(AuthController.newpasswordpage)
+  .post(AuthController.resetPassword)
 
 router.route('/forgotPW')
-  .get(LogController.forgotpasswordpage)
-  .post(LogController.forgotPassword)
+  .get(AuthController.forgotpasswordpage)
+  .post(AuthController.forgotPassword)
+
+
+router.route('/logout')
+.get(AuthController.logout)
 
 
 /*  ********************  */

@@ -1,46 +1,32 @@
-const fs = require('fs')
-const path = require('path')
-const directory = path.resolve("./ztest")
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 
+// // var a = str
+const a = 'password'
+// console.log('a', a);
 
-// Delete One
-
-
-
-
-
-
-
-
-// A rajouter sur la route-- 
-.put(editMulter, upload.single('img'),(req, res) => {
-  console.log('put', req.body, req.file)
-  res.render('index')
-})
+// // var b = hash(str)
+bcrypt.hash(a, saltRounds).then(async (hash) => {
+  console.log('hash', hash)
+  const match = await bcrypt.compare(a, hash)
+  console.log('match', match)
+});
 
 
+// var check = compare(b, a)
+// const check = bcrypt.compareSync(a, b);
+// console.log('check', check);
 
 
+// Result = true
 
 
+// ASYNC
 
-fs.unlink(path.join(directory, file), (err) => {
-  if (err) console.log(err)
-  else console.log('Delete Img' + file)
-})
+// const test = async () => {
+//   const hash = await bcrypt.hash(a, saltRounds)
+//   // console.log('fn test', hash)
+//   return hash
+// }
 
-
-
-
-
-// https://github.com/hsukrd/architecture-nodejs-base/blob/image/api/controllers/articleController.js
-
-
-
-
-
-
-
-// sql = `UPDATE articles SET articleImg = ? WHERE id = ?`
-//         values = [req.file.filename]
