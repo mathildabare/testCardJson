@@ -12,7 +12,7 @@ const fs = require("fs");
 // HOME
 exports.homepage = async (req, res) => {
   console.log('je suis la page home')
-
+console.log(req.session.user);
   res.render("home", {
     message: await db.query('select * from messages'),
     articles: await db.query('select * from articles')

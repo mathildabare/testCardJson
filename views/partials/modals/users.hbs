@@ -5,7 +5,8 @@ Users --}}
 
 {{!-- User Ban --}}
 
-<div class="modal fade" id="ban-user-modal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="ban-user-modal-{{ id }}" tabindex="-1" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
       <div class="modal-dialog">
             <div class="modal-content">
                   <div class="modal-header">
@@ -16,8 +17,13 @@ Users --}}
                               Are you sure you want ban this user ?
                         </div>
                         <div class="modal-footer">
-                              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                              <button type="button" class="btn btn-primary">Confirm</button>
+
+                                    <button type="button" class="btn btn-secondary"
+                                          data-bs-dismiss="modal">Cancel</button>
+                              <form action="/admin/users/{{ id }}?_method=PUT" method="post">
+                                    <button type="submit" class="btn btn-primary">Confirm</button>
+                              </form>
+
                         </div>
                   </form>
             </div>
@@ -38,11 +44,13 @@ Users --}}
                               <div class="connection d-flex justify-content-center flex-column">
                                     <div class="mb-3 element-form">
                                           <label for="input-username" class="form-label">Username</label>
-                                          <input name="username" type="text" class="form-control" value='{{ name }}' id="input-username-{{ id }}">
+                                          <input name="username" type="text" class="form-control" value='{{ name }}'
+                                                id="input-username-{{ id }}">
                                     </div>
                                     <div class="mb-3 element-form">
                                           <label for="input-email" class="form-label">Mail address</label>
-                                          <input name="mail" type="email" class="form-control" value='{{ mail }}' id="input-email-{{ id }}">
+                                          <input name="mail" type="email" class="form-control" value='{{ mail }}'
+                                                id="input-email-{{ id }}">
                                     </div>
                               </div>
                         </div>

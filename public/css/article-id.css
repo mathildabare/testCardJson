@@ -70,6 +70,45 @@ section {
     margin-bottom: 10px;
 }
 
+
+header {
+
+    background-image:
+        linear-gradient(to right, rgba(235, 235, 235, 0.4), rgba(133, 131, 131, 0.6)),
+        url(/assets/images/head/header2.jpg);
+    height: 60vh;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+/** titles **/
+
+.homeTitle {
+    position: absolute;
+    top: 20%;
+    width: auto;
+    color: white;
+}
+
+.homeTitle h1 {
+    font-size: 340%;
+
+}
+
+.homeTitle h1 span {
+
+    font-weight: 400;
+    letter-spacing: -6px;
+}
+
+.homeTitle p {
+
+    color: white;
+}
+
+
+
  /* 
     * NAVBAR
     * ******************* */

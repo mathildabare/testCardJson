@@ -47,6 +47,19 @@ exports.editUserID = async (req, res) => {
   res.redirect('/admin#user');
 }
 
+
+// exports.banUserID = async (req, res) => {
+//   console.log('ban User', req.params.id);
+
+//   await db.query(`
+//   UPDATE users
+//   SET isBan = 1
+//   WHERE id ='${req.params.id}';`);
+//   console.log('banni !');
+//   res.redirect('/admin#user');
+// }
+
+
 // ARTICLES
 exports.createArticleAdmin = async (req, res) => {
   console.log("new article", req.body, req.params, req.file);

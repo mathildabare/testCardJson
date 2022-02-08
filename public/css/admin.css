@@ -100,12 +100,10 @@ section {
 }
 
 .admin-hp img {
-    max-width: 100%;
-    max-height: auto;
+    width: 400px;
+    height: 350px;
     border-radius: 50%;
-    border: 2px solid black;
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    margin-bottom: 30px;
 }
 
 .admin-bio {
@@ -264,6 +262,13 @@ section {
     background-color: lightgrey;
     margin: 0 5px;
 }
+
+
+.txt-center {
+text-align: center;
+
+}
+
 
 /* 
  * FOOTER

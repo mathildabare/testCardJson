@@ -1,0 +1,27 @@
+{{!--
+Partial: Profil
+--}}
+
+<section class="admin-hp bg-grey mt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <h2>Mon Profil</h2>
+            <div class="col-md-5">
+                <img src="/assets/images/Users/{{ user.avatar }}">
+            </div>
+
+
+            <div class="admin-bio mt-5 col-md-5">
+                <h3>Welcome, <span>{{ user.username}}</span></h3>
+                <h4>Status: <span> Online</span></h4>
+                <p> {{user.biography}}</p>
+
+                <button type="button" class="btn float-end" data-bs-toggle="modal"
+                    data-bs-target="#edit-profile-modal-{{ user.id }}"><i class="fas fa-pencil-alt"></i>
+                </button>
+
+            </div>
+        </div>
+    </div>
+
+</section>

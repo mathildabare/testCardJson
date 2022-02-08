@@ -16,14 +16,17 @@ Partial: Users
                     <h4> {{ username }} </h4>
                     <p> {{ mail }} </p>
                     <div class="gst-icons">
+
                         <button type="button" class="btn-gestion" data-bs-toggle="modal"
-                            data-bs-target="#ban-user-modal">
+                            data-bs-target="#ban-user-modal-{{ id }}">
                             <i class="fas fa-ban"></i>
                         </button>
                         <button type="button" class="btn-gestion" data-bs-toggle="modal"
                             data-bs-target="#edit-user-modal-{{ id }}">
                             <i class="fas fa-pencil-alt"></i>
+                        
                         </button>
+                        
                     </div>
                 </div>
             </div>

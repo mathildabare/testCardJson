@@ -10,7 +10,13 @@ const AuthController = require('./controllers/AuthController')
 const AdminController = require('./controllers/AdminController')
 
 // Middleware
-const upload = require("./config/multer");
+const uploadArticles = require("./config/multer-articles");
+const uploadUsers= require("./config/multer-users");
+
+
+
+
+
 const mdl = require('./middlewares/userStatus')
 
 /** ROUTES **/
@@ -63,8 +69,14 @@ router.route('/forgotPW')
   .post(AuthController.forgotPassword)
 
 
+router.route('/user')
+  .get(AuthController.userProfile)
+
+router.route('/user/:id')
+  .put(uploadUsers.single('avatar'), AuthController.editUser)
+
 router.route('/logout')
-.get(AuthController.logout)
+  .get(AuthController.logout)
 
 
 /*  ********************  */
@@ -80,14 +92,18 @@ router.route('/admin/bio/:id')
 
 router.route('/admin/users/:id')
   .put(AdminController.editUserID)
+  // .put(AdminController.banUserID)
+
+  // router.route('/admin/ban/users/:id')
+
 
 
 router.route('/admin/articles')
-  .post(upload.single('img'), AdminController.createArticleAdmin)
+  .post(uploadArticles.single('img'), AdminController.createArticleAdmin)
 
 
 router.route('/admin/articles/:id')
-  .put(upload.single('img'), AdminController.editArticleID)
+  .put(uploadArticles.single('img'), AdminController.editArticleID)
   .delete(AdminController.deleteArticleID)
 
 router.route('/admin/comments/:id')
@@ -100,5 +116,3 @@ router.route('/admin/messages/:id')
 
 //Export du Router
 module.exports = router;
-
-// 
