@@ -47,17 +47,16 @@ exports.editUserID = async (req, res) => {
   res.redirect('/admin#user');
 }
 
+exports.banUserID = async (req, res) => {
+  console.log('ban User', req.params.id);
 
-// exports.banUserID = async (req, res) => {
-//   console.log('ban User', req.params.id);
-
-//   await db.query(`
-//   UPDATE users
-//   SET isBan = 1
-//   WHERE id ='${req.params.id}';`);
-//   console.log('banni !');
-//   res.redirect('/admin#user');
-// }
+  await db.query(`
+  UPDATE users
+  SET isBan = 1
+  WHERE id ='${req.params.id}';`);
+  console.log('banni !');
+  res.redirect('/admin#user');
+}
 
 
 // ARTICLES
@@ -94,7 +93,6 @@ exports.deleteArticleID = async (req, res) => {
   res.redirect('/admin#blog');
 }
 
-
 exports.editArticleID = async (req, res) => {
   console.log("new article", req.body, req.params, req.query, req.file);
 
@@ -116,14 +114,12 @@ console.log('update article', req.body, req.params, req.query, req.file)
 res.redirect('/admin#blog');
 }
 
-
 // COMMENTS
 exports.deleteCommentID = async (req, res) => {
   await db.query(`delete from comments where id = ${ req.params.id } `)
   console.log('delete comment', req.body, req.params, req.query)
   res.redirect('/admin#comments');
 }
-
 
 // MESSAGES
 exports.deleteMessageID = async (req, res) => {

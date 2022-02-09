@@ -3,14 +3,20 @@ Partial : Event ID
 --}}
 
 <section class="event">
-    <div class="container">
-        <div class="row event-details">
-
+    <div class="container row">
+        <div class="event-details">
             <h2> {{ article.title }} </h2>
-            <center><img src="/assets/images/Articles/{{article.img}}" alt="">
+
+            <div class="article-container">
+                <img src="/assets/images/Articles/{{article.img}}" alt="">
                 <p>{{ article.genre_1}}, {{ article.genre_2 }}</p>
                 <p>{{ article.synopsis }} </p>
-            </center>
+            </div>
+            <hr>
+
+            {{!-- Listes tomes (cf: DB) --}}
+
+
         </div>
     </div>
 </section>

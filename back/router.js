@@ -11,10 +11,7 @@ const AdminController = require('./controllers/AdminController')
 
 // Middleware
 const uploadArticles = require("./config/multer-articles");
-const uploadUsers= require("./config/multer-users");
-
-
-
+const uploadUsers = require("./config/multer-users");
 
 
 const mdl = require('./middlewares/userStatus')
@@ -34,7 +31,7 @@ router.route("/")
 // BLOG
 router.route("/article")
   .get(BlogController.articlepage)
-  .post(BlogController.createArticleUser)
+  .post(uploadArticles.single('img'), BlogController.createArticleUser)
 
 router.route("/article/:id") // --> '/' = params, + ':id' = params.id
   .get(BlogController.pageArticleID)
@@ -58,7 +55,7 @@ router.route('/login')
 
 router.route('/register')
   .get(AuthController.registerpage)
-  .post(AuthController.createUser)
+  .post(uploadUsers.single('avatar'),AuthController.createUser)
 
 router.route('/newPW')
   .get(AuthController.newpasswordpage)
@@ -89,13 +86,11 @@ router.route('/admin')
 router.route('/admin/bio/:id')
   .put(AdminController.userBio)
 
+router.route('/admin/ban/users/:id')
+  .put(AdminController.banUserID)
 
 router.route('/admin/users/:id')
   .put(AdminController.editUserID)
-  // .put(AdminController.banUserID)
-
-  // router.route('/admin/ban/users/:id')
-
 
 
 router.route('/admin/articles')
@@ -105,6 +100,7 @@ router.route('/admin/articles')
 router.route('/admin/articles/:id')
   .put(uploadArticles.single('img'), AdminController.editArticleID)
   .delete(AdminController.deleteArticleID)
+
 
 router.route('/admin/comments/:id')
   .delete(AdminController.deleteCommentID)

@@ -3,37 +3,84 @@ Partial: Events
 --}}
 
 
+<style>
+      .all-cards {
+            background-color: white
+      }
+
+      .card-details {
+            background-color: rgb(221, 221, 221);
+            padding: 30px 30px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+            margin-bottom: 20px;
+            text-align: center;
+      }
+
+      .card-details:hover {
+            transform: translateY(20px);
+            background-color: rgb(240, 239, 239);
+            transition: all 0.5s;
+      }
+
+      .card-details img {
+            display: block;
+            margin: 0 auto;
+            width: 70%;
+      }
+
+      .card-details h4 {
+            font-size: 100%;
+      }
+
+      .card-details h5 {
+            font-size: 80%;
+            font-weight: 300;
+      }
+
+      .card-details img {
+            width: 80%;
+            height: auto;
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+      }
+</style>
+
+
+
+
 <section class="cards">
-    <div class="container">
-        <div class="row" id="listCard">
+      <div class="all-cards container">
+            <div class="row" id="listCard">
 
-            {{#each articles}}
+                  {{#each articles}}
 
-            <div class=" card col-md-3 card-details">
-                <a href="/article/{{ id }}">
-                    <img class="card-img-top" src="/assets/images/Articles/{{ img }}">
-                    <div class="card-body">
-                        <h4 class="card-title">{{ title }}</h4>
-                        <p>{{ genre_1}}, {{ genre_2 }}</p>
-                        <p>{{ synopsis }}</p>
-                    </div>
-                </a>
+                  <a class="col-md-3 btn-card" href="/article/{{ id }}">
+                        <div class="card-details">
+                              <img class="card-img-top" src="/assets/images/Articles/{{ img }}">
+                              <div class="card-body">
+                                    <h4 class="card-title">{{ title }}</h4>
+                                    <p>{{ genre_1}}, {{ genre_2 }}</p>
+                                    <p>{{ synopsis }}</p>
+                              </div>
+                        </div>
+                  </a>
+
+                  {{/each}}
+
+                  <div class="col-md-3 mb-3">
+                        <div class="card-details">
+
+                              <button type="submit" class="btn btn-add" data-bs-toggle="modal"
+                                    data-bs-target="#create-article-modal-user"><i class="fas fa-plus"></i>
+                              </button>
+                        </div>
+                  </div>
             </div>
+      </div>
+</section>
 
-            {{/each}}
 
-            <div class="col-md-3 mb-3">
-                <div class="card-details">
 
-                    <button type="submit" class="btn btn-add" data-bs-toggle="modal"
-                        data-bs-target="#create-article-modal-user"><i class="fas fa-plus"></i>
-                    </button>
-                </div>
-            </div>
-
-        </div>
-    </div>
- 
 {{!-- Modal --}}
 
 <div class="modal fade" id="create-article-modal-user" tabindex="-1" aria-labelledby="edituserlabel" aria-hidden="true">
@@ -44,8 +91,7 @@ Partial: Events
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
 
-
-                  <form action="/article" method="post">
+                  <form action="/article" method="post" enctype="multipart/form-data">
                         <div class="modal-body">
                               <div class="connection d-flex justify-content-center flex-column">
                                     <div class="mb-3 element-form">
@@ -56,8 +102,7 @@ Partial: Events
 
                                     <div class="mb-3">
                                           <label for="formFileSm" class="form-label"></label>
-                                          <input class="form-control form-control-sm" name="img" id="articleImg"
-                                                type="file">
+                                          <input class="form-control form-control-sm" name="img" type="file">
                                     </div>
                                     <label class="form-label">Genre 1</label>
                                     <select name='genre_1' class="form-select">
@@ -65,6 +110,11 @@ Partial: Events
                                           <option>Shonen</option>
                                           <option>Seinen</option>
                                           <option>Fantastic</option>
+                                          <option>Super-Heroes</option>
+                                          <option>Horror</option>
+                                          <option>Shojo</option>
+                                          <option>Demons</option>
+                                          <option>Comedy</option>
                                     </select>
                                     <label class="form-label">Genre 2</label>
                                     <select name='genre_2' class="form-select">
@@ -72,10 +122,15 @@ Partial: Events
                                           <option>Shonen</option>
                                           <option>Seinen</option>
                                           <option>Fantastic</option>
+                                          <option>Super-Heroes</option>
+                                          <option>Horror</option>
+                                          <option>Shojo</option>
+                                          <option>Demons</option>
+                                          <option>Comedy</option>
                                     </select>
-                                    <div class="mb-3 element-form">
+                                    <div class="mb-3 element-form mt-4">
                                           <label for="input-email" class="form-label"></label>
-                                          <textarea class="brd-txt-area" name="synopsis" id="textareaArticle" cols="30"
+                                          <textarea class="brd-txt-area" name="synopsis" id="textareaArticle" cols="45"
                                                 rows="10" placeholder=" Write an article . . ."></textarea>
                                     </div>
                               </div>
@@ -86,9 +141,6 @@ Partial: Events
                         </div>
                   </form>
 
-
             </div>
       </div>
 </div>
-
-</section>

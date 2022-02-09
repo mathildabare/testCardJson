@@ -90,21 +90,16 @@ exports.registerpage = async (req, res) => {
 
 exports.createUser = async (req, res) => {
   console.log("Nouvel Utilisateur", req.body);
-  const {
-    username,
-    mail,
-    password
-  } = req.body
+  const {username, mail, password} = req.body
   const hash = bcrypt.hashSync(password, saltRounds);
 
   console.log('mon hash', hash);
 
   await db.query(`
-    insert into users (username, mail, password)
-      VALUES ("${username}","${mail}","${hash}");`)
+    insert into users (username, mail, password, avatar)
+      VALUES ("${username}","${mail}","${hash}", "${req.file.filename}");`)
   res.redirect("/");
 };
-
 
 // Page de réinitialisation de mot de passe
 exports.resetPassword = (req, res) => {

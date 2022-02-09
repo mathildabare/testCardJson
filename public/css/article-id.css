@@ -134,13 +134,17 @@ header {
     background-color: rgb(238, 238, 238);
     ;
 }
+.article-container{
+text-align: center;
+
+}
 
 .event-details p {
     text-align: center;
 }
 
-.event img {
-    height: 50%;
+.article-container img {
+    height: 650px;
     width: auto;
     
 }

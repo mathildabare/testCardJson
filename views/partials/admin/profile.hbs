@@ -5,28 +5,23 @@ Partial: Profile
 <section class="admin-hp bg-grey mt-5 pb-5">
     <div class="container">
         <div class="row">
-            <h2>admin</h2>
+            <h2>Admin</h2>
             <div class="col-md-5">
-                <img src="assets/images/Users/admin.jpg" id="profilImg"alt="">
-            <input type="file" name="profile">
+                <img src="/assets/images/Users/{{ user.avatar }}">
             </div>
 
-                {{!-- {{users}} --}}
 
             <div class="admin-bio mt-5 col-md-5">
-                <h3>Welcome, <span>{{ username}}</span></h3>
-                <h4>Status: <span>Online</span></h4>
-                <p> {{biography}}</p>
+                <h3>Welcome, <span>{{ user.username}}</span></h3>
+                <h4>Status: <span> Active</span></h4>
+                <p> {{user.biography}}</p>
 
                 <button type="button" class="btn float-end" data-bs-toggle="modal"
-                    data-bs-target="#modify-bio-modal-{{id}}"><i class="fas fa-pencil-alt"></i>
+                    data-bs-target="#edit-profile-modal-{{ user.id }}"><i class="fas fa-pencil-alt"></i>
                 </button>
 
             </div>
-
-                {{> modals/biography }}
-
-                
         </div>
     </div>
+
 </section>

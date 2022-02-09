@@ -430,8 +430,6 @@ footer p {
  .contact-us-img {
      max-width: 100%;
      min-height: auto;
-     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
-     border: 1px solid grey;
  }
  
  
@@ -444,7 +442,24 @@ footer p {
  
  }
  
- 
+ .society-icons {
+    margin-top: 20px;
+    font-size: 50px;
+    color: black;
+}
+
+.society-icons a,
+.society-icons i {
+
+    font-size: 25px;
+    margin: 0 10px;
+    color: black;
+}
+
+.society-icons i:hover {
+    color: lightgray;
+}
+
  
  /* 
   * FOOTER

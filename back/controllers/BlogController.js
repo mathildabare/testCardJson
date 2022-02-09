@@ -6,6 +6,9 @@
 
 //Import DB
 const fs = require("fs");
+const path = require('path')
+const directory = path.resolve("./public/images/Articles")
+
 
 /** PAGES **/
 
@@ -43,8 +46,8 @@ exports.createArticleUser = async (req, res) => {
   const {title, genre_1, genre_2, synopsis} = req.body
 
   await db.query(`
-    insert into articles (title, genre_1, genre_2, synopsis)
-      VALUES ("${title}","${genre_1}","${genre_2}","${synopsis}");`)
+    insert into articles (title, genre_1, genre_2, synopsis, img)
+      VALUES ("${title}","${genre_1}","${genre_2}","${synopsis}", "${req.file.filename}");`)
   res.redirect("/article");
 }
 
