@@ -1,3 +1,7 @@
+/*
+ * Delete: One File
+ * ****************************/
+
 const fs = require('fs')
 const path = require('path')
 

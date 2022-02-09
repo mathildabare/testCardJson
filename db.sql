@@ -1,7 +1,10 @@
 -- Création DB
 CREATE DATABASE `dbtest`;
 USE `dbtest`;
+
+
 --************* TABLES *******************--
+
 -- Création Table USERS
 CREATE TABLE users (
     `id` int NOT NULL AUTO_INCREMENT,
@@ -52,7 +55,7 @@ CREATE TABLE messages (
 );
 
 
---***************** INSERT INTO *******************--
+--************** INSERT INTO ****************--
 
 
 -- Contenu USERS

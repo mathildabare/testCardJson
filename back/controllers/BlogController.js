@@ -2,15 +2,17 @@
  * Controller: BLOG
  * **************** */
 
-/** Database **/
 
-//Import DB
+
+/**** IMPORTS ****/
+
 const fs = require("fs");
 const path = require('path')
 const directory = path.resolve("./public/images/Articles")
 
 
-/** PAGES **/
+
+/***** PAGES ******/
 
 // Page Article
 exports.articlepage = async (req, res) => {
@@ -39,8 +41,11 @@ exports.pageArticleID = async (req, res) => {
   })
 }
 
-// //Création d'un article
 
+
+/***** CRUD ******/
+
+// Créer un article
 exports.createArticleUser = async (req, res) => {
   console.log("new article", req.body, req.params, req.query);
   const {title, genre_1, genre_2, synopsis} = req.body
@@ -51,8 +56,7 @@ exports.createArticleUser = async (req, res) => {
   res.redirect("/article");
 }
 
-// //Commentaires
-
+// Créer un Commentaire
 exports.createComment = async (req, res) => {
   console.log("Commentaire user", req.body);
   const { author_id, content } = req.body
@@ -67,10 +71,11 @@ console.log(`article/${id}`);
 
 //Associer commentaire avec utilisateur
 
-
 // const author = await db.query(
 //   `SELECT users.username
 //   FROM comments
 //   INNER JOIN users 
 //   ON users.id = author_id;`
 // ); 
+
+

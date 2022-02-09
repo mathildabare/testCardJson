@@ -2,8 +2,9 @@
  * Controller: CONTACT
  * ******************* */
 
-/** PAGES **/
 
+
+/***** PAGE *****/
 
 // Page Contact
 exports.contactpage = async (req, res) => {
@@ -16,7 +17,9 @@ exports.contactpage = async (req, res) => {
 
 
 
-// Création d'un message
+/**** CRUD ****/
+
+// Créer un Message
 exports.createMessage = async (req, res) => {
   console.log("Message du formulaire", req.body);
   const {name, mail, status, content} = req.body

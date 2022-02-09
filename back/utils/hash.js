@@ -1,6 +1,11 @@
+/*
+ * Bcrypt - Hash Password
+ * ****************************/
+
+
+
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
-
 
 // // var a = str
 const a = 'password'

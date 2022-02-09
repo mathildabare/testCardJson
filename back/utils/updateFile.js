@@ -1,3 +1,7 @@
+/*
+ * EDIT - Update File 
+ * ****************************/
+
 const fs = require('fs')
 const path = require('path')
 
@@ -8,11 +12,6 @@ exports.updateFile = (dir, file) => {
         else console.log('delte OK', file)
     });
 }
-
-
-
-
-
 
 //Unlink
 

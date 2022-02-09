@@ -3,26 +3,30 @@
  * ************************** */
 
 
-//Import DB
+
+/**** IMPORTS ****/
+
+// DB
 const fs = require("fs");
 const path = require('path')
 const directory = path.resolve("./public/images/Users")
+const {deleteOneFile} = require('../utils/deleteOneFile')
 
-
-//BCRYPT
+// BCRYPT
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
+
+
 /** PAGES **/
 
-// Login
+// Page Login
 exports.loginpage = (req, res) => {
   console.log("Je suis la page de connexion");
   res.render("login");
 };
 
-
-//LOG MODAL (POST)
+// Modal Login
 exports.loginData = async (req, res) => {
   console.log("Mes identitifiants :", req.body);
   const {
@@ -53,16 +57,18 @@ exports.loginData = async (req, res) => {
         isAdmin: user[0].isAdmin,
       }
     };
+    if (user[0].isBan === 1) {
+      console.log('vous etes banni, charogne !');
+    }
     if (user[0].isAdmin === 1) req.session.isAdmin === true
     res.redirect("/");
-  } else {
+  }   else { 
     res.redirect('/')
   }
 
 };
 
-
-//LOGOUT
+// Modal Logout
 exports.logout = (req, res) => {
   req.session.destroy(() => {
     res.clearCookie("math-session");
@@ -71,8 +77,7 @@ exports.logout = (req, res) => {
   });
 };
 
-
-// Register
+// Page Register
 exports.registerpage = async (req, res) => {
   console.log('je suis la page register')
   const user = await db.query(`
@@ -88,6 +93,45 @@ exports.registerpage = async (req, res) => {
 
 };
 
+// Page User
+exports.userProfile = async (req, res) => {
+  console.log('je suis la page user')
+  console.log(req.session.user);
+
+  res.render('user', {})
+};
+
+// Page de réinitialisation de mot de passe
+exports.resetPassword = (req, res) => {
+  console.log("Nouveau mot de passe : ", req.body);
+  res.render("login");
+};
+
+// Page pour nouveau Password
+exports.newpasswordpage = (req, res) => {
+  console.log("Je suis la page de réinitialisation du mot de passe");
+  res.render("newPW");
+};
+
+// Forgot Password
+exports.forgotpasswordpage = (req, res) => {
+  console.log("Je suis la page de mot de passe oublié");
+  res.render("forgotPW");
+};
+
+
+
+/*
+ * CRUD
+ * **************************** */
+
+// POST - Formulaire pour nouveau Password
+exports.forgotPassword = (req, res) => {
+  console.log("Données du compte pour le nouveau mot de passe : ", req.body);
+  res.render("newPW");
+};
+
+// Créer un User (Register)
 exports.createUser = async (req, res) => {
   console.log("Nouvel Utilisateur", req.body);
   const {username, mail, password} = req.body
@@ -101,57 +145,30 @@ exports.createUser = async (req, res) => {
   res.redirect("/");
 };
 
-// Page de réinitialisation de mot de passe
-exports.resetPassword = (req, res) => {
-  console.log("Nouveau mot de passe : ", req.body);
-  res.render("login");
-};
-
-exports.newpasswordpage = (req, res) => {
-  console.log("Je suis la page de réinitialisation du mot de passe");
-  res.render("newPW");
-};
-
-// Forgot Password
-exports.forgotpasswordpage = (req, res) => {
-  console.log("Je suis la page de mot de passe oublié");
-  res.render("forgotPW");
-};
-
-exports.forgotPassword = (req, res) => {
-  console.log("Données du compte pour le nouveau mot de passe : ", req.body);
-  res.render("newPW");
-};
-
-
-// USER
-
-
-// Page User
-exports.userProfile = async (req, res) => {
-  console.log('je suis la page user')
-  console.log(req.session.user);
-
-  res.render('user', {})};
-
-
-// Edit User
+// Editer un User Profil
 exports.editUser = async (req, res) => {
 
-const { username, biography, avatar} = req.body
-const {id,  isAdmin } = req.session.user
+const { id } = req.session.user
+const { username, biography} = req.body
+const avatar = req.file
 
-const user = await db.query(`SELECT * FROM users WHERE id = ${req.params.id}`);
+console.log('avatar', avatar , 'mon magnifique id', id);
 
-// fs - readdir
+const users = await db.query(`SELECT * FROM users WHERE id = '${req.params.id}';`);
 
-console.log('mon fichier', req.file.filename);
 
-  await db.query(`
-  UPDATE users
-  SET username= '${username}', biography = '${biography}', avatar = '${req.file.filename}'
-  WHERE username ='${req.session.user.username}';`);
+if (username, biography) {
+  await db.query(`UPDATE users SET username = '${username}', biography = '${biography}' WHERE id = '${req.params.id}';`)
+}
+
+
+if (avatar) {
+  const dir = path.join('./public/images/Users')
+  deleteOneFile(dir, users[0].avatar)
+  await db.query(`UPDATE users SET avatar = '${req.file.filename}' WHERE id = '${req.params.id}';`)
+}
+
+console.log('mon USER', req.session.user);
   res.redirect('/user');
 
 }
-

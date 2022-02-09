@@ -1,4 +1,11 @@
-// Import Multer && config de stockage de multer
+/*
+ * Multer: Articles
+ * ****************************/
+
+
+/**** IMPORT && CONFIG ****/
+
+// Import Module
 const multer = require('multer');
 
 // Config stockage de Multer
@@ -46,6 +53,10 @@ const upload = multer({
         }
     }
 })
+
+
+
+/**** EXPORT ****/
 
 // Exportation du module pour router.js //
 module.exports = upload

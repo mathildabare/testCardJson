@@ -2,7 +2,9 @@
  * Controller: ADMIN
  * **************** */
 
-const {DEC8_BIN} = require("mysql/lib/protocol/constants/charsets");
+const {
+  DEC8_BIN
+} = require("mysql/lib/protocol/constants/charsets");
 
 
 // Params Files
@@ -12,9 +14,13 @@ const directory = path.resolve("./public/images/Articles")
 
 
 // Utils Files
-const {deleteOneFile} = require('../utils/deleteOneFile')
+const {
+  deleteOneFile
+} = require('../utils/deleteOneFile')
 
-const {updateFile} = require('../utils/updateFile')
+const {
+  updateFile
+} = require('../utils/updateFile')
 
 
 // Page Admin
@@ -28,15 +34,15 @@ exports.get = async (req, res) => {
   })
 }
 
-/** CRUD **/
+/*
+ * ADMIN - CRUD
+ * **************************** */
 
-// BIO MODAL
-exports.userBio = (req, res) => {
-  console.log("user biography", req.body, req.params, req.query);
-  res.redirect("/admin");
-};
 
-// USERS
+
+/******** GESTION USERS *********/
+
+// Editer un User
 exports.editUserID = async (req, res) => {
   console.log('edit User', req.body, req.params, req.query);
 
@@ -47,6 +53,7 @@ exports.editUserID = async (req, res) => {
   res.redirect('/admin#user');
 }
 
+// Bannir un User
 exports.banUserID = async (req, res) => {
   console.log('ban User', req.params.id);
 
@@ -59,7 +66,10 @@ exports.banUserID = async (req, res) => {
 }
 
 
-// ARTICLES
+
+/******* GESTION ARTICLES ********/
+
+// Créer un Article
 exports.createArticleAdmin = async (req, res) => {
   console.log("new article", req.body, req.params, req.file);
   const {
@@ -68,6 +78,7 @@ exports.createArticleAdmin = async (req, res) => {
     genre_2,
     synopsis
   } = req.body
+
 
   await db.query(`
     insert into articles (title, img, genre_1, genre_2, synopsis)
@@ -78,6 +89,7 @@ exports.createArticleAdmin = async (req, res) => {
   res.redirect("/admin#blog");
 }
 
+// Effacer un Article
 exports.deleteArticleID = async (req, res) => {
 
   // On sélectionne l'article dans la DB pour le supprimer
@@ -93,35 +105,47 @@ exports.deleteArticleID = async (req, res) => {
   res.redirect('/admin#blog');
 }
 
+// Editer un Article
 exports.editArticleID = async (req, res) => {
-  console.log("new article", req.body, req.params, req.query, req.file);
+  console.log("On édite:", req.params.id, req.body)
 
-  await db.query(`
-  UPDATE articles
-  SET title = '${req.body.title}',
-      genre_1 = '${req.body.genre_1}',
-      genre_2  = '${req.body.genre_2}',
-      synopsis = '${req.body.synopsis}',
-      img= '${req.file.filename}'
-  WHERE id ='${req.params.id}';`);
+  const id = req.params.id
+  const { title, genre_1, genre_2, synopsis } = req.body
+  const img = req.file
 
 
-// //  const updateArticle = require('../utils/updateArticle')
+  const article = await db.query(`SELECT * FROM articles WHERE id = ${id}`)
 
+  if (title, genre_1, genre_2, synopsis) {
+    await db.query(`UPDATE articles SET title = '${title}', genre_1 = '${genre_1}', genre_2 = '${genre_2}', synopsis = '${synopsis}' WHERE id = ${id};`)
+  }
 
+  if (img) {
+    const dir = path.join('./public/images/Articles')
+    deleteOneFile(dir, article[0].img)
+    await db.query(`UPDATE articles SET img = '${req.file.filename}' WHERE id = ${id}`)
+  }
 
-console.log('update article', req.body, req.params, req.query, req.file)
-res.redirect('/admin#blog');
+  console.log('update article', req.body, req.params, req.query, req.file)
+  res.redirect('/admin#blog');
 }
 
-// COMMENTS
+
+
+/***** GESTION COMMENTAIRES ******/
+
+// Effacer un Commentaire
 exports.deleteCommentID = async (req, res) => {
   await db.query(`delete from comments where id = ${ req.params.id } `)
   console.log('delete comment', req.body, req.params, req.query)
   res.redirect('/admin#comments');
 }
 
-// MESSAGES
+
+
+/******* GESTION MESSAGES ********/
+
+// Effacer un Message
 exports.deleteMessageID = async (req, res) => {
   await db.query(`delete from messages where id = ${ req.params.id } `)
   console.log('delete comment', req.body, req.params, req.query)

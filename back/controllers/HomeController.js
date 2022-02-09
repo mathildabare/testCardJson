@@ -1,15 +1,12 @@
+
 /*
  * Controller: HOME
  * ***************** */
 
 
-//Import DB
-const fs = require("fs");
 
+/***** PAGE *****/
 
-/** PAGES **/
-
-// HOME
 exports.homepage = async (req, res) => {
   console.log('je suis la page home')
 console.log(req.session.user);
@@ -21,7 +18,9 @@ console.log(req.session.user);
 
 
 
-// Création d'un message
+/**** CRUD ****/
+
+// Créer un Message
 exports.createMessage = async (req, res) => {
   console.log("Message du formulaire", req.body);
   const {
