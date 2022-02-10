@@ -13,9 +13,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override')
 const port = process.env.PORT || 3004;
-const {
-  engine
-} = require("express-handlebars");
+const { engine } = require("express-handlebars");
 const mysql = require('mysql');
 const util = require("util");
 const session = require('express-session');
@@ -90,8 +88,8 @@ app.use("/assets", express.static('public'));
 /*  ****** User / Admin *****  */
 app.use('*', (req, res, next) => {
   if (req.session.user) res.locals.user = req.session.user
-  // res.locals.isAdmin = req.session.isAdmin
-  // console.log("cookie-session", req.session);
+                        res.locals.isAdmin = req.session.isAdmin
+  // console.log('isAdmin', req.session.user.isAdmin);
   next()
 })
 
@@ -100,6 +98,13 @@ app.use('*', (req, res, next) => {
 //Import Router
 const ROUTER = require('./back/router')
 app.use('/', ROUTER)
+
+// Page 404
+app.use('*', function (req, res) {
+  res.status(404).render("error404", {
+      layout: 'err404'
+  })
+})
 
 
 

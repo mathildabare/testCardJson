@@ -296,8 +296,7 @@ text-align: center;
  * FOOTER
  * ******************* */
 
-footer {
-    padding-top: 20px;
+ footer {
     background-color: rgb(41, 41, 41);
     color: white;
     height: auto;
@@ -310,9 +309,11 @@ footer p {
     font-size: 9pt;
 }
 
-.footer-us {
-    margin-right: 90px;
+
+footer input {
+    height: 25px;
 }
+
 
 .footer-us ul li {
     list-style: none;
@@ -322,35 +323,28 @@ footer p {
     margin-right: 30px;
 }
 
-.footer-us img {
-    max-width: 35%;
-    max-height: auto;
-    margin: 20px 0;
-    border-radius: 10px;
-}
+
 
 .newsletter,
 .footer-icons {
-    margin-top: 20px;
-    margin-left: 90px;
+    margin-top: 10px;
 }
 
 .footer-btn {
     display: inline-block;
-    height: 25px;
-    width: 60px;
+    height: 20px;
+    width: 50px;
     background-color: lightgray;
     color: black;
     border-radius: 5px;
-    padding: 4px;
-    margin-top: 10px;
-    font-size: small;
+    margin: 5px;
+    font-size: 10px;
 }
 
 /** Icons **/
 
 .footer-icons a {
-    font-size: 20px;
+    font-size: 18px;
     margin: 0 10px;
     color: white;
 }
@@ -360,17 +354,17 @@ footer p {
 }
 
 .copyright {
-    margin-top: 30px;
+    margin-top: 2px;
     background-color: rgba(0, 0, 0, 0.2);
     width: 100%;
-    height: 100%;
-    padding: 10px 0;
+    padding : 1px;
     text-align: center;
 }
 
 .copyright a {
     color: white;
 }
+
 
 @media screen and (max-width: 640px) {
 

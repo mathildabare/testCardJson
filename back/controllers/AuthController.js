@@ -29,9 +29,7 @@ exports.loginpage = (req, res) => {
 // Modal Login
 exports.loginData = async (req, res) => {
   console.log("Mes identitifiants :", req.body);
-  const {
-    username,
-    password  } = req.body;
+  const { username, password  } = req.body;
 
   if (username && password) {
     const user = await db.query(
@@ -61,7 +59,7 @@ exports.loginData = async (req, res) => {
       console.log('vous etes banni, charogne !');
     }
     if (user[0].isAdmin === 1) req.session.isAdmin === true
-    res.redirect("/");
+    res.redirect("/admin");
   }   else { 
     res.redirect('/')
   }
@@ -149,7 +147,7 @@ exports.createUser = async (req, res) => {
 exports.editUser = async (req, res) => {
 
 const { id } = req.session.user
-const { username, biography} = req.body
+const { username, biography } = req.body
 const avatar = req.file
 
 console.log('avatar', avatar , 'mon magnifique id', id);

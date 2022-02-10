@@ -19,7 +19,7 @@ const uploadArticles = require("./config/multer-articles");
 const uploadUsers = require("./config/multer-users");
 
 // Middlewares
-const mdl = require('./middlewares/userStatus')
+const mdl = require('./middlewares/isAdmin')
 
 
 
@@ -44,7 +44,7 @@ router.route("/article")
   .get(BlogController.articlepage)
   .post(uploadArticles.single('img'), BlogController.createArticleUser)
 
-router.route("/article/:id") // --> '/' = params, + ':id' = params.id
+router.route("/article/:id") //
   .get(BlogController.pageArticleID)
   .post(BlogController.createComment)
 
@@ -93,29 +93,29 @@ router.route('/logout')
 
 // ADMIN
 router.route('/admin')
-  .get(AdminController.get)
+  .get(mdl.isAdmin, AdminController.get)
 
 router.route('/admin/:id')
-  .put(uploadUsers.single('avatar'), AuthController.editUser)
+  .put(mdl.isAdmin, uploadUsers.single('avatar'), AuthController.editUser)
 
 router.route('/admin/ban/users/:id')
-  .put(AdminController.banUserID)
+  .put(mdl.isAdmin, AdminController.banUserID)
 
 router.route('/admin/users/:id')
-  .put(AdminController.editUserID)
+  .put(mdl.isAdmin, AdminController.editUserID)
 
 router.route('/admin/articles')
-  .post(uploadArticles.single('img'), AdminController.createArticleAdmin)
+  .post(mdl.isAdmin, uploadArticles.single('img'), AdminController.createArticleAdmin)
 
 router.route('/admin/articles/:id')
-  .put(uploadArticles.single('img'), AdminController.editArticleID)
+  .put(mdl.isAdmin, uploadArticles.single('img'), AdminController.editArticleID)
   .delete(AdminController.deleteArticleID)
 
 router.route('/admin/comments/:id')
-  .delete(AdminController.deleteCommentID)
+  .delete(mdl.isAdmin, AdminController.deleteCommentID)
 
 router.route('/admin/messages/:id')
-  .delete(AdminController.deleteMessageID)
+  .delete(mdl.isAdmin, AdminController.deleteMessageID)
 
 
 

@@ -2,25 +2,16 @@
  * Controller: ADMIN
  * **************** */
 
-const {
-  DEC8_BIN
-} = require("mysql/lib/protocol/constants/charsets");
+const { DEC8_BIN } = require("mysql/lib/protocol/constants/charsets");
 
-
-// Params Files
+// FS Files
 const fs = require("fs");
 const path = require('path')
 const directory = path.resolve("./public/images/Articles")
 
-
 // Utils Files
-const {
-  deleteOneFile
-} = require('../utils/deleteOneFile')
-
-const {
-  updateFile
-} = require('../utils/updateFile')
+const { deleteOneFile } = require('../utils/deleteOneFile')
+const { updateFile } = require('../utils/updateFile')
 
 
 // Page Admin
@@ -53,15 +44,21 @@ exports.editUserID = async (req, res) => {
   res.redirect('/admin#user');
 }
 
-// Bannir un User
+// Bannir / Débannir un User
 exports.banUserID = async (req, res) => {
-  console.log('ban User', req.params.id);
 
-  await db.query(`
-  UPDATE users
-  SET isBan = 1
-  WHERE id ='${req.params.id}';`);
-  console.log('banni !');
+  const user = await db.query(`SELECT * from users where id = '${req.params.id}'`)
+  console.log('mon user', user);
+
+
+  if ( user[0].isBan === 0 ) {
+    await db.query(`UPDATE users SET isBan = 1 WHERE id ='${req.params.id}';`), console.log(' Banni !');
+  }
+
+  if ( user[0].isBan === 1 ) {
+    await db.query(`UPDATE users SET isBan = 0 WHERE id ='${req.params.id}';`), console.log('Débanni !');
+  };
+
   res.redirect('/admin#user');
 }
 

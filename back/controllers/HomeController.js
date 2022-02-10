@@ -23,12 +23,7 @@ console.log(req.session.user);
 // Créer un Message
 exports.createMessage = async (req, res) => {
   console.log("Message du formulaire", req.body);
-  const {
-    name,
-    mail,
-    status,
-    content
-  } = req.body
+  const { name, mail, status, content } = req.body
 
   await db.query(`
     insert into messages (name, mail, status, content)

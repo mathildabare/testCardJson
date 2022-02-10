@@ -1,0 +1,155 @@
+h1,
+h2,
+h3,
+h4,
+.navbar {
+
+    font-family: 'Lato', 'Arial', sans-serif;
+    text-transform: uppercase;
+    font-weight: 300;
+    letter-spacing: -1px;
+    word-spacing: 8px;
+}
+
+h1 {
+    color: white;
+}
+
+h2 {
+    color: black;
+    font-size: 250%;
+    text-align: center;
+    margin-top: 40px;
+    margin-bottom: 30px;
+}
+
+h2::after {
+    display: block;
+    height: 2px;
+    background-color: rgb(162, 29, 29);
+    width: 100px;
+    content: "  ";
+    margin: 0 auto;
+    margin-top: 10px;
+}
+
+h3 {
+    font-size: 160%;
+}
+
+p,
+label {
+    font-size: 10pt;
+    font-weight: 300;
+    line-height: 24px;
+}
+
+h5 {
+    font-family: 'Dancing Script', 'Arial', sans-serif;
+    text-transform: uppercase;
+    font-weight: 500;
+    word-spacing: 8px;
+    text-align: end;
+}
+
+
+.section-404 {
+
+    height: 85vh;
+    background-position: center;
+    background-size: cover;
+    position: relative;
+}
+
+.section-404 img {
+    margin-top: 110px;
+}
+
+.section-404 h1 {
+    font-size: 90px;
+    color: black;
+}
+
+footer {
+    background-color: rgb(41, 41, 41);
+    color: white;
+    height: auto;
+    font-size: 10pt;
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-weight: 400;
+}
+
+footer p {
+    font-size: 9pt;
+}
+
+
+footer input {
+    height: 25px;
+}
+
+
+.footer-us ul li {
+    list-style: none;
+}
+
+.footer-us ul li a {
+    margin-right: 30px;
+}
+
+
+
+.newsletter,
+.footer-icons {
+    margin-top: 10px;
+}
+
+.footer-btn {
+    display: inline-block;
+    height: 20px;
+    width: 50px;
+    background-color: lightgray;
+    color: black;
+    border-radius: 5px;
+    margin: 5px;
+    font-size: 10px;
+}
+
+/** Icons **/
+
+.footer-icons a {
+    font-size: 18px;
+    margin: 0 10px;
+    color: white;
+}
+
+.footer-icons a:hover {
+    color: lightgray;
+}
+
+.copyright {
+    margin-top: 2px;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    padding : 1px;
+    text-align: center;
+}
+
+.copyright a {
+    color: white;
+}
+
+
+/* 
+    * NAVBAR
+    * ******************* */
+
+.navbar-nav {
+    font-family: 'Spartan', 'Arial', sans-serif;
+    font-weight: 400;
+}
+
+.selectpicker {
+    border: none;
+    border-radius: 5px;
+}
