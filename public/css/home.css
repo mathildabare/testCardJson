@@ -444,6 +444,7 @@ footer input {
 
 @media screen and (max-width: 640px) {
 
+
     .homeTitle {
         display: flex;
         flex-direction: column;

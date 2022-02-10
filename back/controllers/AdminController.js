@@ -23,7 +23,7 @@ exports.get = async (req, res) => {
     messages: await db.query('select * from messages'),
     comments: await db.query('select * from comments')
   })
-}
+  }
 
 /*
  * ADMIN - CRUD

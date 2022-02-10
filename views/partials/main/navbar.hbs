@@ -2,6 +2,9 @@
 Main : Navbar
 --}}
 
+
+
+
 <nav class="navbar navbar-light navbar-expand-md fixed-top bg-light">
     <div class="container">
         <a class="navbar-brand" href="/"><img src="/assets/images/All/logo.png" style="max-width: 5%;"> Pause Manga</a>
@@ -15,19 +18,22 @@ Main : Navbar
                 <a class="nav-item nav-link" href="/contact">Contact</a>
 
                 {{!-- Admin --}}
-                {{#if isAdmin }}
+
+                {{#if user.isAdmin }}
+                
                 <a class="nav-item nav-link" href="/admin">Admin</a>
+
                 {{/if }}
 
                 {{!-- Login --}}
                 {{#if user }}
-                <a class="nav-item nav-link" href="/user">Profil</a>
+                <a class="nav-item nav-link" href="/user">Profile</a>
                 <a class="btn mx-auto d-block" data-bs-toggle="modal" data-bs-target="#deconnexion-modal">
-                    Log Out
+                    Logout
                 </a>
                 {{else}}
                 <a class="btn mx-auto d-block" data-bs-toggle="modal" data-bs-target="#modalForm">
-                    Log in
+                    Login
                 </a>
                 {{/if }}
 

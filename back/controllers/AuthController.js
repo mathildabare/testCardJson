@@ -53,10 +53,11 @@ exports.loginData = async (req, res) => {
         mail: user[0].mail,
         avatar: user[0].avatar,
         isAdmin: user[0].isAdmin,
+        isBan : user[0].isBan
       }
     };
     if (user[0].isBan === 1) {
-      console.log('vous etes banni, charogne !');
+      console.log('vous etes banni, charogne !') ;
     }
     if (user[0].isAdmin === 1) req.session.isAdmin === true
     res.redirect("/admin");
