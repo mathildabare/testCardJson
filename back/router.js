@@ -1,4 +1,3 @@
-
 /*
  * IMPORTS
  * ************************** */
@@ -11,7 +10,8 @@ const router = express.Router();
 const HomeController = require("./controllers/HomeController");
 const ContactController = require("./controllers/ContactController");
 const BlogController = require("./controllers/BlogController");
-const AuthController = require('./controllers/AuthController')
+const AuthController = require('./controllers/AuthController');
+const MailController = require('./controllers/MailController')
 const AdminController = require('./controllers/AdminController')
 
 // Multer
@@ -70,14 +70,6 @@ router.route('/register')
   .get(AuthController.registerpage)
   .post(uploadUsers.single('avatar'), AuthController.createUser)
 
-router.route('/newPW')
-  .get(AuthController.newpasswordpage)
-  .post(AuthController.resetPassword)
-
-router.route('/forgotPW')
-  .get(AuthController.forgotpasswordpage)
-  .post(AuthController.forgotPassword)
-
 router.route('/user')
   .get(AuthController.userProfile)
 
@@ -86,6 +78,19 @@ router.route('/user/:id')
 
 router.route('/logout')
   .get(AuthController.logout)
+
+
+
+/*  ******** NODEMAILER *********  */
+
+router.route('/lostpassword')
+  .get(MailController.lostpasswordPage)
+  .post(MailController.lostPassword)
+
+  
+  router.route('/resetpassword/:id')
+  .get(MailController.resetpasswordPage)
+  .post(MailController.resetpassword)
 
 
 

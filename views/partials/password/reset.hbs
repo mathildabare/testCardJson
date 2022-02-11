@@ -7,7 +7,7 @@ Partial: Reset Password
         <div class="mt-5 mb-5">
             <h2>Reset Password</h2>
         </div>
-        <form action="/newPW" method="post">
+        <form action="/resetpassword/{{rand}}" method="post">
             <div class="col-md-12">
                 <div class="contact-form mb-3">
                     <input
@@ -29,7 +29,7 @@ Partial: Reset Password
                     <p id="prevent"> </p>
                 </div>
                 <div class="col-md-2">
-                    <a id="submit-btn" href="/login"><button class="btn-log">Submit</button></a>
+                    <a id="submit-btn" href="/"><button class="btn-log">Submit</button></a>
                 </div>
             </div>
         </form>

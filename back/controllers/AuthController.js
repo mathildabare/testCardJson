@@ -100,35 +100,11 @@ exports.userProfile = async (req, res) => {
   res.render('user', {})
 };
 
-// Page de réinitialisation de mot de passe
-exports.resetPassword = (req, res) => {
-  console.log("Nouveau mot de passe : ", req.body);
-  res.render("login");
-};
-
-// Page pour nouveau Password
-exports.newpasswordpage = (req, res) => {
-  console.log("Je suis la page de réinitialisation du mot de passe");
-  res.render("newPW");
-};
-
-// Forgot Password
-exports.forgotpasswordpage = (req, res) => {
-  console.log("Je suis la page de mot de passe oublié");
-  res.render("forgotPW");
-};
-
 
 
 /*
  * CRUD
  * **************************** */
-
-// POST - Formulaire pour nouveau Password
-exports.forgotPassword = (req, res) => {
-  console.log("Données du compte pour le nouveau mot de passe : ", req.body);
-  res.render("newPW");
-};
 
 // Créer un User (Register)
 exports.createUser = async (req, res) => {
