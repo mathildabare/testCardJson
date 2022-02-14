@@ -85,10 +85,9 @@ router.route('/logout')
 
 router.route('/lostpassword')
   .get(MailController.lostpasswordPage)
-  .post(MailController.lostPassword)
+  .post(MailController.lostpassword)
 
-  
-  router.route('/resetpassword/:id')
+router.route('/resetpassword/:id')
   .get(MailController.resetpasswordPage)
   .post(MailController.resetpassword)
 

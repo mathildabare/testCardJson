@@ -1,6 +1,6 @@
-{{!-- 
-    Layout: Main
- --}}
+{{!--
+Layout: Main
+--}}
 
 
 {{> main/headDefault }}
@@ -16,3 +16,14 @@
 {{> modals/logout }}
 
 {{> main/endDefault }}
+
+
+
+{{#if modalLoginOpen}}
+
+<script>
+    const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalLogin')).show();
+    modal.show();
+</script>
+
+{{/if }}

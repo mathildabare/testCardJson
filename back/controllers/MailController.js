@@ -13,6 +13,7 @@ const nodemailer = require("nodemailer");
 const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
+
 /** PAGES **/
 
 // Page Lost Password
@@ -26,30 +27,11 @@ const saltRounds = 10;
 module.exports = {
 
     // Page MDP Oublié
-    lostpasswordPage: (req, res) => {
-        console.log("Je suis la page de mot de passe oublié");
-        res.render("lostpassword");
-    },
+    lostpassword: async (req, res) => {
 
-    // POST - MDP Oublié
-    lostPassword: async (req, res) => {
-        console.log("Je suis le controller MDP oublié", req.body)
-
-        const user = await db.query(`SELECT * FROM users WHERE mail="${req.body.mail}";`)
-        if (user) {
-            rand = Math.floor((Math.random() * 100) + 54)
-            host = req.get('host')
-            link = "http://" + req.get('host') + "/resetpassword/" + rand
-
-            mailOptions = {
-                from: 'pausemanga.test@gmail.com',
-                to: req.body.mail,
-                subject: 'reset password',
-                text: 'Another step ...',
-                html: `<h2>Another step</h2>,<br><h4>click on the link to rest your password</h4><br><a href=" ` + link + ` ">reset password</a>`
-            };
-        }
-        console.log(mailOptions);
+        const user = await db.query(`SELECT * FROM users WHERE mail = '${req.body.mail}'`)
+        const host = req.get('host')
+        const rand = Math.floor((Math.random() * 100) + 54)
 
         const transporter = nodemailer.createTransport({
             service: 'gmail',
@@ -58,182 +40,109 @@ module.exports = {
                 pass: '@hibarikyoya4927'
             }
         });
+        req.session.visitor = {
+            id: rand,
+            userID: user[0].id
+        }
+        req.session.cookie.maxAge = 900000
 
+        console.log('Visitor : ', req.session.visitor.userID)
 
-        transporter.sendMail(mailOptions, function (error, info) {
-            if (error) {
-                console.log(error);
-            } else {
-                console.log('Email sent: ' + info.response);
+        link = "http://" + req.get('host') + "/resetpassword/" + req.session.visitor.id
+        if (user.length > 0) {
+            var mailOptions = {
+                from: 'pausemanga.test@gmail.com',
+                to: req.body.mail,
+                subject: `'Vous avez demandé à réinitialiser votre mot de passe, ' + ${user[0].username}`,
+                rand: req.session.visitor.id,
+                html: `
+              <p>click above the link to rest your password </p><br>
+              <a href="${link}">Click here</a>`
             }
-        })
 
-        // Response
-        res.render('home', { success: "Un email à bien été envoyer à " + req.body.mail })
+            transporter.sendMail(mailOptions, async (err, info, next) => {
+                if (err) res.status(404)
+                else {
+                    console.log(info)
+                    const mailSend = true
+                    res.render('home', {
+                        mailSend,
+                        message: await db.query('select * from messages'),
+                        articles: await db.query('select * from articles')
+                    })
+                   
+                }
+            })
+        }
     },
 
-    // Page Reset MDP
-    resetpasswordPage:(req, res) => {
-        console.log("Je suis la page reset pw");
-        res.render("resetpassword");
+
+
+    lostpasswordPage: (req, res) => {
+        console.log('Password')
+        res.render('lostpassword')
     },
 
-    // POST - Reset Password
-    resetpassword: (req, res) => {
 
-        console.log('mes mailOptions', mailOptions.rand);
+    resetpasswordPage: async (req, res) => {
 
-        if ((req.protocol + "://" + req.get('host')) === ("http://" + host)) {
+        console.log( 'Reset passwor 1', req.protocol + "://" + req.get('host'), "  ||  " , "http://" + req.get('host'))
+
+        // Ici on check notre protocole hébergeur (nodejs localhost) et le lien généré dans le mail
+        if (req.protocol + "://" + req.get('host') === "http://" + req.get('host')) {
             console.log("Domain is matched. Information is from Authentic email")
 
-        if (req.params.id === mailOptions.rand) {
-            console.log("mail is verified")
+            const userID = await db.query(`SELECT id FROM users WHERE id = '${req.params.id}'`)
 
-            res.render('resetpassword', {
-                mailOptions
+            console.log('edit Password (reset)', req.params.id, req.session)
+
+            if (Number(req.params.id) === Number(req.session.visitor.id)) {
+                res.render('resetpassword', { rand: req.session.visitor.id }) 
+
+            } else {
+                console.log("Mauvaise requête")
+                res.redirect('/')
+            }
+        }
+    },
+
+
+    resetpassword: async (req, res) => {
+        const { password, confirmPassword } = req.body
+        const hash = bcrypt.hashSync(password, 10)
+
+        console.log("controller reset password")
+        console.log('mon hash : ', hash)
+
+        if (password !== confirmPassword) {
+            res.redirect('back')
+        } else {
+
+            const visitor = req.session.visitor.userID;
+
+            console.log("visitor: ", visitor);
+            await db.query(`UPDATE users SET password = '${hash}' WHERE id = ${visitor}`, function (err) {
+                const changePassword = true
+                const userID = req.params.id
+
+                console.log('visitor userID: ', req.session.visitor.userID)
+                req.session.destroy(() => {
+                    res.clearCookie('math')
+                })
+                res.render('home', {
+                    changePassword,
+                    userID,
+                    modalLoginOpen: "Votre mot de passe à bien été édité !!"
+                })
             })
-
-        };
+        }
     }
 }
-}
-
-
-
-// module.exports = {
-
-//     lostpassword: async (req, res) => {
-
-//         console.log("Je suis le controller MDP oublié", req.body)
-
-//         const transporter = nodemailer.createTransport({
-//             service: 'gmail',
-//             auth: {
-//               user: 'pausemanga.test@gmail.com',
-//               pass: '@hibarikyoya4927'
-//             }
-//           });
-
-//         const user = await db.query(`SELECT * FROM users WHERE mail="${req.body.mail}";`)
-//         if (user) {
-//             // génération d'un chiffre random
-//             rand = Math.floor((Math.random() * 100) + 54)
-//             // on definit notre host
-//             host = req.get('host')
-//             // on définit le lien
-//             link = "http://" + req.get('host') + "/lostpassword/" + rand
-//             // et enfin notre mail
-//             mailOptions = {
-//                 from: 'pausemanga.test@gmail.com',
-//                 to: req.body.mail,
-//                 subject: "Mot de passe oublié",
-//                 rand: rand,
-//                 html: `
-//           <h2>Encore un effort</h2><br>
-//           <h4>Cliquer sur le lien suivant afin de finir la procédure de recréation de mot de passe.</h4><br>
-//           <a href=" ` + link + ` ">Click here to create password</a>
-//         `
-//             };
-
-//             // Et envoi notre mail avec nos callback
-//             transporter.sendMail(mailOptions, (err, res, next) => {
-//                 if (err) {
-//                     console.log(err)
-//                 } else {
-//                     console.log("Message Envoyé")
-//                     next()
-//                 }
-//             })
-
-//             console.log('Données ', rand, link, mailOptions, host)
-//             // Response
-//             res.render('home', {
-//                 success: "Un email à bien été envoyer à " + req.body.mail
-//             })
-
-//         } else
-//             res.render('home')
-//     },
-
-//     resetpassword: (req, res) => {
-
-//         console.log(req.protocol + "://" + req.get('host'))
-//         console.log('Page Edit Password: ', rand, mailOptions, host)
-
-//         // Ici on tcheck notre protocole hébergeur (nodejs localhost) et le liens générer dans le mail
-//         if ((req.protocol + "://" + req.get('host')) == ("http://" + host)) {
-//             console.log("Domain is matched. Information is from Authentic email")
-
-//             // Ici on tcheck notre id du mail avec la variable enregistrer en cache (rand)
-//             if (req.params.id == mailOptions.rand) {
-//                 console.log("email is verified")
-//                 // res.end("<h1>Email " + mailOptions.to + " is been Successfully verified")
-//                 res.render('editPassword', {
-//                     mailOptions,
-//                     rand
-//                 })
-
-//             } else {
-//                 console.log("email is not verified")
-//                 res.render('resetpassword', {
-//                     message: "Bad Request !"
-//                 })
-//             }
-//         } else {
-//             res.render('resetpassword', {
-//                 message: "Request is from unknown source !"
-//             })
-//         }
-//     }
-// };
 
 
 
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // Réinitialisation de mot de passe
-// exports.resetPassword = async (req, res) => {
-
-
-//     const {
-//         password,
-//         confirmPassword
-//     } = req.body
-
-//     if (password === confirmPassword) {
-
-//         const user = await db.query(`UPDATE users SET password = '${ password }' where '${req.params.id}'`)
-
-//     }
-//     console.log("Nouveau mot de passe : ", req.body);
-//     res.render("resetpassword");
-// }
+// req.session.visitor = { id: rand, userID: userInfo[0].id }
+// req.session.cookie.maxAge = 900000
