@@ -91,7 +91,6 @@ router.route('/resetpassword/:id')
   .post(MailController.resetpassword)
 
 
-
 /*  ******** ADMIN *********  */
 
 // ADMIN

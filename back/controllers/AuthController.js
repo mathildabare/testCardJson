@@ -22,18 +22,6 @@ const saltRounds = 10;
 
 /** PAGES **/
 
-
-// Modal Logout
-exports.logout = (req, res) => {
-  req.session.destroy(() => {
-    res.clearCookie("math-session");
-    console.log(req.session);
-    res.redirect("/");
-  });
-};
-
-
-
 // Modal Login
 exports.loginData = async (req, res) => {
   console.log("Mes identitifiants :", req.body);
@@ -67,7 +55,7 @@ exports.loginData = async (req, res) => {
         res.redirect("/admin")
       } 
       
-      else if (user[0].isBan === 1) {
+      else if (user[0].isBan == 1) {
         req.session.destroy()
         console.log('vous etes banni, charogne !')
 
@@ -84,7 +72,14 @@ exports.loginData = async (req, res) => {
   }
 };
 
-
+// Modal Logout
+exports.logout = (req, res) => {
+  req.session.destroy(() => {
+    res.clearCookie("math-session");
+    console.log(req.session);
+    res.redirect("/");
+  });
+};
 
 // Page Register
 exports.registerpage = async (req, res) => {

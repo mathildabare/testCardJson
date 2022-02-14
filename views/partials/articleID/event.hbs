@@ -7,10 +7,11 @@ Partial : Event ID
         <div class="event-details">
             <h2> {{ article.title }} </h2>
 
+
             <div class="article-container">
                 <img src="/assets/images/Articles/{{article.img}}" alt="">
-                <p>{{ article.genre_1}}, {{ article.genre_2 }}</p>
-                <p>{{ article.synopsis }} </p>
+                <h4 class="mt-5">{{ article.genre_1}}, {{ article.genre_2 }}</h4>
+                <p class="mt-5" style="line-break : anywhere";>{{ article.synopsis }} </p>
             </div>
             <hr>
 
@@ -20,3 +21,6 @@ Partial : Event ID
         </div>
     </div>
 </section>
+
+
+

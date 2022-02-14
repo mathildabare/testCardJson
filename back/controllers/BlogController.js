@@ -20,7 +20,7 @@ exports.articlepage = async (req, res) => {
 
   res.render("article", {
     users: await db.query('select * from users'),
-    articles: await db.query('select * from articles')
+    articles: await db.query('select * from articles ORDER BY title')
   });
 };
 

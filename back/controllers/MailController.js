@@ -14,9 +14,8 @@ const bcrypt = require('bcrypt');
 const saltRounds = 10;
 
 
+
 /** PAGES **/
-
-
 
 module.exports = {
 
@@ -44,7 +43,9 @@ module.exports = {
 
         link = "http://" + req.get('host') + "/resetpassword/" + req.session.visitor.id
         if (user.length > 0) {
-            var mailOptions = {
+
+
+            const mailOptions = {
                 from: 'pausemanga.test@gmail.com',
                 to: req.body.mail,
                 subject: `'Vous avez demandé à réinitialiser votre mot de passe, ' + ${user[0].username}`,
@@ -136,4 +137,3 @@ module.exports = {
         }
     }
 }
-

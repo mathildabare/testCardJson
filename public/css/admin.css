@@ -220,6 +220,8 @@ border-radius: 5px;
 
 .card-details p {
     font-size: 8pt;
+    line-break: anywhere;
+
 }
 
 .card-details img {

@@ -55,6 +55,15 @@ CREATE TABLE messages (
 );
 
 
+
+--  Création Table NEWSLETTER
+CREATE TABLE newsletter (
+    `id` int NOT NULL AUTO_INCREMENT,
+    `mail` varchar(255),
+    PRIMARY KEY (id)
+);
+
+
 --************** INSERT INTO ****************--
 
 
@@ -86,7 +95,10 @@ VALUES ('math', 'math@gmal.com', 'exhibitor', '...'),
     ('silwana', 'wow335@gmal.com', 'visitor', '...');
 
 
-
+-- Contenu NEWSLETTER
+INSERT INTO newsletter (mail)
+VALUES ('mathildabare@gmail.com');
+    
 
 
 ALTER TABLE articles ALTER author_id
