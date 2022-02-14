@@ -27,3 +27,13 @@ Layout: Main
 </script>
 
 {{/if }}
+
+
+{{#if modalLoginBan}}
+
+<script>
+    const modal = bootstrap.Modal.getOrCreateInstance(document.getElementById('modalLogin')).show();
+    modal.show();
+</script>
+
+{{/if }}

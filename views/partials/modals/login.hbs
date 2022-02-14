@@ -14,6 +14,13 @@
             </div>
             {{/if }}
 
+
+            {{#if modalLoginBan}}
+            <div class="alert alert-danger" role="alert">
+                <p>{{ modalLoginBan }}</p>
+            </div>
+            {{/if}}
+
             <form action="/login" method="post">
                 <div class="modal-body">
                     <div class="mb-3">
@@ -42,27 +49,3 @@
         </div>
     </div>
 </div>
-
-<script>
-
-    console.log('mon js')
-
-    const logUsername = document.getElementById('logUsername')
-    console.log(logUsername)
-
-
-    const logPassword = document.getElementById('logPassword')
-    console.log(logPassword)
-
-    const submitBtn = document.getElementById('submitBtn')
-
-    submitBtn.addEventListener('click', function (e) {
-        if (logUsername.value !== 'math' && logPassword.value !== 'math') {
-            e.preventDefault()
-        }
-    })
-
-    console.log(submitBtn)
-
-
-</script>

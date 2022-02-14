@@ -10,7 +10,9 @@
 const fs = require("fs");
 const path = require('path')
 const directory = path.resolve("./public/images/Users")
-const {deleteOneFile} = require('../utils/deleteOneFile')
+const {
+  deleteOneFile
+} = require('../utils/deleteOneFile')
 
 // BCRYPT
 const bcrypt = require('bcrypt');
@@ -20,52 +22,6 @@ const saltRounds = 10;
 
 /** PAGES **/
 
-// Page Login
-exports.loginpage = (req, res) => {
-  console.log("Je suis la page de connexion");
-  res.render("login");
-};
-
-// Modal Login
-exports.loginData = async (req, res) => {
-  console.log("Mes identitifiants :", req.body);
-  const { username, password  } = req.body;
-
-  if (username && password) {
-    const user = await db.query(
-      `SELECT * FROM users WHERE username = '${username}';`
-    );
-
-    const match = await bcrypt.compare(password, user[0].password)
-
-    console.log('match', match)
-    console.log("try", user);
-
-    if (match === true) {
-      req.session.user = {
-        // username: {
-        //   username: user[0].username
-        // },
-        id: user[0].id,
-        username: user[0].username,
-        biography: user[0].biography,
-        password: user[0].password,
-        mail: user[0].mail,
-        avatar: user[0].avatar,
-        isAdmin: user[0].isAdmin,
-        isBan : user[0].isBan
-      }
-    };
-    if (user[0].isBan === 1) {
-      console.log('vous etes banni, charogne !') ;
-    }
-    if (user[0].isAdmin === 1) req.session.isAdmin === true
-    res.redirect("/admin");
-  }   else { 
-    res.redirect('/')
-  }
-
-};
 
 // Modal Logout
 exports.logout = (req, res) => {
@@ -75,6 +31,60 @@ exports.logout = (req, res) => {
     res.redirect("/");
   });
 };
+
+
+
+// Modal Login
+exports.loginData = async (req, res) => {
+  console.log("Mes identitifiants :", req.body);
+  const { username, password } = req.body;
+
+  if (username && password) {
+    const user = await db.query(
+      `SELECT * FROM users WHERE username = '${username}';`
+    );
+
+    const match = await bcrypt.compare(password, user[0].password)
+
+    // console.log('match', match)
+    // console.log("try", user);
+
+    if (match === true) {
+
+      req.session.user = {
+
+        id: user[0].id,
+        username: user[0].username,
+        biography: user[0].biography,
+        password: user[0].password,
+        mail: user[0].mail,
+        avatar: user[0].avatar,
+        isAdmin: user[0].isAdmin,
+      }
+
+      if (user[0].isAdmin === 1) {
+        req.session.isAdmin === true
+        res.redirect("/admin")
+      } 
+      
+      else if (user[0].isBan === 1) {
+        req.session.destroy()
+        console.log('vous etes banni, charogne !')
+
+        res.render('home', {
+          modalLoginBan: " Sorry, your account has been blocked by the Administrator.",
+          message: await db.query('select * from messages'),
+          articles: await db.query('select * from articles'),
+          })
+      }
+       else {
+        res.redirect('/')
+      }
+    }
+  }
+};
+
+
 
 // Page Register
 exports.registerpage = async (req, res) => {
@@ -109,7 +119,11 @@ exports.userProfile = async (req, res) => {
 // Créer un User (Register)
 exports.createUser = async (req, res) => {
   console.log("Nouvel Utilisateur", req.body);
-  const {username, mail, password} = req.body
+  const {
+    username,
+    mail,
+    password
+  } = req.body
   const hash = bcrypt.hashSync(password, saltRounds);
 
   console.log('mon hash', hash);
@@ -123,27 +137,32 @@ exports.createUser = async (req, res) => {
 // Editer un User Profil
 exports.editUser = async (req, res) => {
 
-const { id } = req.session.user
-const { username, biography } = req.body
-const avatar = req.file
+  const {
+    id
+  } = req.session.user
+  const {
+    username,
+    biography
+  } = req.body
+  const avatar = req.file
 
-console.log('avatar', avatar , 'mon magnifique id', id);
+  console.log('avatar', avatar, 'mon magnifique id', id);
 
-const users = await db.query(`SELECT * FROM users WHERE id = '${req.params.id}';`);
-
-
-if (username, biography) {
-  await db.query(`UPDATE users SET username = '${username}', biography = '${biography}' WHERE id = '${req.params.id}';`)
-}
+  const users = await db.query(`SELECT * FROM users WHERE id = '${req.params.id}';`);
 
 
-if (avatar) {
-  const dir = path.join('./public/images/Users')
-  deleteOneFile(dir, users[0].avatar)
-  await db.query(`UPDATE users SET avatar = '${req.file.filename}' WHERE id = '${req.params.id}';`)
-}
+  if (username, biography) {
+    await db.query(`UPDATE users SET username = '${username}', biography = '${biography}' WHERE id = '${req.params.id}';`)
+  }
 
-console.log('mon USER', req.session.user);
+
+  if (avatar) {
+    const dir = path.join('./public/images/Users')
+    deleteOneFile(dir, users[0].avatar)
+    await db.query(`UPDATE users SET avatar = '${req.file.filename}' WHERE id = '${req.params.id}';`)
+  }
+
+  console.log('mon USER', req.session.user);
   res.redirect('/user');
 
 }

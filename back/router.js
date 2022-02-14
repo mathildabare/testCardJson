@@ -63,7 +63,6 @@ router.route("/contact")
 
 // AUTHENTICATION
 router.route('/login')
-  .get(AuthController.loginpage)
   .post(AuthController.loginData)
 
 router.route('/register')

@@ -16,17 +16,11 @@ const saltRounds = 10;
 
 /** PAGES **/
 
-// Page Lost Password
 
-/*
- * CRUD
- * **************************** */
-
-// POST - Formulaire pour nouveau Password
 
 module.exports = {
 
-    // Page MDP Oublié
+    // POST MDP Oublié
     lostpassword: async (req, res) => {
 
         const user = await db.query(`SELECT * FROM users WHERE mail = '${req.body.mail}'`)
@@ -70,23 +64,22 @@ module.exports = {
                         message: await db.query('select * from messages'),
                         articles: await db.query('select * from articles')
                     })
-                   
+
                 }
             })
         }
     },
 
-
-
+    // Page MDP Oublié
     lostpasswordPage: (req, res) => {
         console.log('Password')
         res.render('lostpassword')
     },
 
-
+    // Page Reset MDP
     resetpasswordPage: async (req, res) => {
 
-        console.log( 'Reset passwor 1', req.protocol + "://" + req.get('host'), "  ||  " , "http://" + req.get('host'))
+        console.log('Reset passwor 1', req.protocol + "://" + req.get('host'), "  ||  ", "http://" + req.get('host'))
 
         // Ici on check notre protocole hébergeur (nodejs localhost) et le lien généré dans le mail
         if (req.protocol + "://" + req.get('host') === "http://" + req.get('host')) {
@@ -97,7 +90,9 @@ module.exports = {
             console.log('edit Password (reset)', req.params.id, req.session)
 
             if (Number(req.params.id) === Number(req.session.visitor.id)) {
-                res.render('resetpassword', { rand: req.session.visitor.id }) 
+                res.render('resetpassword', {
+                    rand: req.session.visitor.id
+                })
 
             } else {
                 console.log("Mauvaise requête")
@@ -106,9 +101,12 @@ module.exports = {
         }
     },
 
-
+    // POST : Reset MDP
     resetpassword: async (req, res) => {
-        const { password, confirmPassword } = req.body
+        const {
+            password,
+            confirmPassword
+        } = req.body
         const hash = bcrypt.hashSync(password, 10)
 
         console.log("controller reset password")
@@ -127,7 +125,7 @@ module.exports = {
 
                 console.log('visitor userID: ', req.session.visitor.userID)
                 req.session.destroy(() => {
-                    res.clearCookie('math')
+                    res.clearCookie('math-session')
                 })
                 res.render('home', {
                     changePassword,
@@ -139,10 +137,3 @@ module.exports = {
     }
 }
 
-
-
-
-
-
-// req.session.visitor = { id: rand, userID: userInfo[0].id }
-// req.session.cookie.maxAge = 900000
