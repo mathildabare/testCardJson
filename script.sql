@@ -117,3 +117,12 @@ INNER JOIN articles ON articles.id = comments.article_id);
 -- Valeur par défaut de l'author_id
 ALTER TABLE articles
 ALTER author_id SET DEFAULT 1;
+
+
+---------------------- DATA --------------------------
+
+
+
+-- Table Tomes
+INSERT INTO tomes (articles_id, number, img, name)
+VALUES (1, 1, `...`, `Judge`);

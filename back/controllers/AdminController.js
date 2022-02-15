@@ -69,17 +69,12 @@ exports.banUserID = async (req, res) => {
 // Créer un Article
 exports.createArticleAdmin = async (req, res) => {
   console.log("new article", req.body, req.params, req.file);
-  const {
-    title,
-    genre_1,
-    genre_2,
-    synopsis
-  } = req.body
+  const { title, genre_1, genre_2, synopsis } = req.body
 
 
   await db.query(`
-    insert into articles (title, img, genre_1, genre_2, synopsis)
-      VALUES ("${title}", "${req.file.filename}", "${genre_1}","${genre_2}","${synopsis}");
+    insert into articles (title, name, img, genre_1, genre_2, synopsis)
+      VALUES ("${title}", "${title}", "${req.file.filename}", "${genre_1}","${genre_2}","${synopsis}");
   `)
 
 

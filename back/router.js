@@ -48,6 +48,8 @@ router.route("/article/:id") //
   .get(BlogController.pageArticleID)
   .post(BlogController.createComment)
 
+// router.route("/tome/:id")
+  // .post(BlogController.createTome)
 
 
 /*  ******** CONTACT *********  */

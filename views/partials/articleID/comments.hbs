@@ -8,16 +8,17 @@
 
             <!---Commentaires-->
 
-{{#each comments}}
+            {{#each comments}}
 
+            
             <div class="client-profil">
                 <blockquote>
-                    <cite> {{author_id}} <img src="/assets/images/comments/rogue.jpg" alt=""></cite>
-                   {{ content }}
+                    <cite> {{author_id}} <img src="{{avatar}}" alt=""></cite>
+                    {{ content }}
                 </blockquote>
             </div>
 
-{{/each}}
+            {{/each}}
 
         </div>
     </div>

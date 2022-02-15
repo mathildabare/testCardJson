@@ -10,9 +10,7 @@
 const fs = require("fs");
 const path = require('path')
 const directory = path.resolve("./public/images/Users")
-const {
-  deleteOneFile
-} = require('../utils/deleteOneFile')
+const { deleteOneFile } = require('../utils/deleteOneFile')
 
 // BCRYPT
 const bcrypt = require('bcrypt');
@@ -86,12 +84,9 @@ exports.registerpage = async (req, res) => {
   console.log('je suis la page register')
   const user = await db.query(`
   SELECT * FROM users;`)
-  console.log('user', user)
+  // console.log('user', user)
 
-  const {
-    username,
-    password
-  } = req.body;
+  const { username, password } = req.body;
 
   res.render("register");
 
@@ -114,11 +109,7 @@ exports.userProfile = async (req, res) => {
 // Créer un User (Register)
 exports.createUser = async (req, res) => {
   console.log("Nouvel Utilisateur", req.body);
-  const {
-    username,
-    mail,
-    password
-  } = req.body
+  const { username, mail, password } = req.body
   const hash = bcrypt.hashSync(password, saltRounds);
 
   console.log('mon hash', hash);
@@ -132,13 +123,8 @@ exports.createUser = async (req, res) => {
 // Editer un User Profil
 exports.editUser = async (req, res) => {
 
-  const {
-    id
-  } = req.session.user
-  const {
-    username,
-    biography
-  } = req.body
+  const { id } = req.session.user
+  const { username, biography } = req.body
   const avatar = req.file
 
   console.log('avatar', avatar, 'mon magnifique id', id);
