@@ -13,6 +13,12 @@ Page: Blog-ID
 
     {{> articleID/event }}
 
+    {{> articleID/tomes }}
+
     {{> articleID/comments }}
 
+{{#if user}}
+
     {{> articleID/addComment }}
+
+{{/if}}

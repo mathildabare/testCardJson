@@ -1,0 +1,48 @@
+{{!-- Modal :
+Comments --}}
+
+
+<div class="modal fade" id="create-tome-modal" tabindex="-1" aria-labelledby="create-tome-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4>Create a Volume</h4>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+
+
+            <form action="/admin/tomes/{{ id }}" method="post" enctype="multipart/form-data">
+                <div class="modal-body">
+                    <div class="connection d-flex justify-content-center flex-column">
+
+
+                        <div class="mb-3 element-form">
+                            <label for="input-name" class="form-label"></label>
+                            <input name="name" type="text" class="form-control" id="input-name" placeholder="Name..">
+                        </div>
+
+
+                        <div class="mb-3 element-form">
+                            <label for="input-number" class="form-label"></label>
+                            <input name="number" type="text" class="form-control" id="input-number"
+                                placeholder="Volume n°..">
+                        </div>
+
+
+                        <div class="mb-3">
+                            <label for="formFileSm" class="form-label"></label>
+                            <input class="form-control form-control-sm" name="img" type="file">
+                        </div>
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-off" data-bs-dismiss="modal">Cancel</button>
+                    <button type="submit" class="btn btn-on">Confirm</button>
+                </div>
+            </form>
+
+
+        </div>
+    </div>
+</div>

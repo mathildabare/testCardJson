@@ -121,8 +121,33 @@ ALTER author_id SET DEFAULT 1;
 
 ---------------------- DATA --------------------------
 
-
-
 -- Table Tomes
-INSERT INTO tomes (articles_id, number, img, name)
-VALUES (1, 1, `...`, `Judge`);
+insert into tomes (articles_id, number, img, name )
+values ('1', '1', '...', 'Judge' );
+
+
+-- SELECT tomes.name, tomes.number, tomes.img
+-- FROM articles
+-- INNER JOIN tomes
+-- ON articles.name = tomes.name;
+
+SELECT tomes.name, tomes.number, tomes.img
+FROM articles
+LEFT JOIN tomes 
+ON articles.name = tomes.name;
+
+
+
+SELECT  articles.name, tomes.name, tomes.number, tomes.img
+FROM articles 
+INNER JOIN tomes 
+ON articles.name = tomes.name 
+WHERE articles.id = ${req.params.id}
+ORDER BY tomes.number;
+
+
+
+ SELECT tomes.name, tomes.number, tomes.img 
+ FROM  articles
+ INNER JOIN tomes 
+ ON articles.id = articles.id

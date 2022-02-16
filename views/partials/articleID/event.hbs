@@ -15,82 +15,8 @@ Partial : Event ID
             </div>
             <hr>
 
-            {{!-- Listes tomes (cf: DB) --}}
-
-
-
-            {{!-- <div class="container">
-                <div class="row">
-
-                    <div class="card-details">
-                        <img class="card-img-top" src="/assets/images/Articles/{{ img }}">
-                        <div class="card-body">
-                            <h4 class="card-title"> Tome {{ number }}  </h4>
-                        </div>
-                    </div>
-                </div>
-
-
-            </div> --}}
-
-
-
-
-            {{#if user.isAdmin}}
-
-  <div class="col-md-3 mb-3">
-                <div class="card-details">
-                    <button type="button" class="btn btn-add" data-bs-toggle="modal"
-                        data-bs-target="#create-tome-modal"><i class="fas fa-plus"></i>
-                    </button>
-                </div>
-            </div>
-
-          
-            {{/if}}
-
         </div>
     </div>
 </section>
 
 
-
-
-  <div class="modal fade" id="create-tome-modal" tabindex="-1" aria-labelledby="create-tome-label"
-                aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4>Create a Volume</h4>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-
-
-                        <form action="/tome/{{ id }}" method="post" enctype="multipart/form-data">
-                            <div class="modal-body">
-                                <div class="connection d-flex justify-content-center flex-column">
-
-                                    
-                                    <div class="mb-3 element-form">
-                                        <label for="input-title" class="form-label"></label>
-                                        <input name="number" type="text" class="form-control" id="input-number"
-                                            placeholder="Volume n°..">
-                                    </div>
-
-                                    <div class="mb-3">
-                                        <label for="formFileSm" class="form-label"></label>
-                                        <input class="form-control form-control-sm" name="img" type="file">
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-off" data-bs-dismiss="modal">Cancel</button>
-                                <button type="submit" class="btn btn-on">Confirm</button>
-                            </div>
-                        </form>
-
-
-                    </div>
-                </div>
-            </div>

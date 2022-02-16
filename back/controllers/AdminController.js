@@ -1,3 +1,4 @@
+
 /*
  * Controller: ADMIN
  * **************** */
@@ -21,7 +22,8 @@ exports.get = async (req, res) => {
     users: await db.query('select * from users'),
     articles: await db.query('select * from articles'),
     messages: await db.query('select * from messages'),
-    comments: await db.query('select * from comments')
+    comments: await db.query('select * from comments'),
+    tomes: await db.query('select * from tomes ORDER BY name, number DESC'),
   })
   }
 
@@ -122,6 +124,37 @@ exports.editArticleID = async (req, res) => {
   res.redirect('/admin#blog');
 }
 
+
+/***** GESTION TOMES ******/
+
+// Créer un Tome
+exports.createTome = async (req, res) => {
+
+  const { number, name } = req.body
+  
+
+
+  const tomes = await db.query(`
+  SELECT articles.name,tomes.id, tomes.name, tomes.number, tomes.img
+  FROM  tomes
+  INNER JOIN articles 
+  ON tomes.name = articles.name
+  ORDER BY tomes.number; `)
+   
+  const id = tomes[0].id
+
+  // console.log('mes tomes : ', tomes);
+  // console.log('mon article lié : ', articles);
+
+  await db.query (`insert into tomes (name, number, img )
+  VALUES ('${name}','${number}','${req.file.filename}')
+  `)
+
+
+  
+  res.redirect(`/admin`);
+  };
+  
 
 
 /***** GESTION COMMENTAIRES ******/

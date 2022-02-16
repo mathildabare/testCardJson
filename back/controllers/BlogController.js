@@ -33,13 +33,22 @@ exports.pageArticleID = async (req, res) => {
 
   const article = await db.query(`select * from articles where id = ${ id };`) //table articles + article.id
   const comments = await db.query(`select * from comments where article_id = ${ id };`) //table comments + article.id
+  const tomes = await db.query(`
+  SELECT  articles.name, tomes.name, tomes.number, tomes.img
+  FROM articles 
+  INNER JOIN tomes 
+  ON articles.name = tomes.name 
+  WHERE articles.id = ${req.params.id}
+  ORDER BY tomes.number;`)
+
 
   console.log('article array', article)
   console.log('article obj', article[0])
 
   res.render("articleID", {
     article: article[0],
-    comments
+    comments, 
+    tomes
   })
 }
 
@@ -76,20 +85,4 @@ exports.createComment = async (req, res) => {
   res.redirect(`/article/${ id }#comments`);
 };
 
-// Créer un Tome
-// exports.createTome = async (req, res) => {
 
-//   console.log("tome article", req.body);
-
-//   const { number, title } = req.body
-//   const img = req.file.filename
-
-
-//   await db.query(`
-//     insert into tomes (articles_id, number, img, name)
-//     VALUES ("${id}","${number}", "${img}", "${title}" );`)
-
-//   // console.log(`articles/${id}`);
-
-//   res.redirect(`/article/${ id }`);
-// };

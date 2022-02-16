@@ -17,6 +17,7 @@ const AdminController = require('./controllers/AdminController')
 // Multer
 const uploadArticles = require("./config/multer-articles");
 const uploadUsers = require("./config/multer-users");
+const uploadTomes = require("./config/multer-tomes");
 
 // Middlewares
 const mdl = require('./middlewares/isAdmin')
@@ -48,8 +49,6 @@ router.route("/article/:id") //
   .get(BlogController.pageArticleID)
   .post(BlogController.createComment)
 
-// router.route("/tome/:id")
-  // .post(BlogController.createTome)
 
 
 /*  ******** CONTACT *********  */
@@ -114,6 +113,9 @@ router.route('/admin/articles')
 router.route('/admin/articles/:id')
   .put(mdl.isAdmin, uploadArticles.single('img'), AdminController.editArticleID)
   .delete(AdminController.deleteArticleID)
+
+router.route("/admin/tomes/:id")
+  .post(uploadTomes.single('img'), AdminController.createTome)
 
 router.route('/admin/comments/:id')
   .delete(mdl.isAdmin, AdminController.deleteCommentID)
