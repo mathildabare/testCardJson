@@ -207,6 +207,14 @@ section {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
+
+.card-details button {
+    margin-top: 75%;
+text-align: center;
+font-size: 30px;
+
+}
+
 .link-card {
 color: black;
 text-decoration: none;

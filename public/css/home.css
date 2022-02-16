@@ -77,7 +77,7 @@ h5 {
 
 .basic-btn {
     display: inline-block;
-    padding: 10px 20px;
+    padding: 15px 25px;
     margin-right: 10px;
     border-radius: 10px;
     text-decoration: none;
@@ -87,6 +87,7 @@ h5 {
 
 .btn-full {
     background-color: white;
+    font-size: 1.5rem;
     color: rgb(117, 21, 21);
 }
 
@@ -98,6 +99,7 @@ h5 {
 
 .btn-ghost {
     color: white;
+    font-size: 1.5rem;
     border: 1px solid white;
 }
 
@@ -244,11 +246,6 @@ header {
     transition: all 0.5s;
 }
 
-.card-details img {
-    display: block;
-    margin: 0 auto;
-    width: 70%;
-}
 
 .card-details h4 {
     font-size: 100%;
@@ -260,8 +257,8 @@ header {
 }
 
 .card-details img {
-    width: 80%;
-    height: auto;
+    width: 75%;
+    height: 285px;
     margin-bottom: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }

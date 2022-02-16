@@ -19,11 +19,15 @@ const { updateFile } = require('../utils/updateFile')
 exports.get = async (req, res) => {
   res.render('admin', {
     layout: 'adminLayout',
-    users: await db.query('select * from users'),
-    articles: await db.query('select * from articles'),
-    messages: await db.query('select * from messages'),
-    comments: await db.query('select * from comments'),
-    tomes: await db.query('select * from tomes ORDER BY name, number DESC'),
+    users: await db.query(`select * from users`),
+    articles: await db.query(`select * from articles`),
+    messages: await db.query(`select * from messages`),
+    comments: await db.query(`
+    SELECT users.username, users.avatar, articles.title, comments.content 
+    FROM ((comments
+    INNER JOIN users ON users.id = comments.author_id)
+    INNER JOIN articles ON articles.id = comments.article_id)`),
+    tomes: await db.query(`select * from tomes ORDER BY name, number`),
   })
   }
 
@@ -152,7 +156,7 @@ exports.createTome = async (req, res) => {
 
 
   
-  res.redirect(`/admin`);
+  res.redirect(`/admin#tomes`);
   };
   
 

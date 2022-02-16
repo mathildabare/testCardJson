@@ -147,6 +147,41 @@ ORDER BY tomes.number;
 
 
 
+
+SELECT  articles.name, tomes.name, tomes.number, tomes.img
+FROM articles 
+INNER JOIN tomes 
+ON articles.name = tomes.name 
+WHERE articles.id = ${req.params.id}
+
+
+
+-- Blog
+  SELECT  users.username, users.avatar, comments.content, comments.article_id
+  FROM users 
+  INNER JOIN comments 
+  ON users.id = comments.author_id
+  WHERE article_id = ${req.params.id}; 
+
+
+avatar, content, username
+
+author-id = users.id
+
+
+-- Admin
+
+
+SELECT users.username, users.avatar, articles.title, comments.content 
+FROM ((comments
+INNER JOIN users ON users.id = comments.author_id)
+INNER JOIN articles ON articles.id = comments.article_id
+);
+
+
+
+
+
  SELECT tomes.name, tomes.number, tomes.img 
  FROM  articles
  INNER JOIN tomes 

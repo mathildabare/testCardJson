@@ -32,7 +32,16 @@ exports.pageArticleID = async (req, res) => {
   console.log("je suis la page article/:id", req.params);
 
   const article = await db.query(`select * from articles where id = ${ id };`) //table articles + article.id
-  const comments = await db.query(`select * from comments where article_id = ${ id };`) //table comments + article.id
+  const comments = await db.query(`  
+  SELECT  users.username, users.avatar, comments.content, comments.article_id
+  FROM users 
+  INNER JOIN comments 
+  ON users.id = comments.author_id
+  WHERE article_id = ${id}; 
+`) //table comments + article.id
+  
+
+  
   const tomes = await db.query(`
   SELECT  articles.name, tomes.name, tomes.number, tomes.img
   FROM articles 
