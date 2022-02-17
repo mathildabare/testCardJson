@@ -10,7 +10,9 @@
 const fs = require("fs");
 const path = require('path')
 const directory = path.resolve("./public/images/Users")
-const { deleteOneFile } = require('../utils/deleteOneFile')
+const {
+  deleteOneFile
+} = require('../utils/deleteOneFile')
 
 // BCRYPT
 const bcrypt = require('bcrypt');
@@ -23,7 +25,10 @@ const saltRounds = 10;
 // Modal Login
 exports.loginData = async (req, res) => {
   console.log("Mes identitifiants :", req.body);
-  const { username, password } = req.body;
+  const {
+    username,
+    password
+  } = req.body;
 
   if (username && password) {
     const user = await db.query(
@@ -51,9 +56,7 @@ exports.loginData = async (req, res) => {
       if (user[0].isAdmin === 1) {
         req.session.isAdmin === true
         res.redirect("/admin")
-      } 
-      
-      else if (user[0].isBan == 1) {
+      } else if (user[0].isBan == 1) {
         req.session.destroy()
         console.log('vous etes banni, charogne !')
 
@@ -61,9 +64,8 @@ exports.loginData = async (req, res) => {
           modalLoginBan: " Sorry, your account has been blocked by the Administrator.",
           message: await db.query('select * from messages'),
           articles: await db.query('select * from articles'),
-          })
-      }
-       else {
+        })
+      } else {
         res.redirect('/')
       }
     }
@@ -86,7 +88,10 @@ exports.registerpage = async (req, res) => {
   SELECT * FROM users;`)
   // console.log('user', user)
 
-  const { username, password } = req.body;
+  const {
+    username,
+    password
+  } = req.body;
 
   res.render("register");
 
@@ -114,17 +119,33 @@ exports.createUser = async (req, res) => {
 
   console.log('mon hash', hash);
 
-  await db.query(`
+  if (req.file) {
+
+    await db.query(`
     insert into users (username, mail, password, avatar)
       VALUES ("${username}","${mail}","${hash}", "${req.file.filename}");`)
+  }
+
+  else if (!req.file) {
+    const avatar = req.file ? req.file.filename : "defaultAvatar.png"
+
+    await db.query(`
+    insert into users (username, mail, password, avatar)
+      VALUES ("${username}","${mail}","${hash}", "${avatar}");`)
+  }
   res.redirect("/");
 };
 
 // Editer un User Profil
 exports.editUser = async (req, res) => {
 
-  const { id } = req.session.user
-  const { username, biography } = req.body
+  const {
+    id
+  } = req.session.user
+  const {
+    username,
+    biography
+  } = req.body
   const avatar = req.file
 
   console.log('avatar', avatar, 'mon magnifique id', id);

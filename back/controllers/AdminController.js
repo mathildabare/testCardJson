@@ -136,8 +136,6 @@ exports.createTome = async (req, res) => {
 
   const { number, name } = req.body
   
-
-
   const tomes = await db.query(`
   SELECT articles.name,tomes.id, tomes.name, tomes.number, tomes.img
   FROM  tomes
@@ -147,14 +145,9 @@ exports.createTome = async (req, res) => {
    
   const id = tomes[0].id
 
-  // console.log('mes tomes : ', tomes);
-  // console.log('mon article lié : ', articles);
-
   await db.query (`insert into tomes (name, number, img )
   VALUES ('${name}','${number}','${req.file.filename}')
   `)
-
-
   
   res.redirect(`/admin#tomes`);
   };
