@@ -10,9 +10,7 @@
 const fs = require("fs");
 const path = require('path')
 const directory = path.resolve("./public/images/Users")
-const {
-  deleteOneFile
-} = require('../utils/deleteOneFile')
+const { deleteOneFile } = require('../utils/deleteOneFile')
 
 // BCRYPT
 const bcrypt = require('bcrypt');
@@ -25,10 +23,7 @@ const saltRounds = 10;
 // Modal Login
 exports.loginData = async (req, res) => {
   console.log("Mes identitifiants :", req.body);
-  const {
-    username,
-    password
-  } = req.body;
+  const { username, password } = req.body;
 
   if (username && password) {
     const user = await db.query(
@@ -88,13 +83,9 @@ exports.registerpage = async (req, res) => {
   SELECT * FROM users;`)
   // console.log('user', user)
 
-  const {
-    username,
-    password
-  } = req.body;
+  const { username, password } = req.body;
 
   res.render("register");
-
 };
 
 // Page User
@@ -107,9 +98,7 @@ exports.userProfile = async (req, res) => {
 
 
 
-/*
- * CRUD
- * **************************** */
+/** CRUD **/
 
 // Créer un User (Register)
 exports.createUser = async (req, res) => {
@@ -124,28 +113,23 @@ exports.createUser = async (req, res) => {
     await db.query(`
     insert into users (username, mail, password, avatar)
       VALUES ("${username}","${mail}","${hash}", "${req.file.filename}");`)
-  }
+  } else if (!req.file) {
 
-  else if (!req.file) {
     const avatar = req.file ? req.file.filename : "defaultAvatar.png"
 
     await db.query(`
     insert into users (username, mail, password, avatar)
       VALUES ("${username}","${mail}","${hash}", "${avatar}");`)
   }
+
   res.redirect("/");
 };
 
 // Editer un User Profil
 exports.editUser = async (req, res) => {
 
-  const {
-    id
-  } = req.session.user
-  const {
-    username,
-    biography
-  } = req.body
+  const { id } = req.session.user
+  const { username, biography } = req.body
   const avatar = req.file
 
   console.log('avatar', avatar, 'mon magnifique id', id);

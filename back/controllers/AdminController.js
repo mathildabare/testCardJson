@@ -22,11 +22,13 @@ exports.get = async (req, res) => {
     users: await db.query(`select * from users`),
     articles: await db.query(`select * from articles`),
     messages: await db.query(`select * from messages`),
+    
     comments: await db.query(`
-    SELECT users.username, users.avatar, articles.title, comments.content 
+    SELECT users.username, users.avatar, articles.title, articles.img, comments.content, comments.id 
     FROM ((comments
     INNER JOIN users ON users.id = comments.author_id)
     INNER JOIN articles ON articles.id = comments.article_id)`),
+    
     tomes: await db.query(`select * from tomes ORDER BY name, number`),
   })
   }
@@ -152,6 +154,47 @@ exports.createTome = async (req, res) => {
   res.redirect(`/admin#tomes`);
   };
   
+// Editer un Tome
+exports.editTomeID = async (req, res) => {
+  console.log("On édite:", req.params.id, req.body)
+
+  const id = req.params.id
+  const { name, number } = req.body
+  const img = req.file
+
+
+  const tomes = await db.query(`SELECT * FROM tomes WHERE id = ${id}`)
+
+  if (name, number) {
+    await db.query(`UPDATE tomes SET name = '${name}', number = '${number}' WHERE id = ${id};`)
+  }
+
+  if (img) {
+    const dir = path.join('./public/images/Tomes')
+    deleteOneFile(dir, tomes[0].img)
+    await db.query(`UPDATE tomes SET img = '${req.file.filename}' WHERE id = ${id}`)
+  }
+
+  console.log('update article', req.body, req.params, req.query, req.file)
+  res.redirect('/admin#tomes');
+}
+
+// Supprime un Tome
+exports.deleteTomeID = async (req, res) => {
+
+  // On sélectionne l'article dans la DB pour le supprimer
+  const tomes = await db.query(`select * from tomes WHERE  id = ${ req.params.id };`)
+  await db.query(`delete from tomes where id = ${ req.params.id }`)
+
+
+  // On cherche l'Img de l'article dans le Directory pour la supprimer
+  const dir = path.join('./public/images/Tomes')
+  deleteOneFile(dir,tomes[0].img)
+
+  console.log('delete article', req.body, req.params, req.query, req.file)
+  res.redirect('/admin#tomes');
+}
+
 
 
 /***** GESTION COMMENTAIRES ******/

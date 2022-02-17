@@ -286,6 +286,12 @@ footer input {
         transition: all 0.5s;
     }
 
+    .article-container img {
+        height: 400px;
+        width: auto;
+        
+    }
+
     .login {
         margin-left: 0;
     }

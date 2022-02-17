@@ -21,20 +21,22 @@ Partial: Tomes (Admin)
                     <p>Tome n° {{ number }}</p>
                     <div class="gst-icons">
 
-                        {{!-- <button type="button" class="btn-gestion" data-bs-toggle="modal"
-                            data-bs-target="#edit-article-modal-{{ id }}">
-                            <i class="fas fa-pencil-alt"></i></button> --}}
+                        <button type="button" class="btn-gestion" data-bs-toggle="modal"
+                            data-bs-target="#edit-tome-modal-{{ id }}">
+                            <i class="fas fa-pencil-alt"></i></button>
 
-                        {{!-- <button type="button" class="btn-gestion" data-bs-toggle="modal"
-                            data-bs-target="#delete-content-modal-{{ id }}">
+                        <button type="button" class="btn-gestion" data-bs-toggle="modal"
+                            data-bs-target="#delete-tome-modal-{{ id }}">
                             <i class="fas fa-trash-alt"></i>
-                        </button> --}}
+                        </button>
 
                         {{> modals/tomes }}
 
                     </div>
                 </div>
             </div>
+
+            
 
             {{/each}}
 

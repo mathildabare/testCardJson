@@ -237,6 +237,7 @@ header {
     padding: 30px 30px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
     margin-bottom: 20px;
+    height: 100%;
     text-align: center;
 }
 
@@ -257,8 +258,9 @@ header {
 }
 
 .card-details img {
-    width: 75%;
-    height: 285px;
+    margin: 0 auto;
+    max-width: 100%;
+    max-height: 250px;
     margin-bottom: 20px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
@@ -445,31 +447,25 @@ footer input {
     .homeTitle {
         display: flex;
         flex-direction: column;
-        width: 60%;
+        width: 55%;
     }
 
     .homeTitle a {
         margin: 5px 0;
     }
 
-    .footer-us,
-    .footer-icons,
-    .newsletter {
-        margin-left: 0;
-        margin-right: 0;
+
+    .card-details img {
+        margin: 0 auto;
+        max-width: 80%;
+        max-height: 420px;
+        margin-bottom: 20px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
     }
 
     /** Carousel **/
 
 
-    .carousel-item {
-        max-height: 35vh;
-    }
-
-    .carousel-item h3,
-    h4 {
-        font-weight: 400;
-    }
 
     .carousel-item h2 {
         font-size: 120%;

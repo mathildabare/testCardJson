@@ -116,6 +116,8 @@ router.route('/admin/articles/:id')
 
 router.route("/admin/tomes/:id")
   .post(uploadTomes.single('img'), AdminController.createTome)
+  .put(mdl.isAdmin, uploadTomes.single('img'), AdminController.editTomeID)
+  .delete(AdminController.deleteTomeID)
 
 router.route('/admin/comments/:id')
   .delete(mdl.isAdmin, AdminController.deleteCommentID)
