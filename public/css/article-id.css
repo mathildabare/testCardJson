@@ -2,6 +2,12 @@
  * GENERAL
  * ******************* */
 
+ html {
+    background-color: white;
+}
+
+/** typos **/
+
 h1,
 h2,
 h3,
@@ -15,12 +21,16 @@ h4,
     word-spacing: 8px;
 }
 
+h1 {
+    color: white;
+}
+
 h2 {
     color: black;
-    font-size: 250%;
+    font-size: 165%;
     text-align: center;
     margin-top: 40px;
-    margin-bottom: 80px;
+    margin-bottom: 30px;
 }
 
 h2::after {
@@ -33,98 +43,77 @@ h2::after {
     margin-top: 10px;
 }
 
-h3 {
-    font-size: 160%;
+h4 {
+font-size: 100%;    
 }
 
 p,
-label,
-cite,
-blockquote {
-    font-size: 10pt;
+label {
+    font-size: 7.5pt;
     font-weight: 300;
     line-height: 24px;
 }
 
-h5 {
-    font-family: 'Dancing Script', 'Arial', sans-serif;
-    text-transform: uppercase;
-    font-weight: 500;
-    word-spacing: 8px;
-    text-align: end;
+small {
+    font-size: 7pt;
 }
+
+
+.fw-400 {
+    font-weight: 400;
+}
+
+/** Buttons **/
+
+.btn-submit {
+    border: 1px solid black;
+    background-color: lightgrey;
+    font-size: 10pt;
+    color: black;
+}
+
+
+
+.footer-btn {
+    display: inline-block;
+    height: 25px;
+    width: 60px;
+    background-color: lightgray;
+    color: black;
+    border-radius: 5px;
+    padding: 4px;
+    margin-top: 10px;
+    font-size: small;
+}
+
+
+/** Padding & Margin **/
 
 section {
     padding: 30px 0 60px 0;
 }
 
-.btn-nav-log {
-    display: flex;
-    border: 1px solid black;
-    background-color: lightgrey;
-    font-size: 10pt;
-    color: black;
-    height: 25px;
-    border-radius: 0;
-    align-items: center;
-    margin-bottom: 10px;
-}
-
-
-header {
-
-    background-image:
-        linear-gradient(to right, rgba(235, 235, 235, 0.4), rgba(133, 131, 131, 0.6)),
-        url(/assets/images/head/header2.jpg);
-    height: 60vh;
-    background-position: center;
-    background-size: cover;
-    position: relative;
-}
-
-/** titles **/
-
-.homeTitle {
-    position: absolute;
-    top: 20%;
-    width: auto;
-    color: white;
-}
-
-.homeTitle h1 {
-    font-size: 340%;
-
-}
-
-.homeTitle h1 span {
-
-    font-weight: 400;
-    letter-spacing: -6px;
-}
-
-.homeTitle p {
-
-    color: white;
-}
-
-
-
- /* 
+/* 
     * NAVBAR
     * ******************* */
- 
-    .navbar-nav {
-        font-family: 'Spartan', 'Arial', sans-serif;
-        font-weight: 400;
-    }
 
-   .btn-submit{
-       border: 1px solid black;
-       background-color: lightgrey;
-       font-size: 10pt;
-       color: black;
-   }
+.nav-item {
+    font-size: 8pt;
+}
 
+nav btn {
+    font-size: 8pt;
+}
+
+.navbar-nav {
+    font-family: 'Spartan', 'Arial', sans-serif;
+    font-weight: 400;
+}
+
+.selectpicker {
+    border: none;
+    border-radius: 5px;
+}
 
    /* 
   * EVENT
@@ -144,42 +133,31 @@ text-align: center;
 }
 
 .article-container img {
-    height: 650px;
-    width: auto;
+    height: auto;
+    width: 50%;
     
 }
+
+cite {
+    font-size: 8pt;
+}
+
 
 /* 
   * COMMENTAIRES
   * ******************* */
 
-.clients {
+.comments {
     background-color:lightgrey;
 }
 
-.client-profil {
-    background-color: white;
-    border: 1px solid rgb(145, 145, 145);
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    padding: 20px;
+.all-comments {
+    background-color: rgb(243, 243, 243);
     margin-bottom: 20px;
-    height: 10%;
     width: 100%;
+    padding: 5px;
 }
 
-.client-profil img {
-    border-radius: 50%;
-    width: 8%;
-    height: auto;
-    margin-left: 20%;
-
-}
-
-.client-profil:hover {
-    transform: translateX(20px);
-    background-color: rgb(240, 239, 239);
-    transition: all 0.5s;
-}
 
 .btn-contact {
     background: lightgrey;
@@ -194,6 +172,41 @@ text-align: center;
 .form-comment{
     background-color: lightgrey;
 }
+
+
+.users {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+}
+
+.users img {
+
+    border-radius: 50%;
+    margin-top: 5px;
+    width: 25%;
+    height: auto;
+}
+
+p {
+    margin: 0;
+}
+
+
+.user-comment {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    line-break: anywhere;
+    font-weight: 300;
+}
+
+
 
 /* 
  * FOOTER
@@ -295,4 +308,10 @@ footer input {
     .login {
         margin-left: 0;
     }
+
+.users img {
+    width: 15%;
+}
+
+
 }

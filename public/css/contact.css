@@ -2,6 +2,12 @@
  * GENERAL
  * ******************* */
 
+ html {
+    background-color: white;
+}
+
+/** typos **/
+
 h1,
 h2,
 h3,
@@ -15,12 +21,16 @@ h4,
     word-spacing: 8px;
 }
 
+h1 {
+    color: white;
+}
+
 h2 {
     color: black;
-    font-size: 250%;
+    font-size: 165%;
     text-align: center;
     margin-top: 40px;
-    margin-bottom: 80px;
+    margin-bottom: 30px;
 }
 
 h2::after {
@@ -34,28 +44,95 @@ h2::after {
 }
 
 h3 {
-    font-size: 160%;
+    font-size: 120%;
 }
 
 p,
-label,
-cite,
-blockquote {
-    font-size: 10pt;
+label {
+    font-size: 7.5pt;
     font-weight: 300;
     line-height: 24px;
 }
 
-h5 {
-    font-family: 'Dancing Script', 'Arial', sans-serif;
-    text-transform: uppercase;
-    font-weight: 500;
-    word-spacing: 8px;
-    text-align: end;
+small {
+    font-size: 7pt;
 }
 
-section {
-    padding: 30px 0 60px 0;
+
+.fw-400 {
+    font-weight: 400;
+}
+
+/** Buttons **/
+
+.btn-submit {
+    border: 1px solid black;
+    background-color: lightgrey;
+    font-size: 10pt;
+    color: black;
+}
+
+.btn-full {
+    background-color: white;
+    font-size: 0.8rem;
+    color: rgb(117, 21, 21);
+}
+
+.btn-full:hover {
+    background-color: rgb(117, 21, 21);
+    transition: background-color 1s, color 1s, border 1s;
+    color: white;
+}
+
+.btn-ghost {
+    color: white;
+    font-size: 0.8rem;
+    border: 1px solid white;
+}
+
+.btn-ghost:hover {
+    background-color: rgb(117, 21, 21);
+    border: 1px solid rgb(117, 21, 21);
+    transition: background-color 1s, color 1s, border 1s;
+    color: white;
+}
+
+.btn-card {
+    display: inline-block;
+    color: rgb(44, 44, 44);
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background-color 1s, color 1s, border 1s;
+    margin-bottom: 20px;
+}
+
+.btn-card:hover {
+    color: rgb(44, 44, 44);
+}
+
+.btn-red {
+    background-color: rgb(187, 52, 52);
+    color: white;
+    font-size: 0.7rem;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.btn-red:hover {
+    background-color: rgb(214, 91, 91);
+    color: white;
+}
+
+.footer-btn {
+    display: inline-block;
+    height: 25px;
+    width: 60px;
+    background-color: lightgray;
+    color: black;
+    border-radius: 5px;
+    padding: 4px;
+    margin-top: 10px;
+    font-size: small;
 }
 
 .btn-nav-log {
@@ -70,20 +147,36 @@ section {
     margin-bottom: 10px;
 }
 
+/** Padding & Margin **/
+
+section {
+    padding: 30px 0 60px 0;
+}
+
 /* 
     * NAVBAR
     * ******************* */
+
+.nav-item {
+    font-size: 8pt;
+}
+
+nav btn {
+    font-size: 8pt;
+}
 
 .navbar-nav {
     font-family: 'Spartan', 'Arial', sans-serif;
     font-weight: 400;
 }
 
-.btn-submit {
-    border: 1px solid black;
-    background-color: lightgrey;
-    font-size: 10pt;
-    color: black;
+.selectpicker {
+    border: none;
+    border-radius: 5px;
+}
+
+.hogsmeade img {
+    max-width: 25%;
 }
 
 
@@ -96,9 +189,7 @@ p {
     margin-top: 0;
 }
 
-.contact-form {
-    margin-bottom: 20px;
-}
+
 
 .contact-message {
     width: 100%;
@@ -165,10 +256,11 @@ p {
 }
 
 .transports {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     background-color: lightgrey;
     border: 1px solid grey;
-    width: 50%;
-    padding: 80px 0;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
 
@@ -253,170 +345,6 @@ footer p {
     color: white;
 }
 
-@media screen and (max-width: 640px) {
-
-    .contact-us-img {
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    .transports {
-        margin-top: 30px;
-        width: 100%;
-        height: auto;
-    }
-
-    /** Footer **/
-
-    .footer-us,
-    .footer-icons,
-    .newsletter {
-        margin-left: 0;
-        margin-right: 0;
-    }
-
-    .login {
-        margin-left: 0;
-    }
-
-    .contact-us img {
-        max-width: 100%;
-        max-height: auto;
-    }
-
-    .hogsmeade {
-        margin-top: 20px;
-        padding: 20px;
-    }
-}
-
-/* 
- * GENERAL
- * ******************* */
-
- h1,
- h2,
- h3,
- h4,
- .navbar {
- 
-     font-family: 'Lato', 'Arial', sans-serif;
-     text-transform: uppercase;
-     font-weight: 300;
-     letter-spacing: -1px;
-     word-spacing: 8px;
- }
- 
- h2 {
-     color: black;
-     font-size: 250%;
-     text-align: center;
-     margin-top: 40px;
-     margin-bottom: 80px;
- }
- 
- h2::after {
-     display: block;
-     height: 2px;
-     background-color: rgb(162, 29, 29);
-     width: 100px;
-     content: "  ";
-     margin: 0 auto;
-     margin-top: 10px;
- }
- 
- h3 {
-     font-size: 160%;
- }
- 
- p,
- label,
- cite,
- blockquote {
-     font-size: 10pt;
-     font-weight: 300;
-     line-height: 24px;
- }
- 
- h5 {
-     font-family: 'Dancing Script', 'Arial', sans-serif;
-     text-transform: uppercase;
-     font-weight: 500;
-     word-spacing: 8px;
-     text-align: end;
- }
- 
- section {
-     padding: 30px 0 60px 0;
- }
- 
- .btn-nav-log {
-     display: flex;
-     border: 1px solid black;
-     background-color: lightgrey;
-     font-size: 10pt;
-     color: black;
-     height: 25px;
-     border-radius: 0;
-     align-items: center;
-     margin-bottom: 10px;
- }
- 
- /* 
-     * NAVBAR
-     * ******************* */
- 
- .navbar-nav {
-     font-family: 'Spartan', 'Arial', sans-serif;
-     font-weight: 400;
- }
- 
- .btn-submit {
-     border: 1px solid black;
-     background-color: lightgrey;
-     font-size: 10pt;
-     color: black;
- }
- 
- 
- header {
- 
-     background-image:
-         linear-gradient(to right, rgba(235, 235, 235, 0.4), rgba(133, 131, 131, 0.6)),
-         url(../imgs/head/snow-head.jpeg);
-     height: 40vh;
-     background-position: center;
-     background-size: cover;
-     position: relative;
- }
- 
- 
- /** titles **/
- 
- .homeTitle {
-     position: absolute;
-     top: 20%;
-     width: auto;
-     color: white;
- }
- 
- .homeTitle h1 {
-     font-size: 340%;
- 
- }
- 
- .homeTitle h1 span {
- 
-     font-weight: 400;
-     letter-spacing: -6px;
- }
- 
- .homeTitle p {
- 
-     color: white;
- }
- 
- 
  
  /* 
   * Infos Hogsmeade
@@ -426,12 +354,7 @@ footer p {
      background-color: rgb(220, 220, 220);
      text-align: center;
  }
- 
- .contact-us-img {
-     max-width: 100%;
-     min-height: auto;
- }
- 
+
  
  .hogsmeade {
      background-color: lightgrey;
@@ -537,10 +460,6 @@ footer input {
  
  @media screen and (max-width: 640px) {
  
-     .contact-us-img {
-         margin-left: 0;
-         margin-right: 0;
-     }
  
      .transports {
          margin-top: 30px;
@@ -561,10 +480,6 @@ footer input {
          margin-left: 0;
      }
  
-     .contact-us img {
-         max-width: 100%;
-         max-height: auto;
-     }
  
      .hogsmeade {
          margin-top: 20px;
