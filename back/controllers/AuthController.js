@@ -109,11 +109,7 @@ exports.userProfile = async (req, res) => {
 // Créer un User (Register)
 exports.createUser = async (req, res) => {
   console.log("Nouvel Utilisateur", req.body);
-  const {
-    username,
-    mail,
-    password
-  } = req.body
+  const {username, mail, password } = req.body
   const hash = bcrypt.hashSync(password, saltRounds);
 
   console.log('mon hash', hash);
@@ -169,3 +165,8 @@ exports.editUser = async (req, res) => {
     res.redirect('back')
   })
 }
+ 
+
+
+// ADD CONDITIONS MDP
+// ADD CONDTIONS USERNAME 
