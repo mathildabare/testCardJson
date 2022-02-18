@@ -173,15 +173,7 @@ nav btn {
 
 
 .section-404 {
-
-    height: 85vh;
-    background-position: center;
-    background-size: cover;
-    position: relative;
-}
-
-.section-404 img {
-    margin-top: 110px;
+    text-align: center;
 }
 
 .section-404 h1 {
@@ -189,3 +181,76 @@ nav btn {
     color: black;
 }
 
+.section-404 img {
+    width: 46.2%;
+    height: auto;
+}
+
+footer {
+    background-color: rgb(41, 41, 41);
+    color: white;
+    height: auto;
+    font-size: 10pt;
+    font-family: 'Lato', 'Arial', sans-serif;
+    font-weight: 400;
+}
+
+footer p {
+    font-size: 9pt;
+}
+
+
+footer input {
+    height: 25px;
+}
+
+
+.footer-us ul li {
+    list-style: none;
+}
+
+.footer-us ul li a {
+    margin-right: 30px;
+}
+
+
+
+.newsletter,
+.footer-icons {
+    margin-top: 10px;
+}
+
+.footer-btn {
+    display: inline-block;
+    height: 20px;
+    width: 50px;
+    background-color: lightgray;
+    color: black;
+    border-radius: 5px;
+    margin: 5px;
+    font-size: 10px;
+}
+
+/** Icons **/
+
+.footer-icons a {
+    font-size: 18px;
+    margin: 0 10px;
+    color: white;
+}
+
+.footer-icons a:hover {
+    color: lightgray;
+}
+
+.copyright {
+    margin-top: 2px;
+    background-color: rgba(0, 0, 0, 0.2);
+    width: 100%;
+    padding: 1px;
+    text-align: center;
+}
+
+.copyright a {
+    color: white;
+}

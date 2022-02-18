@@ -20,15 +20,14 @@ exports.get = async (req, res) => {
   res.render('admin', {
     layout: 'adminLayout',
     users: await db.query(`select * from users`),
-    articles: await db.query(`select * from articles`),
+    articles: await db.query(`select * from articles order by title`),
     messages: await db.query(`select * from messages`),
-    
     comments: await db.query(`
     SELECT users.username, users.avatar, articles.title, articles.img, comments.content, comments.id 
     FROM ((comments
     INNER JOIN users ON users.id = comments.author_id)
-    INNER JOIN articles ON articles.id = comments.article_id)`),
-    
+    INNER JOIN articles ON articles.id = comments.article_id)
+    order by articles.title`),
     tomes: await db.query(`select * from tomes ORDER BY name, number`),
   })
   }
@@ -82,8 +81,7 @@ exports.createArticleAdmin = async (req, res) => {
 
   await db.query(`
     insert into articles (title, name, img, genre_1, genre_2, synopsis)
-      VALUES ("${title}", "${title}", "${req.file.filename}", "${genre_1}","${genre_2}","${synopsis}");
-  `)
+      VALUES ("${title}", "${title}", "${req.file.filename}", "${genre_1}","${genre_2}", :synopsis);`, {synopsis})
 
 
   res.redirect("/admin#blog");
@@ -117,7 +115,7 @@ exports.editArticleID = async (req, res) => {
   const article = await db.query(`SELECT * FROM articles WHERE id = ${id}`)
 
   if (title, genre_1, genre_2, synopsis) {
-    await db.query(`UPDATE articles SET title = '${title}', genre_1 = '${genre_1}', genre_2 = '${genre_2}', synopsis = '${synopsis}' WHERE id = ${id};`)
+    await db.query(`UPDATE articles SET title = '${title}', genre_1 = '${genre_1}', genre_2 = '${genre_2}', synopsis =:synopsis WHERE id = ${id};`, {synopsis})
   }
 
   if (img) {

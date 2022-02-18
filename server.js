@@ -32,10 +32,22 @@ const options = {
   user: process.env.DB_USER,
   password: process.env.DB_PASSWORD,
   database: process.env.DB_NAME,
-  port:  process.env.DB_PORT
+  port:  process.env.DB_PORT,
 }
 
 db = mysql.createConnection(options)
+
+db.config.queryFormat = function (query, values) {
+  if (!values) return query;
+  return query.replace(/\:(\w+)/g, function (txt, key) {
+    if (values.hasOwnProperty(key)) {
+      return this.escape(values[key]);
+    }
+    return txt;
+  }.bind(this));
+};
+
+
 db.query = util.promisify(db.query).bind(db);
 db.connect((err) => {
   if (err) console.error("error connecting: " + err.stack);

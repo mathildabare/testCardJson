@@ -106,7 +106,7 @@ exports.createArticleUser = async (req, res) => {
 
   await db.query(`
     insert into articles (title, name, genre_1, genre_2, synopsis, img)
-      VALUES ("${title}", "${title}", "${genre_1}","${genre_2}","${synopsis}", "${req.file.filename}");`)
+      VALUES ("${title}", "${title}", "${genre_1}","${genre_2}", :synopsis, "${req.file.filename}");`, {synopsis})
   res.redirect("/article");
 }
 
@@ -122,7 +122,7 @@ exports.createComment = async (req, res) => {
 
   await db.query(`
     insert into comments (author_id, content, article_id)
-    VALUES ("${author}","${content}", "${id}" );`)
+    VALUES ("${author}", :content , "${id}" );`, {content})
   console.log(`article/${id}`);
 
   res.redirect(`/article/${ id }#comments`);

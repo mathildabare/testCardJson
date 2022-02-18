@@ -23,7 +23,10 @@ const saltRounds = 10;
 // Modal Login
 exports.loginData = async (req, res) => {
   console.log("Mes identitifiants :", req.body);
-  const { username, password } = req.body;
+  const {
+    username,
+    password
+  } = req.body;
 
   if (username && password) {
     const user = await db.query(
@@ -83,7 +86,10 @@ exports.registerpage = async (req, res) => {
   SELECT * FROM users;`)
   // console.log('user', user)
 
-  const { username, password } = req.body;
+  const {
+    username,
+    password
+  } = req.body;
 
   res.render("register");
 };
@@ -103,7 +109,11 @@ exports.userProfile = async (req, res) => {
 // Créer un User (Register)
 exports.createUser = async (req, res) => {
   console.log("Nouvel Utilisateur", req.body);
-  const { username, mail, password } = req.body
+  const {
+    username,
+    mail,
+    password
+  } = req.body
   const hash = bcrypt.hashSync(password, saltRounds);
 
   console.log('mon hash', hash);
@@ -132,13 +142,16 @@ exports.editUser = async (req, res) => {
   const { username, biography } = req.body
   const avatar = req.file
 
-  console.log('avatar', avatar, 'mon magnifique id', id);
+
+ 
+
+  // console.log('avatar', avatar, 'mon magnifique id', id);
 
   const users = await db.query(`SELECT * FROM users WHERE id = '${req.params.id}';`);
 
 
   if (username, biography) {
-    await db.query(`UPDATE users SET username = '${username}', biography = '${biography}' WHERE id = '${req.params.id}';`)
+    await db.query(`UPDATE users SET username = '${username}', biography =:biography WHERE id = '${req.params.id}';`, {biography})
   }
 
 
@@ -147,8 +160,12 @@ exports.editUser = async (req, res) => {
     deleteOneFile(dir, users[0].avatar)
     await db.query(`UPDATE users SET avatar = '${req.file.filename}' WHERE id = '${req.params.id}';`)
   }
+  
 
-  console.log('mon USER', req.session.user);
-  res.redirect('/user');
-
+  edition = `SELECT * FROM users WHERE id = ${req.session.user.id}`
+  await db.query(edition, function (err, results) {
+    if (err) throw err
+    req.session.user = results[0]
+    res.redirect('back')
+  })
 }
